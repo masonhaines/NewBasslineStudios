@@ -458,6 +458,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &615163838 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 316366076564165663, guid: 746d1c30d78c99d4cb861a3dddeb930c, type: 3}
+  m_PrefabInstance: {fileID: 1959202645943344923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &792963003
 GameObject:
   m_ObjectHideFlags: 0
@@ -1523,6 +1528,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.851
       objectReference: {fileID: 0}
+    - target: {fileID: 574529155140446147, guid: 746d1c30d78c99d4cb861a3dddeb930c, type: 3}
+      propertyPath: m_GravityScale
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4247136534623273455, guid: 746d1c30d78c99d4cb861a3dddeb930c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.20749
@@ -1582,6 +1591,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6263234208567336707, guid: 746d1c30d78c99d4cb861a3dddeb930c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1959202645943344925}
+    - targetCorrespondingSourceObject: {fileID: 6263234208567336707, guid: 746d1c30d78c99d4cb861a3dddeb930c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1959202645943344926}
   m_SourcePrefab: {fileID: 100100000, guid: 746d1c30d78c99d4cb861a3dddeb930c, type: 3}
 --- !u!1 &1959202645943344924 stripped
 GameObject:
@@ -1601,6 +1613,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   health: 25
+--- !u!114 &1959202645943344926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959202645943344924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b212ff78506b948c09e5cefd49a845b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController2D
+  moveSpeed: 6
+  jumpForce: 12
+  groundCheck: {fileID: 615163838}
+  groundCheckRadius: 0.15
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
