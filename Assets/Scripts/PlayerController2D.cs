@@ -58,14 +58,16 @@ public class PlayerController2D : MonoBehaviour
 
     [Header("Jumping")]
     public float jumpForce = 12f;
-    public Transform groundCheck;               // assign child groundDetector
-    public Vector2 groundCheckSize = new Vector2(0.6f, 0.1f); // wider, thin box
+    public Transform groundCheck;               
+    public Vector2 groundCheckSize = new Vector2(0.6f, 0.1f); 
     public LayerMask groundLayer;
+    public int extraJumps = 1;   // how many extra jumps in the air
+    private int jumpsLeft;
 
     [Header("Coyote Time & Jump Buffer")]
-    public float coyoteTime = 0.15f;            // grace after leaving ground
+    public float coyoteTime = 0.15f;            
     private float coyoteTimeCounter;
-    public float jumpBufferTime = 0.15f;        // grace before landing
+    public float jumpBufferTime = 0.15f;        
     private float jumpBufferCounter;
 
     private Rigidbody2D rb;
@@ -81,9 +83,24 @@ public class PlayerController2D : MonoBehaviour
         // Horizontal movement
         float x = Input.GetAxisRaw("Horizontal");
         rb.linearVelocity = new Vector2(x * moveSpeed, rb.linearVelocity.y);
+        
+        //flips sprite depending on horizontal input
+        if (x > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
 
         // Ground check
         isGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer);
+
+        if (isGrounded)
+        {
+            jumpsLeft = extraJumps;   // reset extra jumps
+        }
 
         // Reset coyote timer if grounded
         if (isGrounded)
@@ -101,20 +118,37 @@ public class PlayerController2D : MonoBehaviour
             jumpBufferCounter -= Time.deltaTime;
         }
 
-        // Perform jump if within buffer & coyote window
-        if (jumpBufferCounter > 0f && coyoteTimeCounter > 0f)
+        // Jump logic
+        if (jumpBufferCounter > 0f)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f); // reset vertical speed
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-
-            // Consume both timers
-            jumpBufferCounter = 0f;
-            coyoteTimeCounter = 0f;
+            // Ground jump (includes coyote time)
+            if (coyoteTimeCounter > 0f)
+            {
+                DoJump();
+                jumpBufferCounter = 0f;
+            }
+            // Extra air jumps
+            else if (jumpsLeft > 0)
+            {
+                DoJump();
+                jumpsLeft--;
+                jumpBufferCounter = 0f;
+            }
         }
-        Debug.Log("isGrounded: " + isGrounded);
+
+        Debug.Log("isGrounded: " + isGrounded + " | jumpsLeft: " + jumpsLeft);
     }
 
-    // to see ground check box
+    void DoJump()
+    {
+        // clear downward velocity before jump
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+        rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+
+        coyoteTimeCounter = 0f; // prevent chaining extra coyote jumps
+    }
+
+    // Visualize ground check box
     void OnDrawGizmosSelected()
     {
         if (groundCheck == null) return;

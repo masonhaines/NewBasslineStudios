@@ -8,14 +8,16 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        if (target == null) return;
+        Vector3 desiredPosition = new Vector3(
+        target.position.x + offset.x,    // follow player horizontally
+        transform.position.y,           // lock Y (don’t follow jumps)
+        target.position.z + offset.z    // keep camera depth
+        );
 
-        // Desired position
-        Vector3 desiredPosition = target.position + offset;
-
-        // Smoothly interpolate
+    //Smooth follow
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
 
-        transform.position = new Vector3(smoothedPosition.x, smoothedPosition.y, transform.position.z);
+    //Apply to camera
+        transform.position = smoothedPosition;
     }
 }
