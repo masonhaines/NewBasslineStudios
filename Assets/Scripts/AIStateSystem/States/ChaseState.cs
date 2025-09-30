@@ -24,10 +24,10 @@ public class ChaseState : IAiStates
         {
             aiControllerInstance.setNewState(new PatrolState(this.aiControllerInstance));
         }
-        else if (aiControllerInstance.bInRangeToAttack)
-        {
-            // aiControllerInstance.setNewState(new AttackState(this.aiControllerInstance));
-        }
+        // else if (aiControllerInstance.bInRangeToAttack)
+        // {
+        //     // aiControllerInstance.setNewState(new AttackState(this.aiControllerInstance));
+        // }
     }
 
     public void Exit(AIController aiController)
