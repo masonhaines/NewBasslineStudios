@@ -136,7 +136,7 @@ public class PlayerController2D : MonoBehaviour
             }
         }
 
-        Debug.Log("isGrounded: " + isGrounded + " | jumpsLeft: " + jumpsLeft);
+        // Debug.Log("isGrounded: " + isGrounded + " | jumpsLeft: " + jumpsLeft);
     }
 
     void DoJump()
