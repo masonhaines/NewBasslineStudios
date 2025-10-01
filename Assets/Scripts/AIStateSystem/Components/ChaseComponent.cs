@@ -5,7 +5,7 @@ public class ChaseComponent : MonoBehaviour
 {
     private List<Transform> waypoints;
     private int numberOfWaypointPositions;
-    private int waypointIndex = 0;
+    // private int waypointIndex = 0;
     private Vector2 targetPosition;
 
 
@@ -36,7 +36,7 @@ public class ChaseComponent : MonoBehaviour
     {
         if (!targetWaypoint) return;
         waypoints.Add(targetWaypoint);
-        Debug.Log("New Waypoint: " + targetWaypoint.name);
+        
     }
     
     

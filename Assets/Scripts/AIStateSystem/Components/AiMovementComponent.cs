@@ -41,6 +41,7 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     private void Start()
     {
         moversRigidbody2D = GetComponent<Rigidbody2D>();
+        OnTargetReachedCaller();
         // NewTargetLocation(new Vector2(0, 0)); // init target location 
         Debug.Log(targetLocation);
     }
@@ -64,58 +65,62 @@ public class AiMovementComponent : MonoBehaviour, ITarget
 
     public void Moving()
     {
+        
+        
+        Debug.DrawLine(targetLocation, moversRigidbody2D.position, Color.red);
         // throw new System.NotImplementedException();
         // moversRigidbody2D.transform.position = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
         Vector2 moveTowardsPosition = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
         
+        
+        bool bHasReachedTarget = false;
+        switch (movementType)
+        {
+            case MovementType.XOnly:
+                bHasReachedTarget = Mathf.Abs(moversRigidbody2D.position.x - targetLocation.x) <= 0.5f;
+                moveTowardsPosition = new Vector2(moveTowardsPosition.x, moversRigidbody2D.position.y);
+                break;
+            case MovementType.XAndY:
+                bHasReachedTarget = Vector2.Distance(moversRigidbody2D.position, targetLocation) <= 0.5f;
+                
+                break;
+            case MovementType.YOnly:
+                bHasReachedTarget = Mathf.Abs(moversRigidbody2D.position.y - targetLocation.y) <= 0.5f;
+                moveTowardsPosition = new Vector2(moversRigidbody2D.position.x, targetLocation.y);
+                break;
+            default:
+                bHasReachedTarget = false;
+                break;
+        }
+        
+        if (bHasReachedTarget)
+        {
+            // Reached the target location
+            bLocalHasMovedToTarget = true;
+            // moversRigidbody2D.position = targetLocation;
+            OnTargetReachedCaller.Invoke();
+            Debug.Log("Moved to target location");
+            return;
+        }
+        
         // ***** Chat helped with flip lock and delta time toggling
         Vector2 direction = targetLocation - moversRigidbody2D.position;
-
         
-        
+        Debug.Log(direction.x + "-----------------------------------------Direction" );
         switch (direction.x)
         {
             case > 0.1f:
                 // SpriteRenderer.flipX = true; // only flips sprite
-                transform.localScale = new Vector3(-1, 1, 1);  // face left
+                transform.localScale = new Vector3(1, 1, 1);  // face left
                 break;
             case < -0.1f:
                 // SpriteRenderer.flipX = false; // only flips sprite
-                transform.localScale = new Vector3(1, 1, 1);  // face left
+                transform.localScale = new Vector3(-1, 1, 1);  // face left
                 break;
         }
         
+        // where movement is actually happening 
         moversRigidbody2D.MovePosition(moveTowardsPosition);
-        //
-        // bool bHasReachedTarget = false;
-        // switch (movementType)
-        // {
-        //     case MovementType.XOnly:
-        //         bHasReachedTarget = moversRigidbody2D.position.x - targetLocation.x <= 0.1f;
-        //         break;
-        //     case MovementType.XAndY:
-        //         bHasReachedTarget = Vector2.Distance(moversRigidbody2D.position, targetLocation) <= 0.1f;
-        //         break;
-        //     case MovementType.YOnly:
-        //         bHasReachedTarget = moversRigidbody2D.position.y - targetLocation.y <= 0.1f;
-        //         break;
-        //     default:
-        //         bHasReachedTarget = false;
-        //         break;
-        // }
-        
-        // if (abs(moversRigidbody2D.transform.position.y - targetLocation.y) >= 0.1f) return;
-        // if (Vector2.Distance(moversRigidbody2D.position, targetLocation) <= 0.1f)
-        if (Mathf.Abs(moversRigidbody2D.position.x - targetLocation.x) <= 0.1f)
-        // if (bHasReachedTarget)
-        {
-            // Reached the target location
-            bLocalHasMovedToTarget = true;
-            moversRigidbody2D.position = targetLocation;
-            OnTargetReachedCaller.Invoke();
-            Debug.Log("Moved to target location");
-        }
-        
     }
 
     // this whole thing needs to be turned into a Queue, so then locations can be added to queue, and as the enemy reaches the location, dequeue and enqueue a couple locations at a time 
@@ -124,7 +129,8 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     {
         targetLocation = moveToTargetLocation;
         bLocalHasMovedToTarget = false;
-        Debug.Log(targetLocation);
+        // Debug.Log(targetLocation);
+        Debug.DrawLine(aiController.transform.position, moversRigidbody2D.position, Color.red);
     }
     
 
