@@ -13,12 +13,14 @@ public class AIController : MonoBehaviour
     
     public PatrolComponent patrolComponentObject;
     public ChaseComponent chaseComponentObject;
-    public AiMovementComponent movementComponentObject;
+    // public AiMovementComponent movementComponentObject;
     public HealthComponent healthComponentObject;
     public Transform detectedTargetTransform;
     public Animator myAnimator;
     
     private IAiStates currentState;
+    public ITarget MovementController;
+    
     public bool bHasPerceivedTarget;
     public bool bIsAttacking;
     public bool bInRangeToAttack;
@@ -29,7 +31,7 @@ public class AIController : MonoBehaviour
     {
         patrolComponentObject = GetComponent<PatrolComponent>();
         chaseComponentObject = GetComponent<ChaseComponent>();
-        movementComponentObject = GetComponent<AiMovementComponent>(); // this is for states access
+        // movementComponentObject = GetComponent<AiMovementComponent>(); // this is for states access
         healthComponentObject = GetComponent<HealthComponent>();
         myAnimator = GetComponentInChildren<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
         
@@ -74,6 +76,10 @@ public class AIController : MonoBehaviour
                 setNewState(chase);
             }
             chaseComponentObject.GetNewWaypoint(detectedTargetTransform);
+        }
+        else if (currentState == patrol)
+        {
+            MovementController.OnTick();
         }
 
         if (bHasPerceivedTarget && detectedTargetTransform is not null)

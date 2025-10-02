@@ -10,20 +10,20 @@ public class PatrolComponent : MonoBehaviour
     private int numberOfActivePatrolPoints;
     private Vector2 targetPosition;
     private int currentPatrolIndex = 0;
+    
+    private ITarget movementController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         numberOfActivePatrolPoints = patrolPointLocations.Length;
         targetPosition = patrolPointLocations[currentPatrolIndex].position;
-        moveRef.NewTargetLocation(targetPosition);
+        movementController.NewTargetLocation(targetPosition);
     }
-
-    private ITarget moveRef;
-
+    
     private void Awake()
     {
-        moveRef = GetComponentInParent<ITarget>(); // reference to all other objects that have implement interface in parent prefab
+        movementController = GetComponentInParent<ITarget>(); // reference to all other objects that have implement interface in parent prefab
     }
     
     private IEnumerator SetNewTargetPatrolPoint()
@@ -41,13 +41,13 @@ public class PatrolComponent : MonoBehaviour
         }
 
         targetPosition = patrolPointLocations[currentPatrolIndex].position;
-        moveRef.NewTargetLocation(targetPosition);
+        movementController.NewTargetLocation(targetPosition);
     }
 
     // https://docs.unity3d.com/6000.2/Documentation/ScriptReference/WaitForSeconds.html
     public void OnTargetReachedListener()
     {
-        if (moveRef == null) return;
+        if (movementController == null) return;
         // Debug.Log("Event call from movement has been heard in patrol component");
         StartCoroutine(SetNewTargetPatrolPoint());
     }
