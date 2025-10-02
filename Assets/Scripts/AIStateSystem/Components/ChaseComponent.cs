@@ -9,11 +9,13 @@ public class ChaseComponent : MonoBehaviour
     private Vector2 targetPosition;
 
 
-    private ITarget moveRef;
+    private ITarget movementController;
 
     private void Awake()
     {
-        moveRef = GetComponentInParent<ITarget>(); // reference to all other objects that have implement interface in parent prefab
+        // moveRef = GetComponentInParent<ITarget>(); // reference to all other objects that have implement interface in parent prefab
+        // moveRef = GetComponent<ITarget>() ?? GetComponentInParent<ITarget>();
+        movementController = GetComponent<ITarget>(); // reference to all other objects that have implement interface in parent prefab
         waypoints = new List<Transform>();
     }
     private void Start()
@@ -25,9 +27,9 @@ public class ChaseComponent : MonoBehaviour
 
     public void OnTargetReachedListener()
     {
-        if(moveRef == null) return;
+        if(movementController == null) return;
         targetPosition = waypoints[0].position;
-        moveRef.NewTargetLocation(targetPosition);
+        movementController.NewTargetLocation(targetPosition);
         waypoints.RemoveAt(0);
     }
     
@@ -38,9 +40,6 @@ public class ChaseComponent : MonoBehaviour
         waypoints.Add(targetWaypoint);
         
     }
-    
-    
-
 }
 
 

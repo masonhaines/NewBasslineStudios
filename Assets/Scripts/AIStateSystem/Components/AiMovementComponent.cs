@@ -47,7 +47,7 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     }
 
     // Update is called once per frame
-    void Update()
+    public void OnTick()
     {
         if (aiController.healthComponentObject.GetIsKnockedBack())
         {
@@ -98,7 +98,7 @@ public class AiMovementComponent : MonoBehaviour, ITarget
             // Reached the target location
             bLocalHasMovedToTarget = true;
             // moversRigidbody2D.position = targetLocation;
-            OnTargetReachedCaller.Invoke();
+            OnTargetReachedCaller();
             Debug.Log("Moved to target location");
             return;
         }
