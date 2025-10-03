@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f3dd72895314fe492806cb32b79e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
-  sceneName: 
 --- !u!4 &66289015
 Transform:
   m_ObjectHideFlags: 0
@@ -295,7 +294,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 66289014}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: Load
+        m_MethodName: LoadFirstLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -355,7 +354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f3dd72895314fe492806cb32b79e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
-  sceneName: Level11
 --- !u!1 &175547267
 GameObject:
   m_ObjectHideFlags: 0
