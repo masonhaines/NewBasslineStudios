@@ -35,6 +35,8 @@ public class AIController : MonoBehaviour
         healthComponentObject = GetComponent<HealthComponent>();
         myAnimator = GetComponentInChildren<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
         
+        MovementController = GetComponent<ITarget>();
+        
         // add a health component listener for on death and on Hit ie taking damage
         healthComponentObject.OnDeathCaller += OnDeathListener;
         healthComponentObject.OnHitCaller += OnHitListener;
@@ -51,9 +53,10 @@ public class AIController : MonoBehaviour
     public void PerceptionTargetLost(Transform target)
     {
         bHasPerceivedTarget = false;
-        // var lastKnownTargetTransform = target;
-        // detectedTargetTransform = lastKnownTargetTransform;
         Debug.Log("Target lost: " + detectedTargetTransform.name);
+        detectedTargetTransform = null;
+
+        
     }
 
     private void Start()
@@ -75,7 +78,8 @@ public class AIController : MonoBehaviour
             {
                 setNewState(chase);
             }
-            chaseComponentObject.GetNewWaypoint(detectedTargetTransform);
+            chaseComponentObject.UpdateChaseLocation(detectedTargetTransform);
+            MovementController.OnTick();
         }
         else if (currentState == patrol)
         {

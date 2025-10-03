@@ -14,6 +14,8 @@ public class KnockBack : MonoBehaviour
 
     public void CreateKnockBack(Transform damageSource, float knockBackAmount, float knockBackLiftAmount)
     {
+        if (bKnockedBack) return;
+
         Debug.Log("Trying to knockBack");
         //---------------------// Victim of attack //
         Vector2 difference = (transform.position - damageSource.position).normalized;

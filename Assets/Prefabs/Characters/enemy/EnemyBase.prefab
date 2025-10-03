@@ -58,7 +58,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -85,7 +85,6 @@ MonoBehaviour:
   attackRange: 5
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
-  movementComponentObject: {fileID: 0}
   healthComponentObject: {fileID: 0}
   detectedTargetTransform: {fileID: 0}
   myAnimator: {fileID: 0}
@@ -121,6 +120,7 @@ MonoBehaviour:
   moveSpeed: 10
   bLocalHasMovedToTarget: 1
   groundOnly: 1
+  movementType: 1
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -219,9 +219,9 @@ PolygonCollider2D:
       - {x: -0.34620872, y: 0.15950137}
       - {x: -0.62044007, y: -0.108145654}
       - {x: -0.63293254, y: -0.44436052}
-      - {x: -0.8982874, y: -0.7834351}
+      - {x: -0.84959215, y: -0.6982186}
       - {x: 0.23848549, y: -0.72836673}
-      - {x: 0.89294446, y: -0.7872155}
+      - {x: 0.8807706, y: -0.70199883}
       - {x: 0.84151745, y: -0.45494115}
       - {x: 0.7025666, y: -0.025745235}
   m_UseDelaunayMesh: 0
@@ -364,7 +364,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 2.3497212, y: -0.17959654}
+  m_Offset: {x: 1.2167659, y: 0.53755534}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -374,7 +374,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6.956619, y: 1.3591931}
+  m_Size: {x: 15.706355, y: 3.1508167}
   m_EdgeRadius: 0
 --- !u!1 &6647232440405953180
 GameObject:
@@ -457,8 +457,8 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 3225832317793331946, guid: 7d5000b7802d4ea44a3812d243836dc1, type: 3}
-  m_Color: {r: 0.3820755, g: 1, b: 0.5306757, a: 1}
-  m_FlipX: 0
+  m_Color: {r: 0.99300003, g: 0.99300003, b: 0.99300003, a: 1}
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.3, y: 0.16}
