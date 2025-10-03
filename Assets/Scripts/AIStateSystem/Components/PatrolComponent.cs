@@ -36,7 +36,7 @@ public class PatrolComponent : MonoBehaviour
             Debug.Log("lost all of my patrol points");
             return;
         }
-        
+
         targetPosition = patrolPointLocations[0].position;
         movementController.NewTargetLocation(targetPosition);
         Debug.Log(patrolPointLocations.Length + " patrol points");
@@ -73,7 +73,7 @@ public class PatrolComponent : MonoBehaviour
             return;
         }
         // Debug.Log("Event call from movement has been heard in patrol component");
-        Debug.Log("controller is null");
+        Debug.Log("Listener fired");
         StartCoroutine(SetNewTargetPatrolPoint());
     }
     

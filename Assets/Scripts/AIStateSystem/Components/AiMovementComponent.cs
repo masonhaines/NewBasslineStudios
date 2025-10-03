@@ -4,6 +4,7 @@ using UnityEngine.UIElements.Experimental;
 public class AiMovementComponent : MonoBehaviour, ITarget
 {
     public event System.Action OnTargetReachedCaller = delegate { };
+    public bool bHasReachedTarget { get; set; }
 
     public enum MovementType
     {
@@ -41,7 +42,7 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     private void Start()
     {
         moversRigidbody2D = GetComponent<Rigidbody2D>();
-        OnTargetReachedCaller();
+        // OnTargetReachedCaller?.Invoke();
         // NewTargetLocation(new Vector2(0, 0)); // init target location 
         Debug.Log(targetLocation);
     }
@@ -99,8 +100,8 @@ public class AiMovementComponent : MonoBehaviour, ITarget
             // Reached the target location
             bLocalHasMovedToTarget = true;
             // moversRigidbody2D.position = targetLocation;
-            OnTargetReachedCaller();
-            // Debug.Log("Moved to target location");
+            OnTargetReachedCaller?.Invoke();
+            Debug.Log("Reached target, firing event");
             return;
         }
         
