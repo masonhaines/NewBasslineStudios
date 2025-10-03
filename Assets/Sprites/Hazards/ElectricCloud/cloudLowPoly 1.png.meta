@@ -1,112 +1,112 @@
 fileFormatVersion: 2
-guid: f88a48f42a20c654882ab2ef4c8374cc
+guid: e922fca52a7770d42b1cce99cafa2740
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7890588606982827951
-    second: cloudLowPoly_0
+      213: -296349665846351761
+    second: cloudLowPoly 1_0
   - first:
-      213: 3378037997397182469
-    second: cloudLowPoly_1
+      213: -5064710684232705138
+    second: cloudLowPoly 1_1
   - first:
-      213: 8489779710121557909
-    second: cloudLowPoly_2
+      213: 487981621005688921
+    second: cloudLowPoly 1_2
   - first:
-      213: 6788683104242861088
-    second: cloudLowPoly_3
+      213: -696248328382797610
+    second: cloudLowPoly 1_3
   - first:
-      213: 6099437436237769012
-    second: cloudLowPoly_4
+      213: 4736962607227299518
+    second: cloudLowPoly 1_4
   - first:
-      213: 1809241620896511933
-    second: cloudLowPoly_5
+      213: -8261685050374404176
+    second: cloudLowPoly 1_5
   - first:
-      213: -3555028915270655358
-    second: cloudLowPoly_6
+      213: 677433216614697109
+    second: cloudLowPoly 1_6
   - first:
-      213: -6718222121297705262
-    second: cloudLowPoly_7
+      213: -3843438606258856233
+    second: cloudLowPoly 1_7
   - first:
-      213: 4669442109295172082
-    second: cloudLowPoly_8
+      213: 679733983314309965
+    second: cloudLowPoly 1_8
   - first:
-      213: -3490568711107279462
-    second: cloudLowPoly_9
+      213: 3329312037522601174
+    second: cloudLowPoly 1_9
   - first:
-      213: -6411941338874413923
-    second: cloudLowPoly_10
+      213: 2293492297000406933
+    second: cloudLowPoly 1_10
   - first:
-      213: 6920860974809489203
-    second: cloudLowPoly_11
+      213: -4491319762915077378
+    second: cloudLowPoly 1_11
   - first:
-      213: -4271605077439323891
-    second: cloudLowPoly_12
+      213: -965705609756012805
+    second: cloudLowPoly 1_12
   - first:
-      213: 7269090579445286555
-    second: cloudLowPoly_13
+      213: 2581130864414112812
+    second: cloudLowPoly 1_13
   - first:
-      213: 1286963064914404236
-    second: cloudLowPoly_14
+      213: -1510178797632048536
+    second: cloudLowPoly 1_14
   - first:
-      213: -8364786960195786323
-    second: cloudLowPoly_15
+      213: -8829084837427450987
+    second: cloudLowPoly 1_15
   - first:
-      213: -3068881851560100285
-    second: cloudLowPoly_16
+      213: 5279336713379670692
+    second: cloudLowPoly 1_16
   - first:
-      213: -6895049582791705272
-    second: cloudLowPoly_17
+      213: -1959792590716060760
+    second: cloudLowPoly 1_17
   - first:
-      213: -6977650424645377469
-    second: cloudLowPoly_18
+      213: -1354609349952861245
+    second: cloudLowPoly 1_18
   - first:
-      213: 8856144064980326107
-    second: cloudLowPoly_19
+      213: 8241264458325322386
+    second: cloudLowPoly 1_19
   - first:
-      213: 3093462093409289004
-    second: cloudLowPoly_20
+      213: -3530877752683912798
+    second: cloudLowPoly 1_20
   - first:
-      213: -107864481278285093
-    second: cloudLowPoly_21
+      213: 5538710766705180237
+    second: cloudLowPoly 1_21
   - first:
-      213: -4541298076893273255
-    second: cloudLowPoly_22
+      213: 6513770658076211924
+    second: cloudLowPoly 1_22
   - first:
-      213: 3658300410336153235
-    second: cloudLowPoly_23
+      213: -4744625379172052558
+    second: cloudLowPoly 1_23
   - first:
-      213: 536484305740342890
-    second: cloudLowPoly_24
+      213: 4690737705425908331
+    second: cloudLowPoly 1_24
   - first:
-      213: -4034335179093192337
-    second: cloudLowPoly_25
+      213: 7437332844330470281
+    second: cloudLowPoly 1_25
   - first:
-      213: 2410903984461205594
-    second: cloudLowPoly_26
+      213: -8483896016753517317
+    second: cloudLowPoly 1_26
   - first:
-      213: -7350071950145315194
-    second: cloudLowPoly_27
+      213: 1713916943099662588
+    second: cloudLowPoly 1_27
   - first:
-      213: -7127406331962014921
-    second: cloudLowPoly_28
+      213: 6404340903437593442
+    second: cloudLowPoly 1_28
   - first:
-      213: 5126872621365897796
-    second: cloudLowPoly_29
+      213: 8156047858188247288
+    second: cloudLowPoly 1_29
   - first:
-      213: 4073228467488909577
-    second: cloudLowPoly_30
+      213: 5313614865772909026
+    second: cloudLowPoly 1_30
   - first:
-      213: -4498212416326065523
-    second: cloudLowPoly_31
+      213: 6601022196768214297
+    second: cloudLowPoly 1_31
   - first:
-      213: 7221621208235457444
-    second: cloudLowPoly_32
+      213: -5998671270746394298
+    second: cloudLowPoly 1_32
   - first:
-      213: 1758696533584742349
-    second: cloudLowPoly_33
+      213: 6078304093756035951
+    second: cloudLowPoly 1_33
   - first:
-      213: -7838994930426908113
-    second: cloudLowPoly_34
+      213: 4509926268583593275
+    second: cloudLowPoly 1_34
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -202,7 +202,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cloudLowPoly_0
+      name: cloudLowPoly 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -217,14 +217,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1505b04d77ffe7290800000000000000
-      internalID: -7890588606982827951
+      spriteID: f682ced8c8723ebf0800000000000000
+      internalID: -296349665846351761
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cloudLowPoly_1
+      name: cloudLowPoly 1_1
       rect:
         serializedVersion: 2
         x: 128
@@ -239,14 +239,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 50881a839a331ee20800000000000000
-      internalID: 3378037997397182469
+      spriteID: e8b1f28777886b9b0800000000000000
+      internalID: -5064710684232705138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cloudLowPoly_2
+      name: cloudLowPoly 1_2
       rect:
         serializedVersion: 2
         x: 256
@@ -261,14 +261,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 59f3d136aa1c1d570800000000000000
-      internalID: 8489779710121557909
+      spriteID: 950a6f8e2b8a5c600800000000000000
+      internalID: 487981621005688921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cloudLowPoly_3
+      name: cloudLowPoly 1_3
       rect:
         serializedVersion: 2
         x: 384
@@ -283,14 +283,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0248719b05f363e50800000000000000
-      internalID: 6788683104242861088
+      spriteID: 6d8a84f85dd6656f0800000000000000
+      internalID: -696248328382797610
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cloudLowPoly_4
+      name: cloudLowPoly 1_4
       rect:
         serializedVersion: 2
         x: 512
@@ -305,14 +305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 439eba4380e85a450800000000000000
-      internalID: 6099437436237769012
+      spriteID: eb6671ec4621db140800000000000000
+      internalID: 4736962607227299518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cloudLowPoly_5
+      name: cloudLowPoly 1_5
       rect:
         serializedVersion: 2
         x: 640
@@ -327,14 +327,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: db7736e1ba7bb1910800000000000000
-      internalID: 1809241620896511933
+      spriteID: 0b7474e0839985d80800000000000000
+      internalID: -8261685050374404176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cloudLowPoly_6
+      name: cloudLowPoly 1_6
       rect:
         serializedVersion: 2
         x: 768
@@ -349,14 +349,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 282ec0379000aaec0800000000000000
-      internalID: -3555028915270655358
+      spriteID: 5988e5bdbe9b66900800000000000000
+      internalID: 677433216614697109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cloudLowPoly_7
+      name: cloudLowPoly 1_7
       rect:
         serializedVersion: 2
         x: 896
@@ -371,8 +371,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d601e9439414c2a0800000000000000
-      internalID: -6718222121297705262
+      spriteID: 7de1be573fc59aac0800000000000000
+      internalID: -3843438606258856233
       vertices: []
       indices: 
       edges: []
@@ -381,7 +381,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 447900fa8bd62bd47bf480a1c05cc3c1
+    spriteID: eee815c4543a50f42a63dd23f2acdb6d
     internalID: 0
     vertices: []
     indices: 
@@ -393,14 +393,14 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      cloudLowPoly_0: -7890588606982827951
-      cloudLowPoly_1: 3378037997397182469
-      cloudLowPoly_2: 8489779710121557909
-      cloudLowPoly_3: 6788683104242861088
-      cloudLowPoly_4: 6099437436237769012
-      cloudLowPoly_5: 1809241620896511933
-      cloudLowPoly_6: -3555028915270655358
-      cloudLowPoly_7: -6718222121297705262
+      cloudLowPoly 1_0: -296349665846351761
+      cloudLowPoly 1_1: -5064710684232705138
+      cloudLowPoly 1_2: 487981621005688921
+      cloudLowPoly 1_3: -696248328382797610
+      cloudLowPoly 1_4: 4736962607227299518
+      cloudLowPoly 1_5: -8261685050374404176
+      cloudLowPoly 1_6: 677433216614697109
+      cloudLowPoly 1_7: -3843438606258856233
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

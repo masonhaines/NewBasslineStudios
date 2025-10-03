@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class ChaseComponent : MonoBehaviour
 {
-    private List<Transform> waypoints;
-    private int numberOfWaypointPositions;
-    // private int waypointIndex = 0;
-    private Vector2 targetPosition;
+    // private List<Transform> waypoints;
+    // private int numberOfWaypointPositions;
+    // private Vector2 targetPosition;
 
 
     private ITarget movementController;
@@ -16,7 +15,7 @@ public class ChaseComponent : MonoBehaviour
         // moveRef = GetComponentInParent<ITarget>(); // reference to all other objects that have implement interface in parent prefab
         // moveRef = GetComponent<ITarget>() ?? GetComponentInParent<ITarget>();
         movementController = GetComponent<ITarget>(); // reference to all other objects that have implement interface in parent prefab
-        waypoints = new List<Transform>();
+        // waypoints = new List<Transform>();
     }
     private void Start()
     {
@@ -25,21 +24,32 @@ public class ChaseComponent : MonoBehaviour
         // moveRef.NewTargetLocation(targetPosition);
     }
 
-    public void OnTargetReachedListener()
+    public void BeginChase(Transform target)
     {
-        if(movementController == null) return;
-        targetPosition = waypoints[0].position;
-        movementController.NewTargetLocation(targetPosition);
-        waypoints.RemoveAt(0);
+        movementController.NewTargetLocation(target.position);
     }
-    
-    // call me in the update of ai controller
-    public void GetNewWaypoint(Transform targetWaypoint)
+
+    public void UpdateChaseLocation(Transform target)
     {
-        if (!targetWaypoint) return;
-        waypoints.Add(targetWaypoint);
-        
+        if (!target) return;
+        movementController.NewTargetLocation(target.position);
     }
+
+    // public void OnTargetReachedListener()
+    // {
+    //     if(movementController == null) return;
+    //     targetPosition = waypoints[0].position;
+    //     movementController.NewTargetLocation(targetPosition);
+    //     waypoints.RemoveAt(0);
+    // }
+    //
+    // // call me in the update of ai controller
+    // public void GetNewWaypoint(Transform targetWaypoint)
+    // {
+    //     if (!targetWaypoint) return;
+    //     waypoints.Add(targetWaypoint);
+    //     
+    // }
 }
 
 
