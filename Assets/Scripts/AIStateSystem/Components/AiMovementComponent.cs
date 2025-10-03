@@ -14,7 +14,7 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     };
     
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private bool bLocalHasMovedToTarget = false;
+    // [SerializeField] private bool bLocalHasMovedToTarget = false;
     [SerializeField] private bool groundOnly = true;
     [SerializeField] private MovementType movementType;
     
@@ -42,9 +42,6 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     private void Start()
     {
         moversRigidbody2D = GetComponent<Rigidbody2D>();
-        // OnTargetReachedCaller?.Invoke();
-        // NewTargetLocation(new Vector2(0, 0)); // init target location 
-        Debug.Log(targetLocation);
     }
 
     // Update is called once per frame
@@ -54,11 +51,10 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         {
             return;
         }
-        if (!bLocalHasMovedToTarget)
+        if (!bHasReachedTarget)
         {
             if (groundOnly || GroundCollider.IsTouchingLayers(GroundLayer))
             {
-                // Debug.Log("tick moving is being called ");
                 Moving();
             }
         }
@@ -67,15 +63,12 @@ public class AiMovementComponent : MonoBehaviour, ITarget
 
     public void Moving()
     {
-        
-        
         Debug.DrawLine(targetLocation, moversRigidbody2D.position, Color.red);
-        // throw new System.NotImplementedException();
         // moversRigidbody2D.transform.position = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
         Vector2 moveTowardsPosition = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
         
         
-        bool bHasReachedTarget = false;
+        // bool reachedTarget = false;
         switch (movementType)
         {
             case MovementType.XOnly:
@@ -95,11 +88,9 @@ public class AiMovementComponent : MonoBehaviour, ITarget
                 break;
         }
         
+        
         if (bHasReachedTarget)
         {
-            // Reached the target location
-            bLocalHasMovedToTarget = true;
-            // moversRigidbody2D.position = targetLocation;
             OnTargetReachedCaller?.Invoke();
             Debug.Log("Reached target, firing event");
             return;
@@ -131,9 +122,9 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     {
         // Debug.Log(targetLocation + "target location changed in new target location in move component");
         targetLocation = moveToTargetLocation;
-        bLocalHasMovedToTarget = false;
-        // Debug.Log(targetLocation);
-        Debug.DrawLine(aiController.transform.position, moversRigidbody2D.position, Color.red);
+        bHasReachedTarget = false;
+        // Debug.DrawLine(aiController.transform.position, moversRigidbody2D.position, Color.red);
+
     }
     
 

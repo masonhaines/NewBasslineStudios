@@ -12,6 +12,7 @@ public class PatrolState : IAiStates
     public void Enter(AIController aiController)
     {
         aiControllerInstance.patrolComponentObject.enabled = true;
+        // aiControllerInstance.patrolComponentObject.StopAllCoroutines();
         aiController.patrolComponentObject.BeginPatrol();
 
         aiController.MovementController.OnTargetReachedCaller +=
@@ -23,13 +24,14 @@ public class PatrolState : IAiStates
     {
         if (aiController.bHasPerceivedTarget)
         {
-            aiControllerInstance.setNewState(new ChaseState(this.aiControllerInstance));
+            aiControllerInstance.setNewState(aiController.chase);
         }
     }
 
     public void Exit(AIController aiController)
     {
         aiControllerInstance.patrolComponentObject.enabled = false;
+        // aiControllerInstance.patrolComponentObject.StopAllCoroutines();
         aiController.MovementController.OnTargetReachedCaller -=
             aiController.patrolComponentObject.OnTargetReachedListener;
     }
