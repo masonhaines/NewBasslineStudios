@@ -20,7 +20,7 @@ using UnityEngine;
 public class CameraFollow2D : MonoBehaviour
 {
     [SerializeField] Transform target;                 // drag your Player here
-    [SerializeField] Vector3 offset = new Vector3(0, 0, -10);
+    [SerializeField] Vector3 offset = new Vector3(0, 15, -20);
     [SerializeField] float smooth = 5f;                // 0 = snap, 5-10 = smooth
 
     void Start() {

@@ -2954,6 +2954,7 @@ GameObject:
   m_Component:
   - component: {fileID: 149297200}
   - component: {fileID: 149297201}
+  - component: {fileID: 149297202}
   m_Layer: 0
   m_Name: BG_MID (1)
   m_TagString: Untagged
@@ -3034,6 +3035,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &149297202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149297199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.3
 --- !u!1 &193167946
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,6 +3058,7 @@ GameObject:
   m_Component:
   - component: {fileID: 193167947}
   - component: {fileID: 193167948}
+  - component: {fileID: 193167949}
   m_Layer: 0
   m_Name: BG_FAR (5)
   m_TagString: Untagged
@@ -3124,6 +3139,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &193167949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193167946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.28
 --- !u!1 &233044874
 GameObject:
   m_ObjectHideFlags: 0
@@ -3134,6 +3162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 233044875}
   - component: {fileID: 233044876}
+  - component: {fileID: 233044877}
   m_Layer: 0
   m_Name: BG_FAR
   m_TagString: Untagged
@@ -3214,6 +3243,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &233044877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233044874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.28
 --- !u!1 &266150884
 GameObject:
   m_ObjectHideFlags: 0
@@ -3224,6 +3266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 266150885}
   - component: {fileID: 266150886}
+  - component: {fileID: 266150887}
   m_Layer: 0
   m_Name: BG_FAR (4)
   m_TagString: Untagged
@@ -3304,6 +3347,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &266150887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 266150884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.28
 --- !u!1 &378275170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3576,6 +3632,7 @@ GameObject:
   m_Component:
   - component: {fileID: 470385140}
   - component: {fileID: 470385141}
+  - component: {fileID: 470385142}
   m_Layer: 0
   m_Name: Square (5)
   m_TagString: Untagged
@@ -3656,6 +3713,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &470385142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470385139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.3
 --- !u!1 &473542274
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,6 +3736,7 @@ GameObject:
   m_Component:
   - component: {fileID: 473542275}
   - component: {fileID: 473542276}
+  - component: {fileID: 473542277}
   m_Layer: 0
   m_Name: BG_MID (4)
   m_TagString: Untagged
@@ -3746,6 +3817,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &473542277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473542274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.3
 --- !u!1 &625418098
 GameObject:
   m_ObjectHideFlags: 0
@@ -3756,6 +3840,7 @@ GameObject:
   m_Component:
   - component: {fileID: 625418099}
   - component: {fileID: 625418100}
+  - component: {fileID: 625418101}
   m_Layer: 0
   m_Name: Square (3)
   m_TagString: Untagged
@@ -3836,6 +3921,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &625418101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625418098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.3
 --- !u!1 &643672825
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,6 +3944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 643672826}
   - component: {fileID: 643672827}
+  - component: {fileID: 643672828}
   m_Layer: 0
   m_Name: BG_MID (2)
   m_TagString: Untagged
@@ -3926,6 +4025,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &643672828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643672825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.3
 --- !u!4 &695956141 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5203627228356984637, guid: ab4cbcf3271d946ad9033214497641eb, type: 3}
@@ -3941,6 +4053,7 @@ GameObject:
   m_Component:
   - component: {fileID: 736544948}
   - component: {fileID: 736544949}
+  - component: {fileID: 736544950}
   m_Layer: 0
   m_Name: Square (4)
   m_TagString: Untagged
@@ -4021,6 +4134,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &736544950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736544947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.3
 --- !u!1 &945736527
 GameObject:
   m_ObjectHideFlags: 0
@@ -4031,6 +4157,7 @@ GameObject:
   m_Component:
   - component: {fileID: 945736528}
   - component: {fileID: 945736529}
+  - component: {fileID: 945736530}
   m_Layer: 0
   m_Name: Square (2)
   m_TagString: Untagged
@@ -4111,6 +4238,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &945736530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945736527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.3
 --- !u!1 &948411852
 GameObject:
   m_ObjectHideFlags: 0
@@ -4178,7 +4318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow2D
   target: {fileID: 0}
-  offset: {x: 0, y: 0, z: -10}
+  offset: {x: 0, y: 1, z: -10}
   smooth: 5
 --- !u!1 &1070640071
 GameObject:
@@ -4190,6 +4330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1070640072}
   - component: {fileID: 1070640073}
+  - component: {fileID: 1070640074}
   m_Layer: 0
   m_Name: BG_FAR (2)
   m_TagString: Untagged
@@ -4270,6 +4411,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1070640074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070640071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.28
 --- !u!4 &1097960508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7438044175261093600, guid: aa84a12e417024c66a0d7f5c6c253443, type: 3}
@@ -4285,6 +4439,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1283360819}
   - component: {fileID: 1283360820}
+  - component: {fileID: 1283360821}
   m_Layer: 0
   m_Name: BG_MID (5)
   m_TagString: Untagged
@@ -4365,6 +4520,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1283360821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283360818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.3
 --- !u!4 &1302930097 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7438044175261093600, guid: aa84a12e417024c66a0d7f5c6c253443, type: 3}
@@ -4380,6 +4548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1322649449}
   - component: {fileID: 1322649450}
+  - component: {fileID: 1322649451}
   m_Layer: 0
   m_Name: BG_FAR (1)
   m_TagString: Untagged
@@ -4460,6 +4629,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1322649451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322649448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.28
 --- !u!1001 &1412607768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4591,6 +4773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1467532703}
   - component: {fileID: 1467532704}
+  - component: {fileID: 1467532705}
   m_Layer: 0
   m_Name: BG_MID
   m_TagString: Untagged
@@ -4671,6 +4854,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1467532705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467532702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.3
 --- !u!1 &1506823466
 GameObject:
   m_ObjectHideFlags: 0
@@ -4681,6 +4877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1506823467}
   - component: {fileID: 1506823468}
+  - component: {fileID: 1506823469}
   m_Layer: 0
   m_Name: BG_FAR (3)
   m_TagString: Untagged
@@ -4761,6 +4958,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1506823469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506823466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.28
 --- !u!1001 &1544162269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7420,6 +7630,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1745404847}
   - component: {fileID: 1745404848}
+  - component: {fileID: 1745404849}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
@@ -7500,6 +7711,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1745404849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745404846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.3
 --- !u!1 &1746337799
 GameObject:
   m_ObjectHideFlags: 0
@@ -7510,6 +7734,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1746337800}
   - component: {fileID: 1746337801}
+  - component: {fileID: 1746337802}
   m_Layer: 0
   m_Name: BG_MID (3)
   m_TagString: Untagged
@@ -7590,6 +7815,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1746337802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746337799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.3
 --- !u!1001 &1947749793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7610,6 +7848,10 @@ PrefabInstance:
       propertyPath: offset.z
       value: -10
       objectReference: {fileID: 0}
+    - target: {fileID: 397758957370637833, guid: 03ae8b78107adc44b8bb9fa5356b382c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1806785908030479773, guid: 03ae8b78107adc44b8bb9fa5356b382c, type: 3}
       propertyPath: orthographic
       value: 1
@@ -7617,6 +7859,18 @@ PrefabInstance:
     - target: {fileID: 1806785908030479773, guid: 03ae8b78107adc44b8bb9fa5356b382c, type: 3}
       propertyPath: field of view
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806785908030479773, guid: 03ae8b78107adc44b8bb9fa5356b382c, type: 3}
+      propertyPath: far clip plane
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806785908030479773, guid: 03ae8b78107adc44b8bb9fa5356b382c, type: 3}
+      propertyPath: near clip plane
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806785908030479773, guid: 03ae8b78107adc44b8bb9fa5356b382c, type: 3}
+      propertyPath: orthographic size
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2016492326817312648, guid: 03ae8b78107adc44b8bb9fa5356b382c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7628,7 +7882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2016492326817312648, guid: 03ae8b78107adc44b8bb9fa5356b382c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 2016492326817312648, guid: 03ae8b78107adc44b8bb9fa5356b382c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17675,6 +17929,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1974873421}
   - component: {fileID: 1974873422}
+  - component: {fileID: 1974873423}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -17755,6 +18010,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1974873423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1974873420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc979fd199ddd4cc29f2652fcb51209c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParallaxLayer
+  strength: 0.3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
