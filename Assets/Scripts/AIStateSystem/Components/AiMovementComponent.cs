@@ -47,7 +47,7 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     }
 
     // Update is called once per frame
-    void Update()
+    public void OnTick()
     {
         if (aiController.healthComponentObject.GetIsKnockedBack())
         {
@@ -55,8 +55,9 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         }
         if (!bLocalHasMovedToTarget)
         {
-            if (!groundOnly || GroundCollider.IsTouchingLayers(GroundLayer))
+            if (groundOnly || GroundCollider.IsTouchingLayers(GroundLayer))
             {
+                // Debug.Log("tick moving is being called ");
                 Moving();
             }
         }
@@ -98,15 +99,15 @@ public class AiMovementComponent : MonoBehaviour, ITarget
             // Reached the target location
             bLocalHasMovedToTarget = true;
             // moversRigidbody2D.position = targetLocation;
-            OnTargetReachedCaller.Invoke();
-            Debug.Log("Moved to target location");
+            OnTargetReachedCaller();
+            // Debug.Log("Moved to target location");
             return;
         }
         
         // ***** Chat helped with flip lock and delta time toggling
         Vector2 direction = targetLocation - moversRigidbody2D.position;
         
-        Debug.Log(direction.x + "-----------------------------------------Direction" );
+        // Debug.Log(direction.x + "-----------------------------------------Direction" );
         switch (direction.x)
         {
             case > 0.1f:
@@ -127,6 +128,7 @@ public class AiMovementComponent : MonoBehaviour, ITarget
 
     public void NewTargetLocation(Vector2 moveToTargetLocation)
     {
+        // Debug.Log(targetLocation + "target location changed in new target location in move component");
         targetLocation = moveToTargetLocation;
         bLocalHasMovedToTarget = false;
         // Debug.Log(targetLocation);

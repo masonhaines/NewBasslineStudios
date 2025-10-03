@@ -21,33 +21,37 @@ public class PlayerController2D : MonoBehaviour
     private float jumpBufferCounter;
 
     private Rigidbody2D rb;
+    private HealthComponent healthComponentObject;
     private bool isGrounded;
     private Animator animator;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponentInChildren<Animator>(); 
+        animator = GetComponentInChildren<Animator>();
+        healthComponentObject = GetComponent<HealthComponent>();
     }
 
     void Update()
     {
-        // Horizontal movement
-        float x = Input.GetAxisRaw("Horizontal");
-        rb.linearVelocity = new Vector2(x * moveSpeed, rb.linearVelocity.y);
+        if(!healthComponentObject.GetIsKnockedBack()){
+            // Horizontal movement
+            float x = Input.GetAxisRaw("Horizontal");
+            rb.linearVelocity = new Vector2(x * moveSpeed, rb.linearVelocity.y);
+            
+            //flips sprite depending on horizontal input
+            if (x > 0)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (x < 0)
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+    
+            animator.SetBool("isWalking", Mathf.Abs(x) > 0.01f);
+        }
         
-        //flips sprite depending on horizontal input
-        if (x > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (x < 0)
-        {
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-
-        animator.SetBool("isWalking", Mathf.Abs(x) > 0.01f);
-
         // Ground check
         isGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer);
 

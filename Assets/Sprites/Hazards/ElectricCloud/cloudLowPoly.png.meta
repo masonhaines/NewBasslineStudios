@@ -1,0 +1,408 @@
+fileFormatVersion: 2
+guid: f88a48f42a20c654882ab2ef4c8374cc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7890588606982827951
+    second: cloudLowPoly_0
+  - first:
+      213: 3378037997397182469
+    second: cloudLowPoly_1
+  - first:
+      213: 8489779710121557909
+    second: cloudLowPoly_2
+  - first:
+      213: 6788683104242861088
+    second: cloudLowPoly_3
+  - first:
+      213: 6099437436237769012
+    second: cloudLowPoly_4
+  - first:
+      213: 1809241620896511933
+    second: cloudLowPoly_5
+  - first:
+      213: -3555028915270655358
+    second: cloudLowPoly_6
+  - first:
+      213: -6718222121297705262
+    second: cloudLowPoly_7
+  - first:
+      213: 4669442109295172082
+    second: cloudLowPoly_8
+  - first:
+      213: -3490568711107279462
+    second: cloudLowPoly_9
+  - first:
+      213: -6411941338874413923
+    second: cloudLowPoly_10
+  - first:
+      213: 6920860974809489203
+    second: cloudLowPoly_11
+  - first:
+      213: -4271605077439323891
+    second: cloudLowPoly_12
+  - first:
+      213: 7269090579445286555
+    second: cloudLowPoly_13
+  - first:
+      213: 1286963064914404236
+    second: cloudLowPoly_14
+  - first:
+      213: -8364786960195786323
+    second: cloudLowPoly_15
+  - first:
+      213: -3068881851560100285
+    second: cloudLowPoly_16
+  - first:
+      213: -6895049582791705272
+    second: cloudLowPoly_17
+  - first:
+      213: -6977650424645377469
+    second: cloudLowPoly_18
+  - first:
+      213: 8856144064980326107
+    second: cloudLowPoly_19
+  - first:
+      213: 3093462093409289004
+    second: cloudLowPoly_20
+  - first:
+      213: -107864481278285093
+    second: cloudLowPoly_21
+  - first:
+      213: -4541298076893273255
+    second: cloudLowPoly_22
+  - first:
+      213: 3658300410336153235
+    second: cloudLowPoly_23
+  - first:
+      213: 536484305740342890
+    second: cloudLowPoly_24
+  - first:
+      213: -4034335179093192337
+    second: cloudLowPoly_25
+  - first:
+      213: 2410903984461205594
+    second: cloudLowPoly_26
+  - first:
+      213: -7350071950145315194
+    second: cloudLowPoly_27
+  - first:
+      213: -7127406331962014921
+    second: cloudLowPoly_28
+  - first:
+      213: 5126872621365897796
+    second: cloudLowPoly_29
+  - first:
+      213: 4073228467488909577
+    second: cloudLowPoly_30
+  - first:
+      213: -4498212416326065523
+    second: cloudLowPoly_31
+  - first:
+      213: 7221621208235457444
+    second: cloudLowPoly_32
+  - first:
+      213: 1758696533584742349
+    second: cloudLowPoly_33
+  - first:
+      213: -7838994930426908113
+    second: cloudLowPoly_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 14
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: cloudLowPoly_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1505b04d77ffe7290800000000000000
+      internalID: -7890588606982827951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cloudLowPoly_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50881a839a331ee20800000000000000
+      internalID: 3378037997397182469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cloudLowPoly_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59f3d136aa1c1d570800000000000000
+      internalID: 8489779710121557909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cloudLowPoly_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0248719b05f363e50800000000000000
+      internalID: 6788683104242861088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cloudLowPoly_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 439eba4380e85a450800000000000000
+      internalID: 6099437436237769012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cloudLowPoly_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db7736e1ba7bb1910800000000000000
+      internalID: 1809241620896511933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cloudLowPoly_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 282ec0379000aaec0800000000000000
+      internalID: -3555028915270655358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: cloudLowPoly_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d601e9439414c2a0800000000000000
+      internalID: -6718222121297705262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 447900fa8bd62bd47bf480a1c05cc3c1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":256.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      cloudLowPoly_0: -7890588606982827951
+      cloudLowPoly_1: 3378037997397182469
+      cloudLowPoly_2: 8489779710121557909
+      cloudLowPoly_3: 6788683104242861088
+      cloudLowPoly_4: 6099437436237769012
+      cloudLowPoly_5: 1809241620896511933
+      cloudLowPoly_6: -3555028915270655358
+      cloudLowPoly_7: -6718222121297705262
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

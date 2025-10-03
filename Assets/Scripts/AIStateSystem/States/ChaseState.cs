@@ -12,8 +12,10 @@ public class ChaseState : IAiStates
     public void Enter(AIController aiController)
     {
         aiControllerInstance.chaseComponentObject.enabled = true;
-        aiController.movementComponentObject.OnTargetReachedCaller +=
-            aiController.chaseComponentObject.OnTargetReachedListener;
+        aiController.chaseComponentObject.BeginChase(aiController.detectedTargetTransform);
+        
+        // aiController.MovementController.OnTargetReachedCaller +=
+        //     aiController.chaseComponentObject.OnTargetReachedListener;
         Debug.Log("Chase");
 
     }
@@ -33,8 +35,8 @@ public class ChaseState : IAiStates
     public void Exit(AIController aiController)
     {
         aiControllerInstance.chaseComponentObject.enabled = false;
-        aiController.movementComponentObject.OnTargetReachedCaller -=
-            aiController.chaseComponentObject.OnTargetReachedListener;
+        // aiController.MovementController.OnTargetReachedCaller -=
+        //     aiController.chaseComponentObject.OnTargetReachedListener;
     }
 }
         
