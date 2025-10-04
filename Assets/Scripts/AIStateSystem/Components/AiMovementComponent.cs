@@ -85,7 +85,6 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         if (bHasReachedTarget)
         {
             OnTargetReachedCaller?.Invoke();
-            Debug.Log("Reached target, firing event");
             return;
         }
         

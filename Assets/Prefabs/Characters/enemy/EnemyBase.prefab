@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7816246678522490877}
   - component: {fileID: 4639176091211223747}
   - component: {fileID: 386126643025651128}
-  m_Layer: 7
+  m_Layer: 9
   m_Name: EnemyBase
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 971147147492808869}
   - component: {fileID: 7179659693347042591}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 7867354879392804387}
   - component: {fileID: 5846365152467076997}
   - component: {fileID: 7068856207377113298}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: perception
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 3020617033152564385}
   - component: {fileID: 8999702495188685530}
   - component: {fileID: 7536498302678590941}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

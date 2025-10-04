@@ -7,20 +7,16 @@ public class HazardMovement : MonoBehaviour
      
     
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private int newGravityScale;
     [SerializeField] private float yDistanceToMove = 100f;
     [SerializeField] private float xDistanceToMove = 100f;
     [SerializeField] private float radius = 5f;
     [SerializeField] private float waveAmplitude = 1.5f;
     [SerializeField] private bool moveStraight;
-    [SerializeField] private float distanceBeforeFall;
-
     
     private Rigidbody2D moversRigidbody2D;
     private Vector2 targetLocation;
     private Vector2 movementVector;
     private Vector2 activeTargetLocation;
-    private bool isFalling;
     
     
     private void Awake()
@@ -87,11 +83,4 @@ public class HazardMovement : MonoBehaviour
         moversRigidbody2D.MovePosition(moveTowardsPosition);
     }
     
-    // private IEnumerator FallingCoroutine()
-    // {
-    //     moversRigidbody2D.gravityScale = newGravityScale;
-    //     yield return new WaitForSeconds(.5f);
-    //     moversRigidbody2D.gravityScale = 0f;
-    //
-    // }
 }
