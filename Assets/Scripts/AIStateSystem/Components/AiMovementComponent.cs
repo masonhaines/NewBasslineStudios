@@ -18,24 +18,18 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     [SerializeField] private bool groundOnly = true;
     [SerializeField] private MovementType movementType;
     
-    
-    
-
-    // public bool bHasReachedTarget { get => bLocalHasMovedToTarget; set => bLocalHasMovedToTarget = value; }
-    
     private AIController aiController;
     private Rigidbody2D moversRigidbody2D;
     private Vector2 targetLocation;
-    public LayerMask GroundLayer;
-    public PolygonCollider2D GroundCollider;
-    public SpriteRenderer SpriteRenderer;
+    public LayerMask groundLayer;
+    public PolygonCollider2D groundCollider;
+    public SpriteRenderer spriteRenderer;
     
-
     private void Awake()
     {
         aiController = GetComponent<AIController>();
-        GroundCollider = GetComponent<PolygonCollider2D>();
-        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        groundCollider = GetComponent<PolygonCollider2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,7 +47,7 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         }
         if (!bHasReachedTarget)
         {
-            if (groundOnly || GroundCollider.IsTouchingLayers(GroundLayer))
+            if (groundOnly || groundCollider.IsTouchingLayers(groundLayer))
             {
                 Moving();
             }
@@ -68,7 +62,6 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         Vector2 moveTowardsPosition = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
         
         
-        // bool reachedTarget = false;
         switch (movementType)
         {
             case MovementType.XOnly:
@@ -92,7 +85,6 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         if (bHasReachedTarget)
         {
             OnTargetReachedCaller?.Invoke();
-            Debug.Log("Reached target, firing event");
             return;
         }
         

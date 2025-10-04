@@ -33,9 +33,10 @@ public class DamageComponent : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         
-        if (other.gameObject == damageSource) {
-            return; // dont damage self
+        if (other.gameObject == damageSource || (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Enemy")) ) {
+            return; // dont damage self or friends 
         }
+        
         var damageable = other.GetComponent<IDamageable>(); // recommended type var on rider?
         if (canAttack && damageable != null) 
         // if (damageable != null)
