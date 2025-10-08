@@ -1,4 +1,6 @@
 using System;
+
+using AIStateSystem.States;
 using UnityEngine;
 
 // SET UP
@@ -10,11 +12,13 @@ public class AIController : MonoBehaviour
     public PatrolState patrol;
     public ChaseState chase;
     public DeathState death;
+    public AttackState attacking;
     
     public PatrolComponent patrolComponentObject;
     public ChaseComponent chaseComponentObject;
-    // public AiMovementComponent movementComponentObject;
+    public AttackComponent attackComponentObject;
     public HealthComponent healthComponentObject;
+    public DamageComponent damageComponentObject;
     public Transform detectedTargetTransform;
     public Animator myAnimator;
     
@@ -32,8 +36,9 @@ public class AIController : MonoBehaviour
         patrolComponentObject = GetComponent<PatrolComponent>();
         chaseComponentObject = GetComponent<ChaseComponent>();
         healthComponentObject = GetComponent<HealthComponent>();
+        attackComponentObject = GetComponent<AttackComponent>();
         myAnimator = GetComponentInChildren<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
-        
+        damageComponentObject = GetComponentInChildren<DamageComponent>();
         MovementController = GetComponent<ITarget>();
         
         // add a health component listener for on death and on Hit ie taking damage
@@ -47,6 +52,8 @@ public class AIController : MonoBehaviour
         chase = new ChaseState(this);
         death = new DeathState(this);
         setNewState(patrol);
+        
+        attackComponentObject.Initialize(myAnimator, damageComponentObject);
     }
 
     public void PerceptionTargetFound(Transform target)
@@ -78,7 +85,7 @@ public class AIController : MonoBehaviour
             chaseComponentObject.UpdateChaseLocation(detectedTargetTransform);
             MovementController.OnTick();
         }
-        else if (currentState == patrol)
+        else if (currentState == patrol && !bIsAttacking)
         {
             MovementController.OnTick();
         }

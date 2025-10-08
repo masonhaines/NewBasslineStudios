@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 
 public class PatrolState : IAiStates
 {
-    private AIController aiControllerInstance;
+    private readonly AIController aiControllerInstance;
 
     public PatrolState(AIController aiControllerInstance)
     {

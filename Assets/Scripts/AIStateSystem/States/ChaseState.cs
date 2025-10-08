@@ -3,7 +3,7 @@ using Unity.VisualScripting;
 
 public class ChaseState : IAiStates
 {
-    private AIController aiControllerInstance;
+    private readonly AIController aiControllerInstance;
 
     public ChaseState(AIController aiControllerInstance)
     {
@@ -26,10 +26,10 @@ public class ChaseState : IAiStates
         {
             aiControllerInstance.setNewState(aiController.patrol);
         }
-        // else if (aiControllerInstance.bInRangeToAttack)
-        // {
-        //     // aiControllerInstance.setNewState(new AttackState(this.aiControllerInstance));
-        // }
+        else if (aiControllerInstance.bInRangeToAttack)
+        {
+            aiControllerInstance.setNewState(aiController.attacking);
+        }
     }
 
     public void Exit(AIController aiController)
