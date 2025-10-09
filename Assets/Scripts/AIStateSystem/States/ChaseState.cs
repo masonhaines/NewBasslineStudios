@@ -3,38 +3,38 @@ using Unity.VisualScripting;
 
 public class ChaseState : IAiStates
 {
-    private readonly AIController aiControllerInstance;
+    private readonly AIController aiController;
 
     public ChaseState(AIController aiControllerInstance)
     {
-        this.aiControllerInstance = aiControllerInstance;
+        this.aiController = aiControllerInstance;
     }
-    public void Enter(AIController aiController)
+    public void Enter()
     {
-        aiControllerInstance.chaseComponentObject.enabled = true;
+        aiController.chaseComponentObject.enabled = true;
         aiController.chaseComponentObject.BeginChase(aiController.detectedTargetTransform);
         
         // aiController.MovementController.OnTargetReachedCaller +=
         //     aiController.chaseComponentObject.OnTargetReachedListener;
-        Debug.Log("Chase");
+        // Debug.Log("Chase");
 
     }
 
-    public void PollPerception(AIController aiController)
+    public void PollPerception()
     {
-        if (!aiControllerInstance.bHasPerceivedTarget) // has NOT
+        if (!aiController.bHasPerceivedTarget) // has NOT
         {
-            aiControllerInstance.setNewState(aiController.patrol);
+            aiController.setNewState(aiController.patrol);
         }
-        else if (aiControllerInstance.bInRangeToAttack)
+        else if (aiController.bInRangeToAttack)
         {
-            aiControllerInstance.setNewState(aiController.attacking);
+            aiController.setNewState(aiController.attacking);
         }
     }
 
-    public void Exit(AIController aiController)
+    public void Exit()
     {
-        aiControllerInstance.chaseComponentObject.enabled = false;
+        aiController.chaseComponentObject.enabled = false;
         // aiController.MovementController.OnTargetReachedCaller -=
         //     aiController.chaseComponentObject.OnTargetReachedListener;
     }

@@ -5,32 +5,34 @@ namespace AIStateSystem.States
 {
     public class AttackState : IAiStates
     {
-        private readonly AIController aiControllerInstance;
+        private readonly AIController aiController;
 
         public AttackState(AIController aiControllerInstance)
         {
-            this.aiControllerInstance = aiControllerInstance;
+            this.aiController = aiControllerInstance;
         }
         
-        public void Enter(AIController aiController)
+        public void Enter()
         {
             aiController.attackComponentObject.StartAttack();
-            Debug.Log("Attacking");
+            // Debug.Log("Attacking");
         }
 
-        public void PollPerception(AIController aiController)
+        public void PollPerception()
         {
-            if (!aiControllerInstance.bHasPerceivedTarget) // has NOT
+            if (!aiController.bHasPerceivedTarget) // has NOT
             {
-                aiControllerInstance.setNewState(aiController.patrol);
+                aiController.setNewState(aiController.patrol);
             }
-            else if (!aiControllerInstance.bInRangeToAttack)
+            else if (!aiController.bInRangeToAttack)
             {
-                aiControllerInstance.setNewState(aiController.chase);
+                aiController.setNewState(aiController.chase);
             }
+            
+            aiController.attackComponentObject.StartAttack();
         }
 
-        public void Exit(AIController aiController)
+        public void Exit()
         {
             // nothing so far is needed for exit in this state
         }

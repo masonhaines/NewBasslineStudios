@@ -759,6 +759,10 @@ PrefabInstance:
       propertyPath: 'patrolPointLocations.Array.data[1]'
       value: 
       objectReference: {fileID: 54541010}
+    - target: {fileID: 7179659693347042591, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
+      propertyPath: knockBackAmount
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -821,79 +825,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec553098583d45c198ea1a9a6b5c90f, type: 3}
---- !u!1001 &426089622
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1369442348009616825, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: m_Name
-      value: EnenyFlyingBase
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913191249545737219, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -17.515402
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913191249545737219, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.0165331
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913191249545737219, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913191249545737219, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913191249545737219, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913191249545737219, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913191249545737219, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913191249545737219, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913191249545737219, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2913191249545737219, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3041723330231478945, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: patrolPointLocations.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3041723330231478945, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: 'patrolPointLocations.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1554400182}
-    - target: {fileID: 3041723330231478945, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: 'patrolPointLocations.Array.data[1]'
-      value: 
-      objectReference: {fileID: 619356489}
-    - target: {fileID: 3041723330231478945, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
-      propertyPath: 'patrolPointLocations.Array.data[2]'
-      value: 
-      objectReference: {fileID: 1333004362}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9efc7874cf542aa41a8a556ec2a9ded5, type: 3}
 --- !u!1 &475171149
 GameObject:
   m_ObjectHideFlags: 0
@@ -21063,8 +20994,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7183973726022363908, guid: 3ae13fe49fa06d441acc0101c03db538, type: 3}
+      propertyPath: bIsEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183973726022363908, guid: 3ae13fe49fa06d441acc0101c03db538, type: 3}
+      propertyPath: damageAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183973726022363908, guid: 3ae13fe49fa06d441acc0101c03db538, type: 3}
       propertyPath: knockBackAmount
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7183973726022363908, guid: 3ae13fe49fa06d441acc0101c03db538, type: 3}
       propertyPath: knockBackLiftAmount
@@ -21212,7 +21151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fde94bc382bac84da9dc9df602d5853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KnockBack
-  knockBackTime: 0.5
+  knockBackTime: 0.2
   bKnockedBack: 0
 --- !u!1001 &2247208252174949562
 PrefabInstance:
@@ -24710,4 +24649,3 @@ SceneRoots:
   - {fileID: 1009710128}
   - {fileID: 2076641540}
   - {fileID: 365643551}
-  - {fileID: 426089622}

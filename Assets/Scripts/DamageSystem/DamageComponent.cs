@@ -9,11 +9,12 @@ public class DamageComponent : MonoBehaviour
     [SerializeField] private bool bProjectile;
     [SerializeField] private float knockBackAmount = 3;
     [SerializeField] private float knockBackLiftAmount;
+    [SerializeField]private bool bIsEnabled = false;
+
 
 
     private float timeSinceLastAttack;
     private bool canAttack = true;
-    private bool bIsEnabled = false;
     private GameObject damageSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake() // Awake is called when an enabled script instance is being loaded.
@@ -32,6 +33,7 @@ public class DamageComponent : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        
         if (!bIsEnabled) return;
         
         if (other.gameObject == damageSource || (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Enemy")) ) {
@@ -47,18 +49,4 @@ public class DamageComponent : MonoBehaviour
             timeSinceLastAttack = 0;
         }
     }
-    
-    public void DamageEnabled()
-    {
-        bIsEnabled = true;
-    }
-
-    public void DamageDisabled()
-    {
-        bIsEnabled = false;
-    }
-    
-    
-    
-    
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Unity.VisualScripting;
 using UnityEngine.UIElements.Experimental;
@@ -24,6 +25,9 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     public LayerMask groundLayer;
     public PolygonCollider2D groundCollider;
     public SpriteRenderer spriteRenderer;
+    
+    private Vector2 lastKnownPosition;
+    private float timeCheckForBlocked;
     
     private void Awake()
     {
@@ -54,6 +58,8 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         }
 
     }
+    
+
 
     public void Moving()
     {
@@ -61,6 +67,16 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         // moversRigidbody2D.transform.position = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
         Vector2 moveTowardsPosition = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
         
+        // lastKnownPosition = moversRigidbody2D.position;
+        // var distanceMoved = MathF.Abs(Vector3.Distance(lastKnownPosition, transform.position));
+        // timeCheckForBlocked += Time.deltaTime;
+        // if (timeCheckForBlocked >= 1.2f)
+        // {
+        //     if (distanceMoved < .3f)
+        //     {
+        //         moversRigidbody2D.AddForce(new Vector2(0, .005f), ForceMode2D.Impulse);
+        //     }
+        // }
         
         switch (movementType)
         {

@@ -4,28 +4,28 @@ using UnityEngine;
 public class AttackComponent: MonoBehaviour
 {
     private Animator animator;
-    private DamageComponent damageComponent;
+    [SerializeField] private Collider2D hitbox;
     
-    public void Initialize(Animator animatorRef, DamageComponent damageRef)
+    public void Initialize(Animator animatorRef)
     {
         animator = animatorRef;
-        damageComponent = damageRef;
+        DamageDisabled();
     }
 
     public void StartAttack()
     {
         
-        animator.SetTrigger("tHasReachedTarget");
+        animator.SetTrigger("tCanAttackTarget");
     }
 
     public void DamageEnabled()
     {
-        damageComponent.DamageEnabled();
+        hitbox.enabled = true;
     }
 
     public void DamageDisabled()
     {
-        damageComponent.DamageDisabled();
+        hitbox.enabled = false;
     }
-
+    
 }

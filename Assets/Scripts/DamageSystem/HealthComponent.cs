@@ -36,7 +36,9 @@ public class HealthComponent : MonoBehaviour, IDamageable
     private void Death()
     {
         // call invoke so listener instance can take action. only listener should be the ai controller and player controller 
-        OnDeathCaller?.Invoke(); // if not null invoke, rider recommended this null propogation as opposed to if null
+        // OnDeathCaller?.Invoke(); // if not null invoke, rider recommended this null propogation as opposed to if null------- this is what needs to be set!
+        Destroy(gameObject);
+        
         Debug.Log("Death");
     }
 
