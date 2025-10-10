@@ -45,13 +45,13 @@ public class HazardMovement : MonoBehaviour
                 targetLocation = moversRigidbody2D.position + movementVector;
             }
 
-            float offsetY = Mathf.Sin(Time.time * moveSpeed) * waveAmplitude;
+            float offsetY = Mathf.Sin(Time.fixedDeltaTime * moveSpeed) * waveAmplitude;
             activeTargetLocation = targetLocation + new Vector2(0, offsetY);
         }
         else
         {
-            var xCos = Mathf.Cos(Time.time * moveSpeed) * radius;
-            var ySin = Mathf.Sin(Time.time * moveSpeed) * radius;
+            var xCos = Mathf.Cos(Time.fixedDeltaTime * moveSpeed) * radius;
+            var ySin = Mathf.Sin(Time.fixedDeltaTime * moveSpeed) * radius;
             var waveVector = new Vector2(xCos * xDistanceToMove, ySin * yDistanceToMove);
             
             targetLocation = moversRigidbody2D.position + movementVector + waveVector;
@@ -62,7 +62,7 @@ public class HazardMovement : MonoBehaviour
         (
             moversRigidbody2D.position, 
             activeTargetLocation, 
-            moveSpeed * Time.deltaTime
+            moveSpeed * Time.fixedDeltaTime
         );
         
         Vector2 direction = targetLocation - moversRigidbody2D.position;

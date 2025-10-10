@@ -82,7 +82,7 @@ public class AIController : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
 
         currentState.PollPerception();

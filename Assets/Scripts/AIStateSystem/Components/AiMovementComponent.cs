@@ -65,18 +65,9 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     {
         Debug.DrawLine(targetLocation, moversRigidbody2D.position, Color.red);
         // moversRigidbody2D.transform.position = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
-        Vector2 moveTowardsPosition = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
+        Vector2 moveTowardsPosition = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.fixedDeltaTime);
         
-        // lastKnownPosition = moversRigidbody2D.position;
-        // var distanceMoved = MathF.Abs(Vector3.Distance(lastKnownPosition, transform.position));
-        // timeCheckForBlocked += Time.deltaTime;
-        // if (timeCheckForBlocked >= 1.2f)
-        // {
-        //     if (distanceMoved < .3f)
-        //     {
-        //         moversRigidbody2D.AddForce(new Vector2(0, .005f), ForceMode2D.Impulse);
-        //     }
-        // }
+ 
         
         switch (movementType)
         {
