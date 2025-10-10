@@ -817,6 +817,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 54541010}
     - target: {fileID: 7179659693347042591, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
+      propertyPath: bProjectile
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179659693347042591, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
+      propertyPath: damageAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179659693347042591, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
       propertyPath: knockBackAmount
       value: 5
       objectReference: {fileID: 0}
