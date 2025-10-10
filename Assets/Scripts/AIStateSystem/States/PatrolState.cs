@@ -3,15 +3,16 @@ using Unity.VisualScripting;
 
 public class PatrolState : IAiStates
 {
-    private AIController aiControllerInstance;
+    private readonly AIController aiController;
 
     public PatrolState(AIController aiControllerInstance)
     {
-        this.aiControllerInstance = aiControllerInstance;
+        this.aiController = aiControllerInstance;
     }
-    public void Enter(AIController aiController)
+    public void Enter()
     {
-        aiControllerInstance.patrolComponentObject.enabled = true;
+        aiController.patrolComponentObject.enabled = true;
+        // aiControllerInstance.patrolComponentObject.StopAllCoroutines();
         aiController.patrolComponentObject.BeginPatrol();
 
         aiController.MovementController.OnTargetReachedCaller +=
@@ -19,17 +20,18 @@ public class PatrolState : IAiStates
         Debug.Log("patrol");
     }
 
-    public void PollPerception(AIController aiController)
+    public void PollPerception()
     {
         if (aiController.bHasPerceivedTarget)
         {
-            aiControllerInstance.setNewState(new ChaseState(this.aiControllerInstance));
+            aiController.setNewState(aiController.chase);
         }
     }
 
-    public void Exit(AIController aiController)
+    public void Exit()
     {
-        aiControllerInstance.patrolComponentObject.enabled = false;
+        aiController.patrolComponentObject.enabled = false;
+        // aiControllerInstance.patrolComponentObject.StopAllCoroutines();
         aiController.MovementController.OnTargetReachedCaller -=
             aiController.patrolComponentObject.OnTargetReachedListener;
     }

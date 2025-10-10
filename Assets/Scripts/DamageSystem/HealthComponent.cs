@@ -7,6 +7,7 @@ public class HealthComponent : MonoBehaviour, IDamageable
     public event System.Action<Transform> OnHitCaller = delegate { };
 
     [SerializeField] private int maxHealth;
+    [SerializeField] private float knockBackMultiplier = 1; // this is a multiplier for the knockback force applied when taking damage
     private int currentHealth;
     private KnockBack knockBack;
 
@@ -20,7 +21,7 @@ public class HealthComponent : MonoBehaviour, IDamageable
     {
         currentHealth -= damageAmount;
         OnHit(damageSource.transform);
-        knockBack.CreateKnockBack(damageSource.transform, knockBackAmount, knockBackLiftAmount);
+        knockBack.CreateKnockBack(damageSource.transform, knockBackAmount + knockBackMultiplier, knockBackLiftAmount);
         if (currentHealth <= 0)
         {
             Death();
@@ -35,7 +36,9 @@ public class HealthComponent : MonoBehaviour, IDamageable
     private void Death()
     {
         // call invoke so listener instance can take action. only listener should be the ai controller and player controller 
-        OnDeathCaller?.Invoke(); // if not null invoke, rider recommended this null propogation as opposed to if null
+        // OnDeathCaller?.Invoke(); // if not null invoke, rider recommended this null propogation as opposed to if null------- this is what needs to be set!
+        Destroy(gameObject);
+        
         Debug.Log("Death");
     }
 

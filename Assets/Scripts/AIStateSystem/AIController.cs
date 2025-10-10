@@ -1,20 +1,26 @@
 using System;
+
+using AIStateSystem.States;
 using UnityEngine;
+using Random = System.Random;
 
 // SET UP
 // collider that is keeping the enemy from falling through the map is going to need to have the noFriction material
 public class AIController : MonoBehaviour
 {
-    [SerializeField] private int attackRange = 5;
+    [SerializeField] private float attackRange = 3.0f;
     
-    private PatrolState patrol;
-    private ChaseState chase;
-    private DeathState death;
+    public PatrolState patrol;
+    public ChaseState chase;
+    public DeathState death;
+    public AttackState attacking;
     
     public PatrolComponent patrolComponentObject;
     public ChaseComponent chaseComponentObject;
-    // public AiMovementComponent movementComponentObject;
+    public AttackComponent attackComponentObject;
     public HealthComponent healthComponentObject;
+
+    // public Rigidbody2D enemyRigidBody;
     public Transform detectedTargetTransform;
     public Animator myAnimator;
     
@@ -29,18 +35,36 @@ public class AIController : MonoBehaviour
     
     private void Awake()
     {
-        patrolComponentObject = GetComponent<PatrolComponent>();
-        chaseComponentObject = GetComponent<ChaseComponent>();
-        // movementComponentObject = GetComponent<AiMovementComponent>(); // this is for states access
-        healthComponentObject = GetComponent<HealthComponent>();
-        myAnimator = GetComponentInChildren<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
-        
+
+        detectedTargetTransform = null;
         MovementController = GetComponent<ITarget>();
         
+        patrolComponentObject = GetComponent<PatrolComponent>();
+        chaseComponentObject = GetComponent<ChaseComponent>();
+        healthComponentObject = GetComponent<HealthComponent>();
+        
+        attackComponentObject = GetComponentInChildren<AttackComponent>();
+        myAnimator = GetComponentInChildren<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
+        
+        // enemyRigidBody = GetComponent<Rigidbody2D>();
         // add a health component listener for on death and on Hit ie taking damage
         healthComponentObject.OnDeathCaller += OnDeathListener;
         healthComponentObject.OnHitCaller += OnHitListener;
+        
+        attackComponentObject?.Initialize(myAnimator);
+    }
 
+    private void Start()
+    {
+        patrol = new PatrolState(this);
+        chase = new ChaseState(this);
+        death = new DeathState(this);
+        attacking = new AttackState(this);
+        
+        chaseComponentObject.enabled = false;
+        setNewState(patrol);
+        
+        
     }
 
     public void PerceptionTargetFound(Transform target)
@@ -55,33 +79,33 @@ public class AIController : MonoBehaviour
         bHasPerceivedTarget = false;
         Debug.Log("Target lost: " + detectedTargetTransform.name);
         detectedTargetTransform = null;
-
-        
-    }
-
-    private void Start()
-    {
-        patrol = new PatrolState(this);
-        chase = new ChaseState(this);
-        death = new DeathState(this);
-        setNewState(patrol);
     }
 
     // Update is called once per frame
     private void Update()
     {
-        currentState.PollPerception(this);
 
-        if (bHasPerceivedTarget && !healthComponentObject.GetIsKnockedBack())
+        currentState.PollPerception();
+
+        if (!bInRangeToAttack && bHasPerceivedTarget && !healthComponentObject.GetIsKnockedBack())
         {
-            if (currentState != chase)
+            if (detectedTargetTransform) // safety guard
             {
-                setNewState(chase);
+                if (currentState != chase)
+                {
+                    setNewState(chase);
+                }
+
+                chaseComponentObject.UpdateChaseLocation(detectedTargetTransform);
+                MovementController.OnTick();
             }
-            chaseComponentObject.UpdateChaseLocation(detectedTargetTransform);
-            MovementController.OnTick();
         }
-        else if (currentState == patrol)
+        // if (currentState == chase && !healthComponentObject.GetIsKnockedBack())
+        // {
+        //     chaseComponentObject.UpdateChaseLocation(detectedTargetTransform);
+        //     MovementController.OnTick();
+        // }
+        else if (currentState == patrol && !bIsAttacking)
         {
             MovementController.OnTick();
         }
@@ -92,12 +116,20 @@ public class AIController : MonoBehaviour
             // https://docs.unity3d.com/6000.2/Documentation/ScriptReference/Vector3-sqrMagnitude.html
             var differenceInVectors = detectedTargetTransform.position - transform.position;
             var distanceFromPlayer = differenceInVectors.sqrMagnitude;
-            if (distanceFromPlayer < attackRange * attackRange)
+            
+            
+            // Debug.Log(distanceFromPlayer + "distance from player ");
+            
+
+            if (distanceFromPlayer < attackRange)
             {
                 bInRangeToAttack = true;
             } 
             else { bInRangeToAttack = false; }
         }
+        
+        
+
     }
     
     
@@ -111,12 +143,11 @@ public class AIController : MonoBehaviour
         }
         if (currentState != null) // if the current state is not valid, exit the state
         {
-            currentState.Exit(this);
+            currentState.Exit();
         }
         
         currentState = newState; // set the current state to the new state 
-        currentState.Enter(this); // call the currentstate's enter method to truly enable the state
-
+        currentState.Enter(); // call the currentstate's enter method to truly enable the state
     }
 
     private void OnDeathListener()
@@ -124,6 +155,7 @@ public class AIController : MonoBehaviour
         // this really should set the enemy location to somewhere else and a system is added in the scene and checks 
         // on tick for objects with enemy tag and if they are dead.
         setNewState(death);
+        
     }
 
     private void OnHitListener(Transform target)

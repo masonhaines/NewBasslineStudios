@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 using Unity.VisualScripting;
 using UnityEngine.UIElements.Experimental;
 public class AiMovementComponent : MonoBehaviour, ITarget
 {
     public event System.Action OnTargetReachedCaller = delegate { };
+    public bool bHasReachedTarget { get; set; }
 
     public enum MovementType
     {
@@ -13,37 +15,31 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     };
     
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private bool bLocalHasMovedToTarget = false;
+    // [SerializeField] private bool bLocalHasMovedToTarget = false;
     [SerializeField] private bool groundOnly = true;
     [SerializeField] private MovementType movementType;
-    
-    
-    
-
-    // public bool bHasReachedTarget { get => bLocalHasMovedToTarget; set => bLocalHasMovedToTarget = value; }
     
     private AIController aiController;
     private Rigidbody2D moversRigidbody2D;
     private Vector2 targetLocation;
-    public LayerMask GroundLayer;
-    public PolygonCollider2D GroundCollider;
-    public SpriteRenderer SpriteRenderer;
+    public LayerMask groundLayer;
+    public PolygonCollider2D groundCollider;
+    public SpriteRenderer spriteRenderer;
     
-
+    private Vector2 lastKnownPosition;
+    private float timeCheckForBlocked;
+    
     private void Awake()
     {
         aiController = GetComponent<AIController>();
-        GroundCollider = GetComponent<PolygonCollider2D>();
-        SpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        groundCollider = GetComponent<PolygonCollider2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
         moversRigidbody2D = GetComponent<Rigidbody2D>();
-        OnTargetReachedCaller();
-        // NewTargetLocation(new Vector2(0, 0)); // init target location 
-        Debug.Log(targetLocation);
     }
 
     // Update is called once per frame
@@ -53,28 +49,35 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         {
             return;
         }
-        if (!bLocalHasMovedToTarget)
+        if (!bHasReachedTarget)
         {
-            if (groundOnly || GroundCollider.IsTouchingLayers(GroundLayer))
+            if (groundOnly || groundCollider.IsTouchingLayers(groundLayer))
             {
-                // Debug.Log("tick moving is being called ");
                 Moving();
             }
         }
 
     }
+    
+
 
     public void Moving()
     {
-        
-        
         Debug.DrawLine(targetLocation, moversRigidbody2D.position, Color.red);
-        // throw new System.NotImplementedException();
         // moversRigidbody2D.transform.position = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
         Vector2 moveTowardsPosition = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
         
+        // lastKnownPosition = moversRigidbody2D.position;
+        // var distanceMoved = MathF.Abs(Vector3.Distance(lastKnownPosition, transform.position));
+        // timeCheckForBlocked += Time.deltaTime;
+        // if (timeCheckForBlocked >= 1.2f)
+        // {
+        //     if (distanceMoved < .3f)
+        //     {
+        //         moversRigidbody2D.AddForce(new Vector2(0, .005f), ForceMode2D.Impulse);
+        //     }
+        // }
         
-        bool bHasReachedTarget = false;
         switch (movementType)
         {
             case MovementType.XOnly:
@@ -94,13 +97,10 @@ public class AiMovementComponent : MonoBehaviour, ITarget
                 break;
         }
         
+        
         if (bHasReachedTarget)
         {
-            // Reached the target location
-            bLocalHasMovedToTarget = true;
-            // moversRigidbody2D.position = targetLocation;
-            OnTargetReachedCaller();
-            // Debug.Log("Moved to target location");
+            OnTargetReachedCaller?.Invoke();
             return;
         }
         
@@ -130,9 +130,9 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     {
         // Debug.Log(targetLocation + "target location changed in new target location in move component");
         targetLocation = moveToTargetLocation;
-        bLocalHasMovedToTarget = false;
-        // Debug.Log(targetLocation);
-        Debug.DrawLine(aiController.transform.position, moversRigidbody2D.position, Color.red);
+        bHasReachedTarget = false;
+        // Debug.DrawLine(aiController.transform.position, moversRigidbody2D.position, Color.red);
+
     }
     
 

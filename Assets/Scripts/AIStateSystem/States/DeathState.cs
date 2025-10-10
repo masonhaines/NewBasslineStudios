@@ -3,26 +3,26 @@ using Unity.VisualScripting;
 
 public class DeathState : IAiStates
 {
-    private AIController aiControllerInstance;
+    private AIController aiController;
 
     public DeathState(AIController aiControllerInstance)
     {
-        this.aiControllerInstance = aiControllerInstance;
+        this.aiController= aiControllerInstance;
     }
     
     // this state is being entered directly from the ai controller 
-    public void Enter(AIController aiController)
+    public void Enter()
     {
-        aiControllerInstance.myAnimator.SetBool("bIsDead", true);
-        aiControllerInstance.bIsDead = true;
+        aiController.myAnimator.SetBool("bIsDead", true);
+        aiController.bIsDead = true;
     }
 
-    public void PollPerception(AIController aiController)
+    public void PollPerception()
     {
         // throw new System.NotImplementedException();
     }
 
-    public void Exit(AIController aiController)
+    public void Exit()
     {
         // throw new System.NotImplementedException();
     }
