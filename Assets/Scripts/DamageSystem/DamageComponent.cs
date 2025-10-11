@@ -33,7 +33,7 @@ public class DamageComponent : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        Debug.Log("DamageComponent OnTriggerEnter2D");
         if (!bIsEnabled) return;
         
         if (other.gameObject == damageSource || (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Enemy")) ) {

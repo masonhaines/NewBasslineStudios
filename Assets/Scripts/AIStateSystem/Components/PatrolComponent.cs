@@ -36,6 +36,12 @@ public class PatrolComponent : MonoBehaviour
     private IEnumerator SetNewTargetPatrolPoint()
     {
 
+        if (patrolPointLocations.Length == 0)
+        {
+            Debug.Log("lost all of my patrol points");
+            yield break;
+        }
+        
         yield return new WaitForSeconds(waitTimeBetweenPatrolPoints);
 
         if (currentPatrolIndex < patrolPointLocations.Length - 1)

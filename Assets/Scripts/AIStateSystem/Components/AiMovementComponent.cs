@@ -125,6 +125,11 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         // Debug.DrawLine(aiController.transform.position, moversRigidbody2D.position, Color.red);
 
     }
+
+    public void StopMovement()
+    {
+        moversRigidbody2D.linearVelocity = Vector2.zero;
+    }
     
 
 

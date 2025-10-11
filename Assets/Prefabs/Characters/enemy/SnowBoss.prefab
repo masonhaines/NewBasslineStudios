@@ -82,7 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34953a731dc6617418c0b91c3f36ac94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIController
-  attackRange: 2.3
+  attackRange: 10
+  stopMovementForAttackAnimation: 1
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314f8ed3415a36f43bdfc197f953cbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
-  moveSpeed: 10
+  moveSpeed: 2
   groundOnly: 1
   movementType: 1
   groundLayer:
@@ -284,7 +285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageComponent
   damageAmount: 2
   bProjectile: 0
-  knockBackAmount: 5
+  knockBackAmount: 10
   knockBackLiftAmount: 2
   bIsEnabled: 1
 --- !u!60 &4188962441292723353
@@ -300,10 +301,10 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -333,9 +334,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.878892, y: 0.02328737}
+    - - {x: 1.0542295, y: 0.05884833}
       - {x: -0.027962342, y: 0.6873774}
-      - {x: -0.8948916, y: 0.005424671}
+      - {x: -1.1156874, y: 0.09432707}
       - {x: -1.1258211, y: -0.5012498}
       - {x: -0.5877852, y: -0.80901706}
       - {x: 0.58778536, y: -0.80901694}

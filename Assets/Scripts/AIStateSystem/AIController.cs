@@ -9,6 +9,8 @@ using Random = System.Random;
 public class AIController : MonoBehaviour
 {
     [SerializeField] private float attackRange = 3.0f;
+    [SerializeField] public bool stopMovementForAttackAnimation = true;
+
     
     public PatrolState patrol;
     public ChaseState chase;
@@ -31,6 +33,7 @@ public class AIController : MonoBehaviour
     public bool bIsAttacking;
     public bool bInRangeToAttack;
     public bool bIsDead;
+
     
     
     private void Awake()
@@ -86,6 +89,12 @@ public class AIController : MonoBehaviour
     {
 
         currentState.PollPerception();
+        if (currentState == attacking && stopMovementForAttackAnimation)
+        {
+            MovementController.StopMovement();
+            stopMovementForAttackAnimation = false;
+            return;
+        }
 
         if (!bInRangeToAttack && bHasPerceivedTarget && !healthComponentObject.GetIsKnockedBack())
         {
@@ -109,6 +118,7 @@ public class AIController : MonoBehaviour
         {
             MovementController.OnTick();
         }
+
 
         if (bHasPerceivedTarget && detectedTargetTransform is not null)
         {
