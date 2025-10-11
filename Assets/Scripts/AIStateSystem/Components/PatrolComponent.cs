@@ -22,8 +22,8 @@ public class PatrolComponent : MonoBehaviour
     {
         if (patrolPointLocations.Length == 0)
         {
-            Debug.Log("lost all of my patrol points");
-            return;
+            patrolPointLocations = new Transform[1]; // make patrol points of size one
+            patrolPointLocations[0] = transform; // set self transform as patrol point 
         }
 
         if (currentPatrolIndex >= patrolPointLocations.Length)

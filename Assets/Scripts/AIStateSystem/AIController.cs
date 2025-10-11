@@ -10,8 +10,13 @@ public class AIController : MonoBehaviour
 {
     [SerializeField] private float attackRange = 3.0f;
     [SerializeField] public bool stopMovementForAttackAnimation = true;
-
     
+    // only used to modify speed and other attributes like damage or health via co routines
+    [SerializeField] private int maxAttacksBeforeReset = 0;
+    [SerializeField] public float temporaryMovementSpeed = 0f;
+    private float savedMoveSpeed;
+    private int attackCounter;
+
     public PatrolState patrol;
     public ChaseState chase;
     public DeathState death;
@@ -53,6 +58,7 @@ public class AIController : MonoBehaviour
         // add a health component listener for on death and on Hit ie taking damage
         healthComponentObject.OnDeathCaller += OnDeathListener;
         healthComponentObject.OnHitCaller += OnHitListener;
+        attackComponentObject.AddToAttackCount += OnAttackCounting;
         
         attackComponentObject?.Initialize(myAnimator);
     }
@@ -65,22 +71,21 @@ public class AIController : MonoBehaviour
         attacking = new AttackState(this);
         
         chaseComponentObject.enabled = false;
+        savedMoveSpeed = MovementController.GetMoveSpeed();
         setNewState(patrol);
-        
-        
     }
 
     public void PerceptionTargetFound(Transform target)
     {
         bHasPerceivedTarget = true;
         detectedTargetTransform = target;
-        Debug.Log("Target found: " + detectedTargetTransform.name);
+        // Debug.Log("Target found: " + detectedTargetTransform.name);
     }
 
     public void PerceptionTargetLost(Transform target)
     {
         bHasPerceivedTarget = false;
-        Debug.Log("Target lost: " + detectedTargetTransform.name);
+        // Debug.Log("Target lost: " + detectedTargetTransform.name);
         detectedTargetTransform = null;
     }
 
@@ -89,14 +94,13 @@ public class AIController : MonoBehaviour
     {
 
         currentState.PollPerception();
-        if (currentState == attacking && stopMovementForAttackAnimation)
+        if ((currentState == attacking && !attackComponentObject.bAttackFinished) && stopMovementForAttackAnimation)
         {
             MovementController.StopMovement();
-            stopMovementForAttackAnimation = false;
             return;
         }
 
-        if (!bInRangeToAttack && bHasPerceivedTarget && !healthComponentObject.GetIsKnockedBack())
+        if ((!bInRangeToAttack && bHasPerceivedTarget) && !healthComponentObject.GetIsKnockedBack())
         {
             if (detectedTargetTransform) // safety guard
             {
@@ -109,11 +113,6 @@ public class AIController : MonoBehaviour
                 MovementController.OnTick();
             }
         }
-        // if (currentState == chase && !healthComponentObject.GetIsKnockedBack())
-        // {
-        //     chaseComponentObject.UpdateChaseLocation(detectedTargetTransform);
-        //     MovementController.OnTick();
-        // }
         else if (currentState == patrol && !bIsAttacking)
         {
             MovementController.OnTick();
@@ -127,19 +126,12 @@ public class AIController : MonoBehaviour
             var differenceInVectors = detectedTargetTransform.position - transform.position;
             var distanceFromPlayer = differenceInVectors.sqrMagnitude;
             
-            
-            // Debug.Log(distanceFromPlayer + "distance from player ");
-            
-
             if (distanceFromPlayer < attackRange)
             {
                 bInRangeToAttack = true;
             } 
             else { bInRangeToAttack = false; }
         }
-        
-        
-
     }
     
     
@@ -165,12 +157,29 @@ public class AIController : MonoBehaviour
         // this really should set the enemy location to somewhere else and a system is added in the scene and checks 
         // on tick for objects with enemy tag and if they are dead.
         setNewState(death);
-        
     }
 
     private void OnHitListener(Transform target)
     {
         myAnimator.SetTrigger("tOnHit");
         PerceptionTargetFound(target);
+    }
+
+    private void OnAttackCounting()
+    {
+        
+        
+        attackCounter++;
+        Debug.Log($"{name} attack count triggered");
+        // Only modify speed when below threshold
+        if (attackCounter < maxAttacksBeforeReset)
+        {
+            MovementController.SetMoveSpeed(temporaryMovementSpeed);
+        }
+        else
+        {
+            MovementController.SetMoveSpeed(savedMoveSpeed);
+            attackCounter = 0;
+        }
     }
 }

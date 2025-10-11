@@ -82,8 +82,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34953a731dc6617418c0b91c3f36ac94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIController
-  attackRange: 10
+  attackRange: 9
   stopMovementForAttackAnimation: 1
+  maxAttacksBeforeReset: 2
+  temporaryMovementSpeed: 6
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
@@ -106,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d40127dd8de5704caf4c3d9568b890b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
-  maxHealth: 50
+  maxHealth: 150
   knockBackMultiplier: 1
 --- !u!114 &2529404637501472725
 MonoBehaviour:
@@ -127,7 +129,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundCollider: {fileID: 0}
-  spriteRenderer: {fileID: 0}
 --- !u!114 &3041723330231478945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,11 +284,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634bbe05af042934d94817758cabea09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageComponent
-  damageAmount: 2
+  damageAmount: 1
   bProjectile: 0
-  knockBackAmount: 10
-  knockBackLiftAmount: 2
+  knockBackAmount: 8.5
+  knockBackLiftAmount: 1.35
   bIsEnabled: 1
+  timeBetweenAttacks: 0.2
 --- !u!60 &4188962441292723353
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -515,7 +517,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 6514144336136709068, guid: 73ce46d2a3565bd46a413dcdd235e7f3, type: 3}
-  m_Color: {r: 0.99300003, g: 0.99300003, b: 0.99300003, a: 1}
+  m_Color: {r: 0.31683874, g: 0.754717, b: 0.7073592, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -560,3 +562,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackComponent
   hitbox: {fileID: 4188962441292723353}
+  attackWaitTime: 1
+  bNeedsAttackCounter: 1
+  bAttackFinished: 0
