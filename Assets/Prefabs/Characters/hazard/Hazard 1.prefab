@@ -129,6 +129,7 @@ MonoBehaviour:
   bProjectile: 0
   knockBackAmount: 10
   knockBackLiftAmount: 1.2
+  bIsEnabled: 1
 --- !u!60 &4335638717476836116
 PolygonCollider2D:
   m_ObjectHideFlags: 0
