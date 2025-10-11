@@ -17,7 +17,7 @@ public class PatrolState : IAiStates
 
         aiController.MovementController.OnTargetReachedCaller +=
             aiController.patrolComponentObject.OnTargetReachedListener;
-        Debug.Log("patrol");
+        // Debug.Log("patrol");
     }
 
     public void PollPerception()

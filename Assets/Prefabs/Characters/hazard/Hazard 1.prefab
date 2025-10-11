@@ -77,9 +77,6 @@ MonoBehaviour:
   moveSpeed: 5
   yDistanceToMove: 20
   xDistanceToMove: 0
-  radius: 5
-  waveAmplitude: 20
-  moveStraight: 1
 --- !u!1 &2200569306917802285
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,11 +122,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634bbe05af042934d94817758cabea09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageComponent
-  damageAmount: 5
+  damageAmount: 1
   bProjectile: 0
   knockBackAmount: 10
   knockBackLiftAmount: 1.2
   bIsEnabled: 1
+  timeBetweenAttacks: 1
 --- !u!60 &4335638717476836116
 PolygonCollider2D:
   m_ObjectHideFlags: 0

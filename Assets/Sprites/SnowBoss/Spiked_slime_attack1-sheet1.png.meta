@@ -1,19 +1,67 @@
 fileFormatVersion: 2
-guid: 78ba9d54d79221f49868171937fc9be1
+guid: 047612ec5ebe7e141b3c822e8622b215
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2937529750582459378
-    second: Spiked_slime_attack_0
+      213: -7535697838563203697
+    second: Spiked_slime_attack1-sheet1_0
   - first:
-      213: -3819637046573595220
-    second: Spiked_slime_attack_1
+      213: 3534193664242966886
+    second: Spiked_slime_attack1-sheet1_1
   - first:
-      213: -4415041247199280522
-    second: Spiked_slime_attack_2
+      213: 684460337570896743
+    second: Spiked_slime_attack1-sheet1_2
   - first:
-      213: 6586118695260289529
-    second: Spiked_slime_attack_3
+      213: -6369814701984092573
+    second: Spiked_slime_attack1-sheet1_3
+  - first:
+      213: 1699678492445427216
+    second: Spiked_slime_attack1-sheet1_4
+  - first:
+      213: 8359019779395348519
+    second: Spiked_slime_attack1-sheet1_5
+  - first:
+      213: 3219396872053476874
+    second: Spiked_slime_attack1-sheet1_6
+  - first:
+      213: 4745080465637059070
+    second: Spiked_slime_attack1-sheet1_7
+  - first:
+      213: -8743533093830309920
+    second: Spiked_slime_attack1-sheet1_8
+  - first:
+      213: -3144561657249955969
+    second: Spiked_slime_attack1-sheet1_9
+  - first:
+      213: -7826628955028017142
+    second: Spiked_slime_attack1-sheet1_10
+  - first:
+      213: -6011148125834746046
+    second: Spiked_slime_attack1-sheet1_11
+  - first:
+      213: 1078544263898119474
+    second: Spiked_slime_attack1-sheet1_12
+  - first:
+      213: 7763228164978739973
+    second: Spiked_slime_attack1-sheet1_13
+  - first:
+      213: 4006399790878202713
+    second: Spiked_slime_attack1-sheet1_14
+  - first:
+      213: 502011847539652633
+    second: Spiked_slime_attack1-sheet1_15
+  - first:
+      213: 352881092797169500
+    second: Spiked_slime_attack1-sheet1_16
+  - first:
+      213: 8848295885822454490
+    second: Spiked_slime_attack1-sheet1_17
+  - first:
+      213: -1415566496919357595
+    second: Spiked_slime_attack1-sheet1_18
+  - first:
+      213: -5145176830003478505
+    second: Spiked_slime_attack1-sheet1_19
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,7 +157,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spiked_slime_attack_0
+      name: Spiked_slime_attack1-sheet1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2fbfb949eb334c820800000000000000
-      internalID: 2937529750582459378
+      spriteID: f85e2cdddb2db6790800000000000000
+      internalID: -7535697838563203697
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spiked_slime_attack_1
+      name: Spiked_slime_attack1-sheet1_1
       rect:
         serializedVersion: 2
         x: 48
@@ -146,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ca50f0ce75cedfac0800000000000000
-      internalID: -3819637046573595220
+      spriteID: 66163a4a96afb0130800000000000000
+      internalID: 3534193664242966886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spiked_slime_attack_2
+      name: Spiked_slime_attack1-sheet1_2
       rect:
         serializedVersion: 2
         x: 96
@@ -168,14 +216,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6724df7a06f9ab2c0800000000000000
-      internalID: -4415041247199280522
+      spriteID: 76bd1c3fc01bf7900800000000000000
+      internalID: 684460337570896743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spiked_slime_attack_3
+      name: Spiked_slime_attack1-sheet1_3
       rect:
         serializedVersion: 2
         x: 144
@@ -190,8 +238,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f97c8ffe08966b50800000000000000
-      internalID: 6586118695260289529
+      spriteID: 36e6d2bf64fd997a0800000000000000
+      internalID: -6369814701984092573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spiked_slime_attack1-sheet1_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 016c4966598769710800000000000000
+      internalID: 1699678492445427216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Spiked_slime_attack1-sheet1_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 728e25d8334310470800000000000000
+      internalID: 8359019779395348519
       vertices: []
       indices: 
       edges: []
@@ -200,7 +292,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: de014fd2a0ea0bc4c9416fc82960d823
+    spriteID: 1816aff1756eade468db7770f08f6f95
     internalID: 0
     vertices: []
     indices: 
@@ -210,12 +302,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":4.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":1.0},"gridSpriteSize":{"x":48.0,"y":48.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Spiked_slime_attack_0: 2937529750582459378
-      Spiked_slime_attack_1: -3819637046573595220
-      Spiked_slime_attack_2: -4415041247199280522
-      Spiked_slime_attack_3: 6586118695260289529
+      Spiked_slime_attack1-sheet1_0: -7535697838563203697
+      Spiked_slime_attack1-sheet1_1: 3534193664242966886
+      Spiked_slime_attack1-sheet1_2: 684460337570896743
+      Spiked_slime_attack1-sheet1_3: -6369814701984092573
+      Spiked_slime_attack1-sheet1_4: 1699678492445427216
+      Spiked_slime_attack1-sheet1_5: 8359019779395348519
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

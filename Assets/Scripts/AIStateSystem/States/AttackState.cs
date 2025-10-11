@@ -6,6 +6,7 @@ namespace AIStateSystem.States
     public class AttackState : IAiStates
     {
         private readonly AIController aiController;
+        
 
         public AttackState(AIController aiControllerInstance)
         {
@@ -29,7 +30,7 @@ namespace AIStateSystem.States
                 aiController.setNewState(aiController.chase);
             }
             
-            aiController.attackComponentObject.StartAttack();
+            // aiController.attackComponentObject.StartAttack();
         }
 
         public void Exit()
