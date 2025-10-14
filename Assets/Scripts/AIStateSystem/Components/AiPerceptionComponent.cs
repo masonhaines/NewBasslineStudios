@@ -19,7 +19,7 @@ public class AiPerceptionComponent : MonoBehaviour
         if (newTarget.CompareTag("Player"))
         {
             aiController.PerceptionTargetFound(newTarget.transform);
-            Debug.Log("perception - Player found");
+            // Debug.Log("perception - Player found");
         }
     }
 
@@ -28,7 +28,7 @@ public class AiPerceptionComponent : MonoBehaviour
         if (newTarget.CompareTag("Player"))
         {
             aiController.PerceptionTargetLost(newTarget.transform);
-            Debug.Log("perception - Player lost");
+            // Debug.Log("perception - Player lost");
         }
     }
 }
