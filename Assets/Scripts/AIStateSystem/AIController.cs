@@ -150,6 +150,7 @@ public class AIController : MonoBehaviour
         
         currentState = newState; // set the current state to the new state 
         currentState.Enter(); // call the currentstate's enter method to truly enable the state
+        Debug.Log(currentState);
     }
 
     private void OnDeathListener()
@@ -170,7 +171,7 @@ public class AIController : MonoBehaviour
         
         
         attackCounter++;
-        Debug.Log($"{name} attack count triggered");
+        // Debug.Log($"{name} attack count triggered");
         // Only modify speed when below threshold
         if (attackCounter < maxAttacksBeforeReset)
         {
