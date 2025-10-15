@@ -153,6 +153,16 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         AudioListener.pause = false;
-        Application.Quit();
+        // Application.Quit();
+
+        #if UNITY_EDITOR
+    // In the Editor, stop Play mode:
+    UnityEditor.EditorApplication.isPlaying = false;
+#else
+    // In a build, exit the app:
+    Application.Quit();
+#endif
     }
+
+
 }
