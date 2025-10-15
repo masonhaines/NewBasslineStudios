@@ -1,13 +1,15 @@
 using System;
 using UnityEngine;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 using UnityEngine.UIElements.Experimental;
-public class AiMovementComponent : MonoBehaviour, ITarget
+using Random = System.Random;
+
+
+
+public class AiMovementComponent : MonoBehaviour
 {
     public event System.Action OnTargetReachedCaller = delegate { };
-    public bool bHasReachedTarget { get; set; }
-    
-
     public enum MovementType
     {
         YOnly,
@@ -18,6 +20,8 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     [SerializeField] public float moveSpeed = 5f;
     [SerializeField] private bool groundOnly = true;
     [SerializeField] private MovementType movementType;
+    [SerializeField] private float dashForceMultiplier;
+    [SerializeField] private float targetDashDistance;
     
     private AIController aiController;
     private Rigidbody2D moversRigidbody2D;
@@ -27,6 +31,8 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     
     private Vector2 lastKnownPosition;
     private float timeCheckForBlocked;
+    public bool bHasReachedTarget;
+    public bool bIsDashing;
     
     private void Awake()
     {
@@ -40,15 +46,25 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         moversRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-
     public void Moving()
     {
+        // if (bIsDashing)
+        // {
+        //     float distance = Vector2.Distance(moversRigidbody2D.position, targetLocation);
+        //     if (distance <= 0.1f)
+        //     {
+        //         moversRigidbody2D.linearVelocity = Vector2.zero;
+        //         bHasReachedTarget = true;
+        //         Invoke(nameof(toggleDash), dashCooldown);
+        //         OnTargetReachedCaller?.Invoke();
+        //         return;
+        //     }
+        //     
+        //     return;
+        // }
         Debug.DrawLine(targetLocation, moversRigidbody2D.position, Color.red);
         // moversRigidbody2D.transform.position = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
         Vector2 moveTowardsPosition = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.fixedDeltaTime);
-        
- 
         
         switch (movementType)
         {
@@ -104,18 +120,27 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         {
             return;
         }
-        if (!bHasReachedTarget)
+        if (!bHasReachedTarget && (!groundOnly || groundCollider.IsTouchingLayers(groundLayer)))
         {
-            if (groundOnly && groundCollider.IsTouchingLayers(groundLayer))
-            {
-                Moving();
-            }
-            else if (!groundOnly)
-            {
-                Moving();
-            }
+            Moving();
         }
     }
+
+    public void toggleDash()
+    {
+        
+        
+        // NewTargetLocation(new Vector2(transform.position.x + targetDashDistance * transform.localScale.x, transform.position.y));
+        var tempTargetLocation = new Vector2(transform.position.x + targetDashDistance * transform.localScale.x,
+            transform.position.y);
+        var direction = (tempTargetLocation - moversRigidbody2D.position).normalized;
+        moversRigidbody2D.linearVelocity = Vector2.zero;
+        moversRigidbody2D.AddForce(direction * dashForceMultiplier, ForceMode2D.Impulse);
+        bHasReachedTarget = true;
+        bIsDashing = false;
+        
+    }
+    
     
     public void NewTargetLocation(Vector2 moveToTargetLocation)
     {
@@ -124,6 +149,16 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         bHasReachedTarget = false;
         // Debug.DrawLine(aiController.transform.position, moversRigidbody2D.position, Color.red);
 
+    }
+    
+    public Vector2 GetMovementDirection(Vector2 currentPosition)
+    {
+        // get current direction moving from velocity 
+        Vector2 movementDirection = new Vector2(
+            moversRigidbody2D.linearVelocity.x,
+            moversRigidbody2D.linearVelocity.y
+        ).normalized;
+        return movementDirection;
     }
 
     public void StopMovement()
@@ -139,6 +174,16 @@ public class AiMovementComponent : MonoBehaviour, ITarget
     public float GetMoveSpeed()
     {
         return moveSpeed;
+    }
+
+    public Vector2 GetTargetLocation()
+    {
+        return targetLocation;
+    }
+    
+    private void OnDisable()
+    {
+        CancelInvoke();
     }
     
 }

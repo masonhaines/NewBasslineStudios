@@ -10,12 +10,12 @@ public class PatrolComponent : MonoBehaviour
     // private int numberOfActivePatrolPoints;
     private Vector2 targetPosition;
     private int currentPatrolIndex = 0;
-    private ITarget movementController;
+    private AiMovementComponent movementController;
 
     
     private void Awake()
     {
-        movementController = GetComponent<ITarget>(); // reference to all other objects that have implement interface in parent prefab
+        movementController = GetComponent<AiMovementComponent>(); // reference to all other objects that have implement interface in parent prefab
     }
 
     public void BeginPatrol()

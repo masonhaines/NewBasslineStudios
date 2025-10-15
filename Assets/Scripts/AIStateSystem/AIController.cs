@@ -14,6 +14,10 @@ public class AIController : MonoBehaviour
     // only used to modify speed and other attributes like damage or health via co routines
     [SerializeField] private int maxAttacksBeforeReset = 0;
     [SerializeField] public float temporaryMovementSpeed = 0f;
+    [SerializeField] public bool bCanDash;
+    [SerializeField] private float dashCooldown;
+
+
     private float savedMoveSpeed;
     private int attackCounter;
 
@@ -26,13 +30,14 @@ public class AIController : MonoBehaviour
     public ChaseComponent chaseComponentObject;
     public AttackComponent attackComponentObject;
     public HealthComponent healthComponentObject;
+    public AiMovementComponent MovementController;
+    
 
-    // public Rigidbody2D enemyRigidBody;
+    public Rigidbody2D enemyRigidBody;
     public Transform detectedTargetTransform;
     public Animator myAnimator;
     
     private IAiStates currentState;
-    public ITarget MovementController;
     
     public bool bHasPerceivedTarget;
     public bool bIsAttacking;
@@ -45,7 +50,7 @@ public class AIController : MonoBehaviour
     {
 
         detectedTargetTransform = null;
-        MovementController = GetComponent<ITarget>();
+        MovementController = GetComponent<AiMovementComponent>();
         
         patrolComponentObject = GetComponent<PatrolComponent>();
         chaseComponentObject = GetComponent<ChaseComponent>();
@@ -90,34 +95,9 @@ public class AIController : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void FixedUpdate()
+    private void Update()
     {
-
         currentState.PollPerception();
-        if ((currentState == attacking && !attackComponentObject.bAttackFinished) && stopMovementForAttackAnimation)
-        {
-            MovementController.StopMovement();
-            return;
-        }
-
-        if ((!bInRangeToAttack && bHasPerceivedTarget) && !healthComponentObject.GetIsKnockedBack())
-        {
-            if (detectedTargetTransform) // safety guard
-            {
-                if (currentState != chase)
-                {
-                    setNewState(chase);
-                }
-
-                chaseComponentObject.UpdateChaseLocation(detectedTargetTransform);
-                MovementController.OnTick();
-            }
-        }
-        else if (currentState == patrol && !bIsAttacking)
-        {
-            MovementController.OnTick();
-        }
-
 
         if (bHasPerceivedTarget && detectedTargetTransform is not null)
         {
@@ -132,6 +112,48 @@ public class AIController : MonoBehaviour
             } 
             else { bInRangeToAttack = false; }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        if ((currentState == attacking && !attackComponentObject.bAttackFinished) && stopMovementForAttackAnimation)
+        {
+            MovementController.StopMovement();
+            return;
+        }
+        // else if (MovementController.bIsDashing)
+        // {
+        //     return;
+        // }
+
+        if ((!bInRangeToAttack && bHasPerceivedTarget) && !healthComponentObject.GetIsKnockedBack())
+        {
+            if (detectedTargetTransform) // safety guard
+            {
+                
+                chaseComponentObject.UpdateChaseLocation(detectedTargetTransform);
+                MovementController.OnTick();
+            }
+        }
+        else if (currentState == patrol && !bIsAttacking)
+        {
+            MovementController.OnTick();
+        }
+        // else if (currentState == chase && bCanDash)
+        // {
+        //     
+        //     float distance = Vector2.Distance(enemyRigidBody.position, MovementController.GetTargetLocation());
+        //     if (distance <= 0.1f)
+        //     {
+        //         enemyRigidBody.linearVelocity = Vector2.zero;
+        //         Invoke(nameof(MovementController.toggleDash), dashCooldown);
+        //     }
+        //     MovementController.bIsDashing = true;
+        //     MovementController.toggleDash();
+        // }
+
+
+
     }
     
     
