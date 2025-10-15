@@ -1,9 +1,5 @@
 using System;
 using UnityEngine;
-using Unity.VisualScripting;
-using UnityEngine.UI;
-using UnityEngine.UIElements.Experimental;
-using Random = System.Random;
 
 
 
@@ -20,9 +16,7 @@ public class AiMovementComponent : MonoBehaviour
     [SerializeField] public float moveSpeed = 5f;
     [SerializeField] private bool groundOnly = true;
     [SerializeField] private MovementType movementType;
-    [SerializeField] private float dashForceMultiplier;
-    [SerializeField] private float targetDashDistance;
-    
+
     private AIController aiController;
     private Rigidbody2D moversRigidbody2D;
     private Vector2 targetLocation;
@@ -30,10 +24,10 @@ public class AiMovementComponent : MonoBehaviour
     public PolygonCollider2D groundCollider;
     
     private Vector2 lastKnownPosition;
-    private float timeCheckForBlocked;
     public bool bHasReachedTarget;
-    public bool bIsDashing;
-    
+
+
+
     private void Awake()
     {
         aiController = GetComponent<AIController>();
@@ -48,20 +42,6 @@ public class AiMovementComponent : MonoBehaviour
 
     public void Moving()
     {
-        // if (bIsDashing)
-        // {
-        //     float distance = Vector2.Distance(moversRigidbody2D.position, targetLocation);
-        //     if (distance <= 0.1f)
-        //     {
-        //         moversRigidbody2D.linearVelocity = Vector2.zero;
-        //         bHasReachedTarget = true;
-        //         Invoke(nameof(toggleDash), dashCooldown);
-        //         OnTargetReachedCaller?.Invoke();
-        //         return;
-        //     }
-        //     
-        //     return;
-        // }
         Debug.DrawLine(targetLocation, moversRigidbody2D.position, Color.red);
         // moversRigidbody2D.transform.position = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
         Vector2 moveTowardsPosition = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.fixedDeltaTime);
@@ -88,6 +68,7 @@ public class AiMovementComponent : MonoBehaviour
         
         if (bHasReachedTarget)
         {
+            // moveSpeed = startMoveSpeed;
             OnTargetReachedCaller?.Invoke();
             return;
         }
@@ -125,22 +106,6 @@ public class AiMovementComponent : MonoBehaviour
             Moving();
         }
     }
-
-    public void toggleDash()
-    {
-        
-        
-        // NewTargetLocation(new Vector2(transform.position.x + targetDashDistance * transform.localScale.x, transform.position.y));
-        var tempTargetLocation = new Vector2(transform.position.x + targetDashDistance * transform.localScale.x,
-            transform.position.y);
-        var direction = (tempTargetLocation - moversRigidbody2D.position).normalized;
-        moversRigidbody2D.linearVelocity = Vector2.zero;
-        moversRigidbody2D.AddForce(direction * dashForceMultiplier, ForceMode2D.Impulse);
-        bHasReachedTarget = true;
-        bIsDashing = false;
-        
-    }
-    
     
     public void NewTargetLocation(Vector2 moveToTargetLocation)
     {
@@ -168,6 +133,7 @@ public class AiMovementComponent : MonoBehaviour
 
     public void SetMoveSpeed(float newMoveSpeed)
     {
+        // startMoveSpeed = moveSpeed;
         moveSpeed = newMoveSpeed;
     }
 

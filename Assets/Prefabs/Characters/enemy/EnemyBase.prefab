@@ -90,6 +90,7 @@ MonoBehaviour:
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
   healthComponentObject: {fileID: 0}
+  MovementController: {fileID: 0}
   detectedTargetTransform: {fileID: 0}
   myAnimator: {fileID: 0}
   bHasPerceivedTarget: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundCollider: {fileID: 0}
+  bHasReachedTarget: 0
 --- !u!114 &3041723330231478945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,6 +557,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackComponent
   hitbox: {fileID: 7516741247492783349}
-  attackWaitTime: 1
+  attackWaitTime: 1.5
   bNeedsAttackCounter: 0
   bAttackFinished: 0

@@ -1,8 +1,8 @@
 using System;
+using System.Collections;
 
-using AIStateSystem.States;
 using UnityEngine;
-using Random = System.Random;
+
 
 // SET UP
 // collider that is keeping the enemy from falling through the map is going to need to have the noFriction material
@@ -14,12 +14,10 @@ public class AIController : MonoBehaviour
     // only used to modify speed and other attributes like damage or health via co routines
     [SerializeField] private int maxAttacksBeforeReset = 0;
     [SerializeField] public float temporaryMovementSpeed = 0f;
-    [SerializeField] public bool bCanDash;
-    [SerializeField] private float dashCooldown;
-
 
     private float savedMoveSpeed;
     private int attackCounter;
+
 
     public PatrolState patrol;
     public ChaseState chase;
@@ -33,7 +31,7 @@ public class AIController : MonoBehaviour
     public AiMovementComponent MovementController;
     
 
-    public Rigidbody2D enemyRigidBody;
+    // public Rigidbody2D enemyRigidBody;
     public Transform detectedTargetTransform;
     public Animator myAnimator;
     
@@ -51,7 +49,6 @@ public class AIController : MonoBehaviour
 
         detectedTargetTransform = null;
         MovementController = GetComponent<AiMovementComponent>();
-        
         patrolComponentObject = GetComponent<PatrolComponent>();
         chaseComponentObject = GetComponent<ChaseComponent>();
         healthComponentObject = GetComponent<HealthComponent>();
@@ -60,7 +57,6 @@ public class AIController : MonoBehaviour
         myAnimator = GetComponentInChildren<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
         
         // enemyRigidBody = GetComponent<Rigidbody2D>();
-        // add a health component listener for on death and on Hit ie taking damage
         healthComponentObject.OnDeathCaller += OnDeathListener;
         healthComponentObject.OnHitCaller += OnHitListener;
         attackComponentObject.AddToAttackCount += OnAttackCounting;
@@ -116,20 +112,21 @@ public class AIController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         if ((currentState == attacking && !attackComponentObject.bAttackFinished) && stopMovementForAttackAnimation)
         {
             MovementController.StopMovement();
             return;
         }
-        // else if (MovementController.bIsDashing)
-        // {
-        //     return;
-        // }
-
+        
         if ((!bInRangeToAttack && bHasPerceivedTarget) && !healthComponentObject.GetIsKnockedBack())
         {
             if (detectedTargetTransform) // safety guard
             {
+                if (currentState != chase)
+                {
+                    setNewState(chase);
+                }
                 
                 chaseComponentObject.UpdateChaseLocation(detectedTargetTransform);
                 MovementController.OnTick();
@@ -139,24 +136,8 @@ public class AIController : MonoBehaviour
         {
             MovementController.OnTick();
         }
-        // else if (currentState == chase && bCanDash)
-        // {
-        //     
-        //     float distance = Vector2.Distance(enemyRigidBody.position, MovementController.GetTargetLocation());
-        //     if (distance <= 0.1f)
-        //     {
-        //         enemyRigidBody.linearVelocity = Vector2.zero;
-        //         Invoke(nameof(MovementController.toggleDash), dashCooldown);
-        //     }
-        //     MovementController.bIsDashing = true;
-        //     MovementController.toggleDash();
-        // }
-
-
 
     }
-    
-    
     
     public void setNewState(IAiStates newState)
     {
@@ -205,4 +186,5 @@ public class AIController : MonoBehaviour
             attackCounter = 0;
         }
     }
+    
 }

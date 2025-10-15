@@ -29,12 +29,12 @@ public class AttackComponent: MonoBehaviour
         {
             return;
         }
+        bAttackFinished = false;
         animator.SetTrigger("tCanAttackTarget");
     }
 
     public void DamageEnabled()
     {
-        bAttackFinished = false;
         hitbox.enabled = true;
     }
 
