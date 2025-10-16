@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class ChaseComponent : MonoBehaviour
 {
-    private ITarget movementController;
+    private AiMovementComponent movementController;
 
     private void Awake()
     {
         // moveRef = GetComponentInParent<ITarget>(); // reference to all other objects that have implement interface in parent prefab
         // moveRef = GetComponent<ITarget>() ?? GetComponentInParent<ITarget>();
-        movementController = GetComponent<ITarget>(); // reference to all other objects that have implement interface in parent prefab
+        movementController = GetComponent<AiMovementComponent>(); // reference to all other objects that have implement interface in parent prefab
     }
     private void Start()
     {

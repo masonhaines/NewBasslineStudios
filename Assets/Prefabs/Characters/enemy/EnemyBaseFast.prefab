@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 4639176091211223747}
   - component: {fileID: 386126643025651128}
   m_Layer: 9
-  m_Name: EnemyBase
+  m_Name: EnemyBaseFast
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d40127dd8de5704caf4c3d9568b890b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
-  maxHealth: 10
+  maxHealth: 15
   knockBackMultiplier: 1
 --- !u!114 &2529404637501472725
 MonoBehaviour:
@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314f8ed3415a36f43bdfc197f953cbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
-  moveSpeed: 2
+  moveSpeed: 8
   groundOnly: 1
   movementType: 1
   groundLayer:
@@ -189,7 +189,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -289,8 +289,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageComponent
   damageAmount: 1
   bProjectile: 0
-  knockBackAmount: 5
-  knockBackLiftAmount: 2
+  knockBackAmount: 8
+  knockBackLiftAmount: 1.5
   bIsEnabled: 1
   timeBetweenAttacks: 0.2
 --- !u!61 &7516741247492783349
@@ -512,7 +512,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 3225832317793331946, guid: 7d5000b7802d4ea44a3812d243836dc1, type: 3}
-  m_Color: {r: 0.99300003, g: 0.99300003, b: 0.99300003, a: 1}
+  m_Color: {r: 0.05206478, g: 0.735849, b: 0.68498886, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -557,6 +557,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackComponent
   hitbox: {fileID: 7516741247492783349}
-  attackWaitTime: 1.5
+  attackWaitTime: 1.2
   bNeedsAttackCounter: 0
   bAttackFinished: 0

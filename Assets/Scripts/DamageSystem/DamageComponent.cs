@@ -9,7 +9,8 @@ public class DamageComponent : MonoBehaviour
     [SerializeField] private bool bProjectile;
     [SerializeField] private float knockBackAmount = 3;
     [SerializeField] private float knockBackLiftAmount;
-    [SerializeField]private bool bIsEnabled = false;
+    [SerializeField] private bool bIsEnabled = false;
+    [SerializeField] private float timeBetweenAttacks = 0.2f;
 
 
 
@@ -25,7 +26,7 @@ public class DamageComponent : MonoBehaviour
     private void Update()
     {
         timeSinceLastAttack += Time.deltaTime;
-        if (timeSinceLastAttack >= 0.2f)
+        if (timeSinceLastAttack >= timeBetweenAttacks)
         {
             canAttack = true;
         }
@@ -42,7 +43,6 @@ public class DamageComponent : MonoBehaviour
         
         var damageable = other.GetComponent<IDamageable>(); // recommended type var on rider?
         if (canAttack && damageable != null) 
-        // if (damageable != null)
         {
             damageable.Damage(damageAmount, damageSource, knockBackAmount, knockBackLiftAmount);
             canAttack = false;

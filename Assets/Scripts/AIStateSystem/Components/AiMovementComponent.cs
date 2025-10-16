@@ -1,12 +1,11 @@
 using System;
 using UnityEngine;
-using Unity.VisualScripting;
-using UnityEngine.UIElements.Experimental;
-public class AiMovementComponent : MonoBehaviour, ITarget
+
+
+
+public class AiMovementComponent : MonoBehaviour
 {
     public event System.Action OnTargetReachedCaller = delegate { };
-    public bool bHasReachedTarget { get; set; }
-
     public enum MovementType
     {
         YOnly,
@@ -14,26 +13,25 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         XAndY
     };
     
-    [SerializeField] private float moveSpeed = 5f;
-    // [SerializeField] private bool bLocalHasMovedToTarget = false;
+    [SerializeField] public float moveSpeed = 5f;
     [SerializeField] private bool groundOnly = true;
     [SerializeField] private MovementType movementType;
-    
+
     private AIController aiController;
     private Rigidbody2D moversRigidbody2D;
     private Vector2 targetLocation;
     public LayerMask groundLayer;
     public PolygonCollider2D groundCollider;
-    public SpriteRenderer spriteRenderer;
     
     private Vector2 lastKnownPosition;
-    private float timeCheckForBlocked;
-    
+    public bool bHasReachedTarget;
+
+
+
     private void Awake()
     {
         aiController = GetComponent<AIController>();
         groundCollider = GetComponent<PolygonCollider2D>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,41 +40,11 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         moversRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    public void OnTick()
-    {
-        if (aiController.healthComponentObject.GetIsKnockedBack())
-        {
-            return;
-        }
-        if (!bHasReachedTarget)
-        {
-            if (groundOnly || groundCollider.IsTouchingLayers(groundLayer))
-            {
-                Moving();
-            }
-        }
-
-    }
-    
-
-
     public void Moving()
     {
         Debug.DrawLine(targetLocation, moversRigidbody2D.position, Color.red);
         // moversRigidbody2D.transform.position = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
-        Vector2 moveTowardsPosition = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.deltaTime);
-        
-        // lastKnownPosition = moversRigidbody2D.position;
-        // var distanceMoved = MathF.Abs(Vector3.Distance(lastKnownPosition, transform.position));
-        // timeCheckForBlocked += Time.deltaTime;
-        // if (timeCheckForBlocked >= 1.2f)
-        // {
-        //     if (distanceMoved < .3f)
-        //     {
-        //         moversRigidbody2D.AddForce(new Vector2(0, .005f), ForceMode2D.Impulse);
-        //     }
-        // }
+        Vector2 moveTowardsPosition = Vector2.MoveTowards(moversRigidbody2D.transform.position, targetLocation, moveSpeed * Time.fixedDeltaTime);
         
         switch (movementType)
         {
@@ -100,6 +68,7 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         
         if (bHasReachedTarget)
         {
+            // moveSpeed = startMoveSpeed;
             OnTargetReachedCaller?.Invoke();
             return;
         }
@@ -123,9 +92,21 @@ public class AiMovementComponent : MonoBehaviour, ITarget
         // where movement is actually happening 
         moversRigidbody2D.MovePosition(moveTowardsPosition);
     }
-
-    // this whole thing needs to be turned into a Queue, so then locations can be added to queue, and as the enemy reaches the location, dequeue and enqueue a couple locations at a time 
-
+    
+    // this is called from inside the AI controller
+    public void OnTick()
+    {
+        
+        if (aiController.healthComponentObject.GetIsKnockedBack())
+        {
+            return;
+        }
+        if (!bHasReachedTarget && (!groundOnly || groundCollider.IsTouchingLayers(groundLayer)))
+        {
+            Moving();
+        }
+    }
+    
     public void NewTargetLocation(Vector2 moveToTargetLocation)
     {
         // Debug.Log(targetLocation + "target location changed in new target location in move component");
@@ -135,7 +116,40 @@ public class AiMovementComponent : MonoBehaviour, ITarget
 
     }
     
+    public Vector2 GetMovementDirection(Vector2 currentPosition)
+    {
+        // get current direction moving from velocity 
+        Vector2 movementDirection = new Vector2(
+            moversRigidbody2D.linearVelocity.x,
+            moversRigidbody2D.linearVelocity.y
+        ).normalized;
+        return movementDirection;
+    }
 
+    public void StopMovement()
+    {
+        moversRigidbody2D.linearVelocity = Vector2.zero;
+    }
 
+    public void SetMoveSpeed(float newMoveSpeed)
+    {
+        // startMoveSpeed = moveSpeed;
+        moveSpeed = newMoveSpeed;
+    }
 
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
+
+    public Vector2 GetTargetLocation()
+    {
+        return targetLocation;
+    }
+    
+    private void OnDisable()
+    {
+        CancelInvoke();
+    }
+    
 }

@@ -10,20 +10,20 @@ public class PatrolComponent : MonoBehaviour
     // private int numberOfActivePatrolPoints;
     private Vector2 targetPosition;
     private int currentPatrolIndex = 0;
-    private ITarget movementController;
+    private AiMovementComponent movementController;
 
     
     private void Awake()
     {
-        movementController = GetComponent<ITarget>(); // reference to all other objects that have implement interface in parent prefab
+        movementController = GetComponent<AiMovementComponent>(); // reference to all other objects that have implement interface in parent prefab
     }
 
     public void BeginPatrol()
     {
         if (patrolPointLocations.Length == 0)
         {
-            Debug.Log("lost all of my patrol points");
-            return;
+            patrolPointLocations = new Transform[1]; // make patrol points of size one
+            patrolPointLocations[0] = transform; // set self transform as patrol point 
         }
 
         if (currentPatrolIndex >= patrolPointLocations.Length)
@@ -36,6 +36,12 @@ public class PatrolComponent : MonoBehaviour
     private IEnumerator SetNewTargetPatrolPoint()
     {
 
+        if (patrolPointLocations.Length == 0)
+        {
+            Debug.Log("lost all of my patrol points");
+            yield break;
+        }
+        
         yield return new WaitForSeconds(waitTimeBetweenPatrolPoints);
 
         if (currentPatrolIndex < patrolPointLocations.Length - 1)
