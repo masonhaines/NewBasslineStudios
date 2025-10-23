@@ -30,7 +30,7 @@ public class HealthComponent : MonoBehaviour, IDamageable
     }
     public void RestoreFullHealth()
     {
-    currentHealth = maxHealth;
+        currentHealth = maxHealth;
     }
 
     public bool GetIsKnockedBack()

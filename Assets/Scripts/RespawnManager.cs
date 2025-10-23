@@ -5,15 +5,14 @@ public class RespawnManager : MonoBehaviour
 {
     [Header("Refs")]
     [SerializeField] private Transform player;
-    [SerializeField] private HealthComponent playerHealth;
     [SerializeField] private Transform spawnPoint;
 
     [Header("Tuning")]
     [SerializeField] private float respawnDelay = 0.75f;
 
     // Optional: drag your movement script here if you want it disabled while “dead”
-    [SerializeField] private MonoBehaviour playerMovement; // e.g., PlayerController
-
+    private PlayerController2D playerMovement; // e.g., PlayerController
+    private HealthComponent playerHealth;
     private Rigidbody2D rb2D;
     private Rigidbody rb3D;
 
@@ -23,6 +22,8 @@ public class RespawnManager : MonoBehaviour
         {
             rb2D = player.GetComponent<Rigidbody2D>();
             rb3D = player.GetComponent<Rigidbody>();
+            playerHealth = player.GetComponent<HealthComponent>();
+            playerMovement = player.GetComponent<PlayerController2D>();
         }
     }
 
