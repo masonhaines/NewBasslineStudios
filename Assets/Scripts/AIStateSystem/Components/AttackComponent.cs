@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 
-public class AttackComponent: MonoBehaviour
+public class AttackComponent: MonoBehaviour, ICoreAttack
 {
     public event System.Action AddToAttackCount = delegate { };
     
@@ -12,7 +12,7 @@ public class AttackComponent: MonoBehaviour
     [SerializeField] private float attackWaitTime = 0f;
     [SerializeField] private bool bNeedsAttackCounter = false;
     
-    public bool bAttackFinished;
+    public bool bAttackFinished { get; set; } = true;
     private bool bInitialized = false;
     
     

@@ -30,12 +30,14 @@ public class AIController : MonoBehaviour
     public HealthComponent healthComponentObject;
     public AiMovementComponent MovementController;
     
+    
 
     // public Rigidbody2D enemyRigidBody;
     public Transform detectedTargetTransform;
     public Animator myAnimator;
     
     private IAiStates currentState;
+    public ICoreAttack AttackController;
     
     public bool bHasPerceivedTarget;
     public bool bIsAttacking;
@@ -54,14 +56,18 @@ public class AIController : MonoBehaviour
         healthComponentObject = GetComponent<HealthComponent>();
         
         attackComponentObject = GetComponentInChildren<AttackComponent>();
+        AttackController = GetComponentInChildren<ICoreAttack>();
         myAnimator = GetComponentInChildren<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
         
         // enemyRigidBody = GetComponent<Rigidbody2D>();
         healthComponentObject.OnDeathCaller += OnDeathListener;
         healthComponentObject.OnHitCaller += OnHitListener;
-        attackComponentObject.AddToAttackCount += OnAttackCounting;
+        if (attackComponentObject != null)
+        {
+            attackComponentObject.AddToAttackCount += OnAttackCounting;
+        }
         
-        attackComponentObject?.Initialize(myAnimator);
+        AttackController?.Initialize(myAnimator); // if the ai controller has a ref to, call initialize 
     }
 
     private void Start()
@@ -70,6 +76,7 @@ public class AIController : MonoBehaviour
         chase = new ChaseState(this);
         death = new DeathState(this);
         attacking = new AttackState(this);
+        
         
         chaseComponentObject.enabled = false;
         savedMoveSpeed = MovementController.GetMoveSpeed();
@@ -113,7 +120,7 @@ public class AIController : MonoBehaviour
     private void FixedUpdate()
     {
         
-        if ((currentState == attacking && !attackComponentObject.bAttackFinished) && stopMovementForAttackAnimation)
+        if ((currentState == attacking && !AttackController.bAttackFinished) && stopMovementForAttackAnimation)
         {
             MovementController.StopMovement();
             return;
