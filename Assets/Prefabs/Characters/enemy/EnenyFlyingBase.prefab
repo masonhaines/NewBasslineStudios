@@ -90,6 +90,7 @@ MonoBehaviour:
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
   healthComponentObject: {fileID: 0}
+  MovementController: {fileID: 0}
   detectedTargetTransform: {fileID: 0}
   myAnimator: {fileID: 0}
   bHasPerceivedTarget: 0
@@ -108,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d40127dd8de5704caf4c3d9568b890b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
+  destroyOnDeath: 1
   maxHealth: 1
   knockBackMultiplier: 5
 --- !u!114 &2529404637501472725
@@ -129,6 +131,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundCollider: {fileID: 0}
+  bHasReachedTarget: 0
 --- !u!114 &3041723330231478945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,7 +254,7 @@ GameObject:
   - component: {fileID: 971147147492808869}
   - component: {fileID: 7179659693347042591}
   m_Layer: 9
-  m_Name: weapon
+  m_Name: ProjectileSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,8 +269,8 @@ Transform:
   m_GameObject: {fileID: 3325566589297371907}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.34, y: -0.09, z: 0}
+  m_LocalScale: {x: 0.5518026, y: 0.5518026, z: 0.5518026}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2913191249545737219}

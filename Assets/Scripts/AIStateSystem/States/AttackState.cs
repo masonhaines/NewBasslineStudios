@@ -14,7 +14,7 @@ public class AttackState : IAiStates
     
     public void Enter()
     {
-        aiController.attackComponentObject.StartAttack();
+        aiController.AttackController.StartAttack();
         // Debug.Log("Attacking");
     }
 
@@ -29,7 +29,7 @@ public class AttackState : IAiStates
             aiController.setNewState(aiController.chase);
         }
         
-        aiController.attackComponentObject.StartAttack();
+        aiController.AttackController.StartAttack();
     }
 
     public void Exit()

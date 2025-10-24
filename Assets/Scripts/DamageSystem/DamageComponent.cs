@@ -11,7 +11,7 @@ public class DamageComponent : MonoBehaviour
     [SerializeField] private float knockBackLiftAmount;
     [SerializeField] private bool bIsEnabled = false;
     [SerializeField] private float timeBetweenAttacks = 0.2f;
-
+    
 
 
     private float timeSinceLastAttack;
