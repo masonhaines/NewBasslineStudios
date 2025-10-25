@@ -14,8 +14,7 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
     
     public bool bAttackFinished { get; set; } = true;
     private bool bInitialized = false;
-    
-    
+
     public void Initialize(Animator animatorRef)
     {
         animator = animatorRef;

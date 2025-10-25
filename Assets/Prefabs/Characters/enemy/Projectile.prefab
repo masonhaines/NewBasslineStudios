@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4229552189698281487}
   - component: {fileID: 6168292808192370091}
   - component: {fileID: 4345796508257793605}
+  - component: {fileID: 3599151660685700126}
   m_Layer: 8
   m_Name: Projectile
   m_TagString: Enemy
@@ -137,7 +138,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.43294337, g: 0.7264151, b: 0.6445679, a: 0.6509804}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -173,4 +174,19 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &3599151660685700126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8553818057480637897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e39d73a16b43bf949e8b980429b869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyProjectile
+  player: {fileID: 0}
+  force: 8
+  angleOffset: 0

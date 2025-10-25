@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2913191249545737219}
   - component: {fileID: 6245015259390129584}
-  - component: {fileID: 5423973114262812903}
   - component: {fileID: 2136153642964654598}
   - component: {fileID: 2529404637501472725}
   - component: {fileID: 3041723330231478945}
@@ -18,6 +17,7 @@ GameObject:
   - component: {fileID: 7816246678522490877}
   - component: {fileID: 4639176091211223747}
   - component: {fileID: 386126643025651128}
+  - component: {fileID: 7512328440374342327}
   m_Layer: 9
   m_Name: EnenyFlyingBaseVariant
   m_TagString: Enemy
@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -70,33 +70,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &5423973114262812903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369442348009616825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34953a731dc6617418c0b91c3f36ac94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AIController
-  attackRange: 5
-  stopMovementForAttackAnimation: 1
-  maxAttacksBeforeReset: 0
-  temporaryMovementSpeed: 0
-  patrolComponentObject: {fileID: 0}
-  chaseComponentObject: {fileID: 0}
-  attackComponentObject: {fileID: 0}
-  healthComponentObject: {fileID: 0}
-  MovementController: {fileID: 0}
-  detectedTargetTransform: {fileID: 0}
-  myAnimator: {fileID: 0}
-  bHasPerceivedTarget: 0
-  bIsAttacking: 0
-  bInRangeToAttack: 0
-  bIsDead: 0
 --- !u!114 &2136153642964654598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +216,34 @@ SortingGroup:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_SortAtRoot: 0
+--- !u!114 &7512328440374342327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369442348009616825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6dae42433040168c08fefe8fbbad9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AiControllerFlying
+  attackRange: 0
+  stopMovementForAttackAnimation: 0
+  maxAttacksBeforeReset: 0
+  temporaryMovementSpeed: 0
+  patrolComponentObject: {fileID: 0}
+  chaseComponentObject: {fileID: 0}
+  attackComponentObject: {fileID: 0}
+  healthComponentObject: {fileID: 0}
+  MovementController: {fileID: 0}
+  detectedTargetTransform: {fileID: 0}
+  myAnimator: {fileID: 0}
+  bHasPerceivedTarget: 0
+  bIsAttacking: 0
+  bInRangeToAttack: 0
+  bIsDead: 0
+  projectileComponentObject: {fileID: 0}
 --- !u!1 &3325566589297371907
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +285,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7867354879392804387}
   - component: {fileID: 5846365152467076997}
-  - component: {fileID: 7068856207377113298}
+  - component: {fileID: 7185604311883981666}
   m_Layer: 9
   m_Name: perception
   m_TagString: Untagged
@@ -301,8 +302,8 @@ Transform:
   m_GameObject: {fileID: 5678597850490415521}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.22, y: -0.03, z: 0}
+  m_LocalScale: {x: 18.906094, y: 1.293346, z: 1.293346}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2913191249545737219}
@@ -319,8 +320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e362ff0f1e47eb045b3789ec94b0e120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiPerceptionComponent
---- !u!61 &7068856207377113298
-BoxCollider2D:
+--- !u!58 &7185604311883981666
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -353,18 +354,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.04951477, y: -0.30870223}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 12.846588, y: 9.687424}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!1 &6647232440405953180
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,4 +484,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileComponent
   projectilePrefab: {fileID: 8553818057480637897, guid: 14011d579f097fc41b7cc19ded583776, type: 3}
   projectilePosition: {fileID: 971147147492808869}
-  incrementTime: 3
+  firingRate: 2.7
+  destructionRate: 3

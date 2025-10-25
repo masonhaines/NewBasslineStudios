@@ -14,7 +14,9 @@ public class AttackState : IAiStates
     
     public void Enter()
     {
+        
         aiController.AttackController.StartAttack();
+        
         // Debug.Log("Attacking");
     }
 
@@ -23,17 +25,22 @@ public class AttackState : IAiStates
         if (!aiController.bHasPerceivedTarget) // has NOT
         {
             aiController.setNewState(aiController.patrol);
+            return;
         }
         else if (!aiController.bInRangeToAttack)
         {
             aiController.setNewState(aiController.chase);
+            return;
         }
         
-        aiController.AttackController.StartAttack();
+        if (aiController.AttackController.bAttackFinished)
+        {
+            aiController.AttackController.StartAttack();
+        }
     }
 
     public void Exit()
     {
-        // nothing so far is needed for exit in this state
+        aiController.AttackController.bAttackFinished = true;
     }
 }
