@@ -36,7 +36,7 @@ public class AIController : MonoBehaviour
     public Transform detectedTargetTransform;
     public Animator myAnimator;
     
-    private IAiStates currentState;
+    protected IAiStates currentState;
     public ICoreAttack AttackController;
     
     public bool bHasPerceivedTarget;
@@ -46,7 +46,7 @@ public class AIController : MonoBehaviour
 
     
     
-    private void Awake()
+    protected virtual void Awake()
     {
 
         detectedTargetTransform = null;
@@ -57,20 +57,19 @@ public class AIController : MonoBehaviour
         
         attackComponentObject = GetComponentInChildren<AttackComponent>();
         AttackController = GetComponentInChildren<ICoreAttack>();
+        AttackController = attackComponentObject;
         myAnimator = GetComponentInChildren<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
         
         // enemyRigidBody = GetComponent<Rigidbody2D>();
         healthComponentObject.OnDeathCaller += OnDeathListener;
         healthComponentObject.OnHitCaller += OnHitListener;
-        if (attackComponentObject != null)
-        {
-            attackComponentObject.AddToAttackCount += OnAttackCounting;
-        }
+        attackComponentObject.AddToAttackCount += OnAttackCounting;
+        
         
         AttackController?.Initialize(myAnimator); // if the ai controller has a ref to, call initialize 
     }
 
-    private void Start()
+    protected void Start()
     {
         patrol = new PatrolState(this);
         chase = new ChaseState(this);
@@ -83,14 +82,14 @@ public class AIController : MonoBehaviour
         setNewState(patrol);
     }
 
-    public void PerceptionTargetFound(Transform target)
+    public virtual void PerceptionTargetFound(Transform target)
     {
         bHasPerceivedTarget = true;
         detectedTargetTransform = target;
         // Debug.Log("Target found: " + detectedTargetTransform.name);
     }
 
-    public void PerceptionTargetLost(Transform target)
+    public virtual void PerceptionTargetLost(Transform target)
     {
         bHasPerceivedTarget = false;
         // Debug.Log("Target lost: " + detectedTargetTransform.name);
@@ -98,7 +97,7 @@ public class AIController : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    protected virtual void Update()
     {
         currentState.PollPerception();
 
@@ -111,13 +110,16 @@ public class AIController : MonoBehaviour
             
             if (distanceFromPlayer < attackRange)
             {
+                Debug.Log("In range to attack");
+                
+                
                 bInRangeToAttack = true;
             } 
             else { bInRangeToAttack = false; }
         }
     }
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         
         if ((currentState == attacking && !AttackController.bAttackFinished) && stopMovementForAttackAnimation)
@@ -148,6 +150,7 @@ public class AIController : MonoBehaviour
     
     public void setNewState(IAiStates newState)
     {
+        if (currentState == newState) return;
         if (currentState == death)
         {
             Destroy(gameObject);
@@ -160,17 +163,17 @@ public class AIController : MonoBehaviour
         
         currentState = newState; // set the current state to the new state 
         currentState.Enter(); // call the currentstate's enter method to truly enable the state
-        Debug.Log(currentState);
+        // Debug.Log(currentState);
     }
 
-    private void OnDeathListener()
+    protected void OnDeathListener()
     {
         // this really should set the enemy location to somewhere else and a system is added in the scene and checks 
         // on tick for objects with enemy tag and if they are dead.
         setNewState(death);
     }
 
-    private void OnHitListener(Transform target)
+    protected void OnHitListener(Transform target)
     {
         myAnimator.SetTrigger("tOnHit");
         PerceptionTargetFound(target);
@@ -193,5 +196,7 @@ public class AIController : MonoBehaviour
             attackCounter = 0;
         }
     }
+
+    
     
 }
