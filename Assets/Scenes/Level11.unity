@@ -6984,7 +6984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc775487dfaf54626a1d002cdd5f7ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeartsSimpleUI
-  playerHealth: {fileID: 0}
+  playerHealth: {fileID: 1845437884}
   heartImages:
   - {fileID: 1023604877}
   - {fileID: 1148745996}
@@ -21998,9 +21998,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8359c12640c504596989c66c16823be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RespawnManager
-  player: {fileID: 0}
+  player: {fileID: 1845437887}
   spawnPoint: {fileID: 1908543739}
-  respawnDelay: 0.75
+  respawnDelay: 1.4
 --- !u!4 &1790101204
 Transform:
   m_ObjectHideFlags: 0
@@ -22379,6 +22379,22 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1323780802022812033, guid: 7940666b82bfe44e7b9e2811779269b6, type: 3}
   m_PrefabInstance: {fileID: 2887464453651878307}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1845437884 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5510355581538835243, guid: 4f87c78b43ff75944939282ee4eee437, type: 3}
+  m_PrefabInstance: {fileID: 465176646}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d40127dd8de5704caf4c3d9568b890b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
+--- !u!4 &1845437887 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8944766469584986022, guid: 4f87c78b43ff75944939282ee4eee437, type: 3}
+  m_PrefabInstance: {fileID: 465176646}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1847014254
 PrefabInstance:
