@@ -143,14 +143,14 @@ MonoBehaviour:
   moveSpeed: 6
   jumpForce: 12
   groundCheck: {fileID: 3091892206352146205}
-  groundCheckSize: {x: 0.95, y: 0.45}
+  groundCheckSize: {x: 0.95, y: 1}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
   extraJumps: 1
   coyoteTime: 0.15
   jumpBufferTime: 0.15
-  attackCooldown: 0.3
+  attackCooldown: 0.2
 --- !u!210 &5269685703485491958
 SortingGroup:
   m_ObjectHideFlags: 0
