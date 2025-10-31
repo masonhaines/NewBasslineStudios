@@ -91,12 +91,12 @@ MonoBehaviour:
   attackComponentObject: {fileID: 0}
   healthComponentObject: {fileID: 0}
   MovementController: {fileID: 0}
+  enemyRigidBody: {fileID: 0}
   detectedTargetTransform: {fileID: 0}
   myAnimator: {fileID: 0}
   bHasPerceivedTarget: 0
   bIsAttacking: 0
   bInRangeToAttack: 0
-  bIsDead: 0
 --- !u!114 &2136153642964654598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   destroyOnDeath: 1
   maxHealth: 3
   knockBackMultiplier: 1
-  TimeTillDestroy: 2.5
+  TimeTillDestroy: 2
 --- !u!114 &2529404637501472725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +191,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

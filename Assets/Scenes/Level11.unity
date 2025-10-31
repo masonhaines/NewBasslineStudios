@@ -341,7 +341,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5453598314168853575, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: moveSpeed
-      value: 2.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -5453598314168853575, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: waveAmplitude
@@ -357,11 +357,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 524315877977360848, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 66.67
+      value: 66.53
       objectReference: {fileID: 0}
     - target: {fileID: 524315877977360848, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.61
+      value: -2.19
       objectReference: {fileID: 0}
     - target: {fileID: 524315877977360848, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: m_LocalPosition.z
@@ -650,7 +650,7 @@ Transform:
   m_GameObject: {fileID: 126708178}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.26, y: -5.42, z: 0}
+  m_LocalPosition: {x: 14.19, y: -5.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1330,6 +1330,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2136153642964654598, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
+      propertyPath: TimeTillDestroy
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.6
@@ -1382,6 +1386,10 @@ PrefabInstance:
       propertyPath: 'patrolPointLocations.Array.data[1]'
       value: 
       objectReference: {fileID: 54541010}
+    - target: {fileID: 4639176091211223747, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7179659693347042591, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
       propertyPath: bIsEnabled
       value: 1
@@ -1786,7 +1794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5490573882483310589, guid: 4f87c78b43ff75944939282ee4eee437, type: 3}
       propertyPath: knockBackAmount
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5490573882483310589, guid: 4f87c78b43ff75944939282ee4eee437, type: 3}
       propertyPath: timeBetweenAttacks
@@ -1794,7 +1802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5490573882483310589, guid: 4f87c78b43ff75944939282ee4eee437, type: 3}
       propertyPath: knockBackLiftAmount
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8944766469584986022, guid: 4f87c78b43ff75944939282ee4eee437, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4953,6 +4961,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2136153642964654598, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
+      propertyPath: TimeTillDestroy
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 45.57
@@ -5005,6 +5017,10 @@ PrefabInstance:
       propertyPath: 'patrolPointLocations.Array.data[1]'
       value: 
       objectReference: {fileID: 2051415911}
+    - target: {fileID: 4639176091211223747, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7179659693347042591, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
       propertyPath: bProjectile
       value: 1
@@ -5094,7 +5110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 619356489}
   m_Layer: 0
-  m_Name: AirPatrol.2
+  m_Name: fastPatrol1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5109,7 +5125,7 @@ Transform:
   m_GameObject: {fileID: 619356488}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.56, y: -4.51, z: 0}
+  m_LocalPosition: {x: 66.21, y: -5.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6611,11 +6627,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 524315877977360848, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.07
+      value: 34.31
       objectReference: {fileID: 0}
     - target: {fileID: 524315877977360848, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.77
+      value: -4.42
       objectReference: {fileID: 0}
     - target: {fileID: 524315877977360848, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7413,37 +7429,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6296596374904833777, guid: 99931aaf8070a4d1699fe117499601c9, type: 3}
   m_PrefabInstance: {fileID: 1317567979}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1333004361
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1333004362}
-  m_Layer: 0
-  m_Name: AirPatrol.3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1333004362
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1333004361}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.43, y: 0.15, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1363329914 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5509421840557625685, guid: 9ec553098583d45c198ea1a9a6b5c90f, type: 3}
@@ -10170,7 +10155,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5453598314168853575, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: moveSpeed
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -5453598314168853575, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: waveAmplitude
@@ -10374,7 +10359,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1554400182}
   m_Layer: 0
-  m_Name: AirPatrol.1
+  m_Name: fastPatrol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10389,7 +10374,7 @@ Transform:
   m_GameObject: {fileID: 1554400181}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.39, y: 4.4, z: 0}
+  m_LocalPosition: {x: 54.78, y: -5.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20714,6 +20699,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2136153642964654598, guid: f5d57b9985c8ffc4eb3d574f2ff7cd20, type: 3}
+      propertyPath: TimeTillDestroy
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: f5d57b9985c8ffc4eb3d574f2ff7cd20, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60.57133
@@ -20755,8 +20744,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3041723330231478945, guid: f5d57b9985c8ffc4eb3d574f2ff7cd20, type: 3}
+      propertyPath: waitTimeBetweenPatrolPoints
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3041723330231478945, guid: f5d57b9985c8ffc4eb3d574f2ff7cd20, type: 3}
       propertyPath: patrolPointLocations.Array.size
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3041723330231478945, guid: f5d57b9985c8ffc4eb3d574f2ff7cd20, type: 3}
+      propertyPath: 'patrolPointLocations.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1554400182}
+    - target: {fileID: 3041723330231478945, guid: f5d57b9985c8ffc4eb3d574f2ff7cd20, type: 3}
+      propertyPath: 'patrolPointLocations.Array.data[1]'
+      value: 
+      objectReference: {fileID: 619356489}
+    - target: {fileID: 4639176091211223747, guid: f5d57b9985c8ffc4eb3d574f2ff7cd20, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22456,6 +22461,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2136153642964654598, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
+      propertyPath: TimeTillDestroy
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 87.04
@@ -22510,7 +22519,7 @@ PrefabInstance:
       objectReference: {fileID: 365936171}
     - target: {fileID: 4639176091211223747, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 768
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23050,11 +23059,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 524315877977360848, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.09
+      value: 27.76
       objectReference: {fileID: 0}
     - target: {fileID: 524315877977360848, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.42
+      value: -4.7
       objectReference: {fileID: 0}
     - target: {fileID: 524315877977360848, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23469,6 +23478,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2136153642964654598, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
+      propertyPath: TimeTillDestroy
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 70.49141
@@ -23523,7 +23536,7 @@ PrefabInstance:
       objectReference: {fileID: 213434063}
     - target: {fileID: 4639176091211223747, guid: 65dc6100b11cdeb44b6da96c227a0af2, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 768
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26990,6 +27003,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -5453598314168853575, guid: c78827b015862ed40a4ea779784b1645, type: 3}
+      propertyPath: moveSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -5453598314168853575, guid: c78827b015862ed40a4ea779784b1645, type: 3}
       propertyPath: waveAmplitude
       value: 20
       objectReference: {fileID: 0}
@@ -27182,7 +27199,6 @@ SceneRoots:
   - {fileID: 365936171}
   - {fileID: 1554400182}
   - {fileID: 619356489}
-  - {fileID: 1333004362}
   - {fileID: 354333238}
   - {fileID: 7387397529297385189}
   - {fileID: 1413599762}

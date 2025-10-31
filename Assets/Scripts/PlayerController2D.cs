@@ -210,6 +210,7 @@ public class PlayerController2D : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         healthComponentObject = GetComponent<HealthComponent>();
+        DisableWeaponHitbox();
     }
 
     void Update()
