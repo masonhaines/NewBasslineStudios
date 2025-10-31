@@ -96,7 +96,6 @@ MonoBehaviour:
   bHasPerceivedTarget: 0
   bIsAttacking: 0
   bInRangeToAttack: 0
-  bIsDead: 0
 --- !u!114 &2136153642964654598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,8 +109,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   destroyOnDeath: 1
-  maxHealth: 15
+  maxHealth: 6
   knockBackMultiplier: 1
+  TimeTillDestroy: 2
 --- !u!114 &2529404637501472725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314f8ed3415a36f43bdfc197f953cbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
-  moveSpeed: 8
+  moveSpeed: 6
   groundOnly: 1
   movementType: 1
   groundLayer:
@@ -471,6 +471,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2913191249545737219}
     m_Modifications:
+    - target: {fileID: 4265132558623003605, guid: 0704e6892cee3eb4f8becb28d5bedadc, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6190681653669527151, guid: 0704e6892cee3eb4f8becb28d5bedadc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.67

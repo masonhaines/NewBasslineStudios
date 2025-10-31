@@ -90,6 +90,7 @@ MonoBehaviour:
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
   healthComponentObject: {fileID: 0}
+  MovementController: {fileID: 0}
   detectedTargetTransform: {fileID: 0}
   myAnimator: {fileID: 0}
   bHasPerceivedTarget: 0
@@ -108,7 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d40127dd8de5704caf4c3d9568b890b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
-  maxHealth: 150
+  destroyOnDeath: 1
+  maxHealth: 10
   knockBackMultiplier: 1
 --- !u!114 &2529404637501472725
 MonoBehaviour:
@@ -129,6 +131,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   groundCollider: {fileID: 0}
+  bHasReachedTarget: 0
 --- !u!114 &3041723330231478945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -564,4 +567,3 @@ MonoBehaviour:
   hitbox: {fileID: 4188962441292723353}
   attackWaitTime: 1
   bNeedsAttackCounter: 1
-  bAttackFinished: 0
