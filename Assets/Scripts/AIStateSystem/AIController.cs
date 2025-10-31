@@ -70,6 +70,8 @@ public class AIController : MonoBehaviour
         AttackController?.Initialize(myAnimator); // if the ai controller has a ref to, call initialize 
     }
 
+    private SpriteRenderer sprite;
+    private Color originalColor;
     protected void Start()
     {
         patrol = new PatrolState(this);
@@ -81,6 +83,9 @@ public class AIController : MonoBehaviour
         chaseComponentObject.enabled = false;
         savedMoveSpeed = MovementController.GetMoveSpeed();
         setNewState(patrol);
+        
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        originalColor = sprite.color;
     }
 
     public virtual void PerceptionTargetFound(Transform target)
@@ -184,6 +189,8 @@ public class AIController : MonoBehaviour
     protected void OnHitListener(Transform target)
     {
         myAnimator.SetTrigger("tOnHit");
+        sprite.color = Color.red;
+        StartCoroutine(ResetColor());
         PerceptionTargetFound(target);
     }
 
@@ -205,6 +212,10 @@ public class AIController : MonoBehaviour
         }
     }
 
-    
+    private IEnumerator ResetColor()
+    {
+        yield return new WaitForSeconds(0.6f);
+        sprite.color = originalColor;
+    }
     
 }
