@@ -13,6 +13,7 @@ public class DeathState : IAiStates
     // this state is being entered directly from the ai controller 
     public void Enter()
     {
+        
         aiController.myAnimator.SetBool("bIsDead", true);
         aiController.bIsDead = true;
     }

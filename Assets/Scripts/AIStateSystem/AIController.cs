@@ -110,7 +110,7 @@ public class AIController : MonoBehaviour
             
             if (distanceFromPlayer < attackRange)
             {
-                Debug.Log("In range to attack");
+                // Debug.Log("In range to attack");
                 
                 
                 bInRangeToAttack = true;
@@ -153,7 +153,7 @@ public class AIController : MonoBehaviour
         if (currentState == newState) return;
         if (currentState == death)
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
             return;
         }
         if (currentState != null) // if the current state is not valid, exit the state

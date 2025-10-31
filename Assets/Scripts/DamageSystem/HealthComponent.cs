@@ -71,6 +71,7 @@
 // // 0.25
 
 
+using System.Collections;
 using UnityEngine;
 using Combat; // this is the includable for the IDamageable
 
@@ -86,6 +87,7 @@ public class HealthComponent : MonoBehaviour, IDamageable
 
     [SerializeField] private int maxHealth;
     [SerializeField] private float knockBackMultiplier = 1; // this is a multiplier for the knockback force applied when taking damage
+    [SerializeField] private float TimeTillDestroy = 2.0f;
     private int currentHealth;
     private KnockBack knockBack;
 
@@ -124,9 +126,9 @@ public class HealthComponent : MonoBehaviour, IDamageable
 
         Debug.Log("Death");
 
-        if (destroyOnDeath)
+        if (destroyOnDeath) // for enemies
         {
-            Destroy(gameObject);   // keep for enemies
+            // Destroy(gameObject, TimeTillDestroy);   // keep for enemies
         }
         // else: do not destroy — player will be teleported & refilled by RespawnManager
     }

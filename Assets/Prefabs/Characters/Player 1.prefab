@@ -151,6 +151,7 @@ MonoBehaviour:
   coyoteTime: 0.15
   jumpBufferTime: 0.15
   attackCooldown: 0.2
+  weapon: {fileID: 1970727822391002776}
 --- !u!210 &5269685703485491958
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -271,7 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageComponent
   damageAmount: 1
   bProjectile: 0
-  knockBackAmount: 0
+  knockBackAmount: 2
   knockBackLiftAmount: 0.3
   bIsEnabled: 1
   timeBetweenAttacks: 0.2

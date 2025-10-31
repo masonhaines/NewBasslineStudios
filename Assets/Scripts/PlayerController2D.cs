@@ -174,6 +174,8 @@ using UnityEngine;
 
 public class PlayerController2D : MonoBehaviour
 {
+    
+    
     [Header("Movement")]
     public float moveSpeed = 6f;
 
@@ -195,6 +197,7 @@ public class PlayerController2D : MonoBehaviour
     public float attackCooldown = 0.3f; // delay before next attack
     private float attackTimer;
     private bool isAttacking;
+    [SerializeField] private Collider2D weapon; // this needs to be given a collider box inside of the editor, from mason 
 
     private Rigidbody2D rb;
     private HealthComponent healthComponentObject;
@@ -314,23 +317,38 @@ public class PlayerController2D : MonoBehaviour
 
     void EnableWeaponHitbox()
     {
-        Transform weapon = transform.Find("Weapon");
+        // Transform weapon = transform.Find("Weapon");
         if (weapon != null)
         {
-            var col = weapon.GetComponent<BoxCollider2D>();
-            if (col != null)
-                col.enabled = true;
+            // var col = weapon.GetComponent<BoxCollider2D>();
+            if (weapon != null)
+                weapon.enabled = true;
+            else 
+                Debug.Log("was not able to find weapon hit box");
         }
+        else
+        {
+            Debug.Log("was not able to find weapon hit box");
+        }
+
     }
 
     void DisableWeaponHitbox()
     {
-        Transform weapon = transform.Find("Weapon");
+        // Transform weapon = transform.Find("Weapon");
         if (weapon != null)
         {
-            var col = weapon.GetComponent<BoxCollider2D>();
-            if (col != null)
-                col.enabled = false;
+            // var col = weapon.GetComponent<BoxCollider2D>();
+            
+            if (weapon != null)
+                weapon.enabled = false;
+            
+            else 
+                Debug.Log("was not able to find weapon hit box");
+        }
+        else
+        {
+            Debug.Log("was not able to find weapon hit box");
         }
     }
 
