@@ -32,9 +32,10 @@ public class AIController : MonoBehaviour
     
     
 
-    // public Rigidbody2D enemyRigidBody;
+    public Rigidbody2D enemyRigidBody;
     public Transform detectedTargetTransform;
     public Animator myAnimator;
+    
     
     protected IAiStates currentState;
     public ICoreAttack AttackController;
@@ -42,7 +43,7 @@ public class AIController : MonoBehaviour
     public bool bHasPerceivedTarget;
     public bool bIsAttacking;
     public bool bInRangeToAttack;
-    public bool bIsDead;
+    // public bool bIsDead;
 
     
     
@@ -60,7 +61,7 @@ public class AIController : MonoBehaviour
         AttackController = attackComponentObject;
         myAnimator = GetComponentInChildren<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
         
-        // enemyRigidBody = GetComponent<Rigidbody2D>();
+        enemyRigidBody = GetComponent<Rigidbody2D>();
         healthComponentObject.OnDeathCaller += OnDeathListener;
         healthComponentObject.OnHitCaller += OnHitListener;
         attackComponentObject.AddToAttackCount += OnAttackCounting;
@@ -69,6 +70,8 @@ public class AIController : MonoBehaviour
         AttackController?.Initialize(myAnimator); // if the ai controller has a ref to, call initialize 
     }
 
+    private SpriteRenderer sprite;
+    private Color originalColor;
     protected void Start()
     {
         patrol = new PatrolState(this);
@@ -80,6 +83,9 @@ public class AIController : MonoBehaviour
         chaseComponentObject.enabled = false;
         savedMoveSpeed = MovementController.GetMoveSpeed();
         setNewState(patrol);
+        
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        originalColor = sprite.color;
     }
 
     public virtual void PerceptionTargetFound(Transform target)
@@ -99,6 +105,7 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (currentState == death) return;
         currentState.PollPerception();
 
         if (bHasPerceivedTarget && detectedTargetTransform is not null)
@@ -110,7 +117,7 @@ public class AIController : MonoBehaviour
             
             if (distanceFromPlayer < attackRange)
             {
-                Debug.Log("In range to attack");
+                // Debug.Log("In range to attack");
                 
                 
                 bInRangeToAttack = true;
@@ -121,7 +128,11 @@ public class AIController : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        
+        if (currentState == death)
+        {
+            
+            return;
+        }
         if ((currentState == attacking && !AttackController.bAttackFinished) && stopMovementForAttackAnimation)
         {
             MovementController.StopMovement();
@@ -153,7 +164,7 @@ public class AIController : MonoBehaviour
         if (currentState == newState) return;
         if (currentState == death)
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
             return;
         }
         if (currentState != null) // if the current state is not valid, exit the state
@@ -171,11 +182,15 @@ public class AIController : MonoBehaviour
         // this really should set the enemy location to somewhere else and a system is added in the scene and checks 
         // on tick for objects with enemy tag and if they are dead.
         setNewState(death);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("enemy"), LayerMask.NameToLayer("Player"), true);
+        myAnimator.SetBool("bIsDead", true);
     }
 
     protected void OnHitListener(Transform target)
     {
         myAnimator.SetTrigger("tOnHit");
+        sprite.color = Color.red;
+        StartCoroutine(ResetColor());
         PerceptionTargetFound(target);
     }
 
@@ -197,6 +212,10 @@ public class AIController : MonoBehaviour
         }
     }
 
-    
+    private IEnumerator ResetColor()
+    {
+        yield return new WaitForSeconds(0.6f);
+        sprite.color = originalColor;
+    }
     
 }

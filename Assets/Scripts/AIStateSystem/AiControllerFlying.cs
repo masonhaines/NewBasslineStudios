@@ -50,6 +50,9 @@ public class AiControllerFlying : AIController
         //     else { bInRangeToAttack = false; }
         // }
         
+        // make something so that when the attack state is entered create a cooldown period here so the enemy is active and moving
+        // id rather it move to jsut infront of the player or maybe just chase or patrol
+        
     }
 
     public override void PerceptionTargetFound(Transform target)

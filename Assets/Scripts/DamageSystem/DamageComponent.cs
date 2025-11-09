@@ -34,7 +34,7 @@ public class DamageComponent : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        // Debug.Log(other.gameObject.name);
         if (!bIsEnabled) return;
         
         if (other.gameObject == damageSource || (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Enemy")) ) {
