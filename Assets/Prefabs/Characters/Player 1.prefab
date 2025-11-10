@@ -38,6 +38,7 @@ Transform:
   - {fileID: 3091892206352146205}
   - {fileID: 2403388954226299273}
   - {fileID: 8452251609013239093}
+  - {fileID: 1291292837776411709}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &4568714500559775992
@@ -128,6 +129,7 @@ MonoBehaviour:
   destroyOnDeath: 0
   maxHealth: 3
   knockBackMultiplier: 1
+  TimeTillDestroy: 2
 --- !u!114 &3486144826186490132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +154,9 @@ MonoBehaviour:
   jumpBufferTime: 0.15
   attackCooldown: 0.2
   weapon: {fileID: 1970727822391002776}
+  projectilePrefab: {fileID: 6775835473445301569, guid: 6abb31203dcd4974495ba069fd95c3ab, type: 3}
+  firePoint: {fileID: 1291292837776411709}
+  projectileCooldown: 0.5
 --- !u!210 &5269685703485491958
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -276,6 +281,37 @@ MonoBehaviour:
   knockBackLiftAmount: 0.3
   bIsEnabled: 1
   timeBetweenAttacks: 0.2
+--- !u!1 &2132278470540954615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1291292837776411709}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1291292837776411709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2132278470540954615}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.7, y: 0.12616563, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8944766469584986022}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3535588949963083170
 GameObject:
   m_ObjectHideFlags: 0
