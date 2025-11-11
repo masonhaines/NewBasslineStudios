@@ -14,6 +14,7 @@ public class AIController : MonoBehaviour
     // only used to modify speed and other attributes like damage or health via co routines
     [SerializeField] private int maxAttacksBeforeReset = 0;
     [SerializeField] public float temporaryMovementSpeed = 0f;
+    [SerializeField] public bool RecolorOnHit = true;
 
     private float savedMoveSpeed;
     private int attackCounter;
@@ -191,9 +192,12 @@ public class AIController : MonoBehaviour
     protected void OnHitListener(Transform target)
     {
         myAnimator.SetTrigger("tOnHit");
+        PerceptionTargetFound(target);
+        
+        if (!RecolorOnHit) return;
         sprite.color = Color.red;
         StartCoroutine(ResetColor());
-        PerceptionTargetFound(target);
+        
     }
 
     private void OnAttackCounting()
