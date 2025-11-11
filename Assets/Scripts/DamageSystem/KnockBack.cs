@@ -19,7 +19,7 @@ public class KnockBack : MonoBehaviour
         // Debug.Log("Trying to knockBack");
         //---------------------// Victim of attack //
         Vector2 difference = (transform.position - damageSource.position).normalized;
-        Debug.Log("the difference:" + difference);
+        // Debug.Log("the difference:" + difference);
         // if player jumps into hazard from belo
         if (difference.y < 0)  
         {
