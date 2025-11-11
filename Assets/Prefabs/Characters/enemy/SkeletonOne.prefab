@@ -86,6 +86,7 @@ MonoBehaviour:
   stopMovementForAttackAnimation: 1
   maxAttacksBeforeReset: 0
   temporaryMovementSpeed: 0
+  RecolorOnHit: 1
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
@@ -111,10 +112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   destroyOnDeath: 1
   maxHealth: 3
-  knockBackMultiplier: 1
+  knockBackMultiplier: 1.5
   TimeTillDestroy: 2
-  canStunLock: 1
-  timeBetweenDamage: 5
+  canStunLock: 0
+  timeBetweenDamage: 0
 --- !u!114 &2529404637501472725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,8 +294,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageComponent
   damageAmount: 1
   bProjectile: 0
-  knockBackAmount: 5
-  knockBackLiftAmount: 2
+  knockBackAmount: 15
+  knockBackLiftAmount: 0.5
   bIsEnabled: 1
   timeBetweenAttacks: 0.2
   debugging: 0
@@ -516,9 +517,9 @@ SpriteRenderer:
   m_SortingLayerID: 180130071
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3225832317793331946, guid: 7d5000b7802d4ea44a3812d243836dc1, type: 3}
+  m_Sprite: {fileID: -7638371965328572490, guid: 69c0f93cace6c05478685f1746a6cbe9, type: 3}
   m_Color: {r: 0.99300003, g: 0.99300003, b: 0.99300003, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.3, y: 0.16}
@@ -537,7 +538,7 @@ Animator:
   m_GameObject: {fileID: 6647232440405953180}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8ddcd34e2d0f9ee44bfc9514bd3fd3b0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 61a1246df17620e4899b2b71448e5375, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

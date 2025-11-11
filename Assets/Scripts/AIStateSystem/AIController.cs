@@ -66,9 +66,12 @@ public class AIController : MonoBehaviour
         healthComponentObject.OnDeathCaller += OnDeathListener;
         healthComponentObject.OnHitCaller += OnHitListener;
         attackComponentObject.AddToAttackCount += OnAttackCounting;
-        
-        
+
+
         AttackController?.Initialize(myAnimator); // if the ai controller has a ref to, call initialize 
+        
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        originalColor = sprite.color;
     }
 
     private SpriteRenderer sprite;
@@ -85,8 +88,7 @@ public class AIController : MonoBehaviour
         savedMoveSpeed = MovementController.GetMoveSpeed();
         setNewState(patrol);
         
-        sprite = GetComponentInChildren<SpriteRenderer>();
-        originalColor = sprite.color;
+
     }
 
     public virtual void PerceptionTargetFound(Transform target)
@@ -193,9 +195,13 @@ public class AIController : MonoBehaviour
     {
         myAnimator.SetTrigger("tOnHit");
         PerceptionTargetFound(target);
-        
+
         if (!RecolorOnHit) return;
-        sprite.color = Color.red;
+        if (sprite)
+        {
+            sprite.color = Color.red;
+        }
+        
         StartCoroutine(ResetColor());
         
     }

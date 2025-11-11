@@ -86,6 +86,7 @@ MonoBehaviour:
   stopMovementForAttackAnimation: 0
   maxAttacksBeforeReset: 2
   temporaryMovementSpeed: 8
+  RecolorOnHit: 0
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
