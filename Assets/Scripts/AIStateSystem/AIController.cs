@@ -182,7 +182,9 @@ public class AIController : MonoBehaviour
         // this really should set the enemy location to somewhere else and a system is added in the scene and checks 
         // on tick for objects with enemy tag and if they are dead.
         setNewState(death);
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("enemy"), LayerMask.NameToLayer("Player"), true);
+        // Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("enemy"), LayerMask.NameToLayer("Player"), true);
+        // GetComponent<Collider2D>().enabled = f;        
+        gameObject.layer = LayerMask.NameToLayer("dead");
         myAnimator.SetBool("bIsDead", true);
     }
 
