@@ -214,7 +214,7 @@ public class AIControllerSkeletonChild : AIController
         // Debug.Log($"{name} attack count triggered");
         if (localAttackCounter < maxAttacksBeforeReset)
         {
-            attackComponentObject.SwitchToAttackTwo();
+            attackComponentObject.ToggleAttackTwo();
         }
     }
 

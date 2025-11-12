@@ -61,15 +61,15 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
     }
     
     // this needs to be called after the attack two animtion to switch attack two off or attacks will stop
-    public void SwitchToAttackTwo()  
+    public void ToggleAttackTwo()  
     {
-        if (animator.GetBool("the namof that bool for attacj two that dont remember"))
+        if (animator.GetBool("bAttackTypeTwo"))
         {
-            animator.SetBool("i dont remember the name of the bool so change this later", true);
+            animator.SetBool("bAttackTypeTwo", true);
         }
         else
         {
-            animator.SetBool("i dont remember the name of the bool so change this later", false);
+            animator.SetBool("bAttackTypeTwo", false);
         }
     }
     

@@ -13228,13 +13228,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeletonOne
       objectReference: {fileID: 0}
+    - target: {fileID: 2529404637501472725, guid: 137397cfcd7e7314ba05ddb124496fc4, type: 3}
+      propertyPath: moveSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 137397cfcd7e7314ba05ddb124496fc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.380075
+      value: -20.4
       objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 137397cfcd7e7314ba05ddb124496fc4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.0919766
+      value: -3.11
       objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 137397cfcd7e7314ba05ddb124496fc4, type: 3}
       propertyPath: m_LocalPosition.z

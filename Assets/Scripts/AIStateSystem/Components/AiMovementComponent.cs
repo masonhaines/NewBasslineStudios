@@ -21,7 +21,7 @@ public class AiMovementComponent : MonoBehaviour
     private Rigidbody2D moversRigidbody2D;
     private Vector2 targetLocation;
     public LayerMask groundLayer;
-    public PolygonCollider2D groundCollider;
+    public Collider2D groundCollider;
     
     private Vector2 lastKnownPosition;
     public bool bHasReachedTarget;
@@ -31,7 +31,7 @@ public class AiMovementComponent : MonoBehaviour
     private void Awake()
     {
         aiController = GetComponent<AIController>();
-        groundCollider = GetComponent<PolygonCollider2D>();
+        groundCollider = GetComponent<Collider2D>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
