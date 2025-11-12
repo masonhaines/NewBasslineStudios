@@ -12,12 +12,14 @@ public class AIController : MonoBehaviour
     [SerializeField] public bool stopMovementForAttackAnimation = true;
     
     // only used to modify speed and other attributes like damage or health via co routines
-    [SerializeField] private int maxAttacksBeforeReset = 0;
+    [SerializeField] protected int maxAttacksBeforeReset = 0;
     [SerializeField] public float temporaryMovementSpeed = 0f;
     [SerializeField] public bool RecolorOnHit = true;
-
-    private float savedMoveSpeed;
-    private int attackCounter;
+    
+    private SpriteRenderer sprite;
+    private Color originalColor;
+    protected float savedMoveSpeed;
+    protected int localAttackCounter;
 
 
     public PatrolState patrol;
@@ -31,8 +33,6 @@ public class AIController : MonoBehaviour
     public HealthComponent healthComponentObject;
     public AiMovementComponent MovementController;
     
-    
-
     public Rigidbody2D enemyRigidBody;
     public Transform detectedTargetTransform;
     public Animator myAnimator;
@@ -45,6 +45,8 @@ public class AIController : MonoBehaviour
     public bool bIsAttacking;
     public bool bInRangeToAttack;
     // public bool bIsDead;
+    
+
 
     
     
@@ -73,9 +75,6 @@ public class AIController : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         originalColor = sprite.color;
     }
-
-    private SpriteRenderer sprite;
-    private Color originalColor;
     protected void Start()
     {
         patrol = new PatrolState(this);
@@ -206,21 +205,21 @@ public class AIController : MonoBehaviour
         
     }
 
-    private void OnAttackCounting()
+    protected virtual void OnAttackCounting()
     {
         
         
-        attackCounter++;
+        localAttackCounter++;
         // Debug.Log($"{name} attack count triggered");
         // Only modify speed when below threshold
-        if (attackCounter < maxAttacksBeforeReset)
+        if (localAttackCounter < maxAttacksBeforeReset)
         {
             MovementController.SetMoveSpeed(temporaryMovementSpeed);
         }
         else
         {
             MovementController.SetMoveSpeed(savedMoveSpeed);
-            attackCounter = 0;
+            localAttackCounter = 0;
         }
     }
 
