@@ -13228,13 +13228,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkeletonOne
       objectReference: {fileID: 0}
+    - target: {fileID: 2044737990258706516, guid: 137397cfcd7e7314ba05ddb124496fc4, type: 3}
+      propertyPath: dashTimeFrame
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136153642964654598, guid: 137397cfcd7e7314ba05ddb124496fc4, type: 3}
+      propertyPath: knockBackMultiplier
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 137397cfcd7e7314ba05ddb124496fc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.380075
+      value: -20.4
       objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 137397cfcd7e7314ba05ddb124496fc4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.0919766
+      value: -3.11
       objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 137397cfcd7e7314ba05ddb124496fc4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24308,7 +24316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6734795014814658220, guid: 17450d59559f8734d8e862a47c3fe378, type: 3}
       propertyPath: m_Volume
-      value: 0.177
+      value: 0.066
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

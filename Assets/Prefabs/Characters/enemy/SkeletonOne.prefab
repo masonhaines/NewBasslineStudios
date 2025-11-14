@@ -10,14 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2913191249545737219}
   - component: {fileID: 6245015259390129584}
-  - component: {fileID: 5423973114262812903}
+  - component: {fileID: 5185795728070168179}
   - component: {fileID: 2136153642964654598}
   - component: {fileID: 2529404637501472725}
   - component: {fileID: 3041723330231478945}
   - component: {fileID: 4187364116491173755}
   - component: {fileID: 7816246678522490877}
-  - component: {fileID: 4639176091211223747}
   - component: {fileID: 386126643025651128}
+  - component: {fileID: 7542952993395395999}
   m_Layer: 9
   m_Name: SkeletonOne
   m_TagString: Enemy
@@ -70,7 +70,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &5423973114262812903
+--- !u!114 &5185795728070168179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,14 +79,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369442348009616825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34953a731dc6617418c0b91c3f36ac94, type: 3}
+  m_Script: {fileID: 11500000, guid: 98541b056a9d4824bb38fb7310281001, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AIController
-  attackRange: 2.3
+  m_EditorClassIdentifier: Assembly-CSharp::AIControllerSkeletonChild
+  attackRange: 8
   stopMovementForAttackAnimation: 1
-  maxAttacksBeforeReset: 0
+  maxAttacksBeforeReset: 1
   temporaryMovementSpeed: 0
-  RecolorOnHit: 1
+  RecolorOnHit: 0
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314f8ed3415a36f43bdfc197f953cbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
-  moveSpeed: 2
+  moveSpeed: 3.5
   groundOnly: 1
   movementType: 1
   groundLayer:
@@ -178,8 +178,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KnockBack
   knockBackTime: 0.5
   bKnockedBack: 0
---- !u!60 &4639176091211223747
-PolygonCollider2D:
+--- !u!210 &386126643025651128
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369442348009616825}
+  m_Enabled: 1
+  m_SortingLayerID: -876370791
+  m_SortingLayer: 3
+  m_SortingOrder: 0
+  m_SortAtRoot: 0
+--- !u!70 &7542952993395395999
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -188,13 +200,13 @@ PolygonCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 39c73ec56e853ca42805d5f545da94ef, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 576
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -212,41 +224,9 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.33756468, y: 0.16191994}
-      - {x: -0.43493533, y: -0.19570518}
-      - {x: -0.34620872, y: 0.15950137}
-      - {x: -0.62044007, y: -0.108145654}
-      - {x: -0.63293254, y: -0.44436052}
-      - {x: -0.84959215, y: -0.6982186}
-      - {x: 0.23848549, y: -0.72836673}
-      - {x: 0.8807706, y: -0.70199883}
-      - {x: 0.84151745, y: -0.45494115}
-      - {x: 0.7025666, y: -0.025745235}
-  m_UseDelaunayMesh: 0
---- !u!210 &386126643025651128
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369442348009616825}
-  m_Enabled: 1
-  m_SortingLayerID: -876370791
-  m_SortingLayer: 3
-  m_SortingOrder: 0
-  m_SortAtRoot: 0
+  m_Offset: {x: -0.20645988, y: -0.6503782}
+  m_Size: {x: 1.563045, y: 3.425301}
+  m_Direction: 0
 --- !u!1 &3325566589297371907
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,8 +254,8 @@ Transform:
   m_GameObject: {fileID: 3325566589297371907}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.67, y: -0.22, z: 0}
-  m_LocalScale: {x: 2.6125, y: 2.8625, z: 1}
+  m_LocalPosition: {x: 1.63, y: -1.23, z: 0}
+  m_LocalScale: {x: 2.6125, y: 5.2753015, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2913191249545737219}
@@ -333,7 +313,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.13203949, y: 0.084355384}
+  m_Offset: {x: -0.34446192, y: 0.12021862}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -343,7 +323,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.735921, y: 0.5420709}
+  m_Size: {x: 1.1607656, y: 0.61379683}
   m_EdgeRadius: 0
 --- !u!1 &5678597850490415521
 GameObject:
@@ -373,7 +353,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5275893, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2913191249545737219}
@@ -518,7 +498,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -7638371965328572490, guid: 69c0f93cace6c05478685f1746a6cbe9, type: 3}
-  m_Color: {r: 0.99300003, g: 0.99300003, b: 0.99300003, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -562,6 +542,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254ee52e2af04cc494068619b9884ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackComponent
+  attackerRigidBody: {fileID: 0}
   hitbox: {fileID: 7516741247492783349}
-  attackWaitTime: 1.5
-  bNeedsAttackCounter: 0
+  attackWaitTime: 1.2
+  bNeedsAttackCounter: 1
+  dashScale: 10
+  dashTimeFrame: 0.4
+  attackAnimStateName: 
