@@ -129,56 +129,64 @@ public class AIControllerSkeletonChild : AIController
     //     }
     // }
     //
-    // protected void FixedUpdate()
-    // {
-    //     if (currentState == death)
-    //     {
-    //         
-    //         return;
-    //     }
-    //     if ((currentState == attacking && !AttackController.bAttackFinished) && stopMovementForAttackAnimation)
-    //     {
-    //         MovementController.StopMovement();
-    //         return;
-    //     }
-    //     
-    //     if ((!bInRangeToAttack && bHasPerceivedTarget) && !healthComponentObject.GetIsKnockedBack())
-    //     {
-    //         if (detectedTargetTransform) // safety guard
-    //         {
-    //             if (currentState != chase)
-    //             {
-    //                 setNewState(chase);
-    //             }
-    //             
-    //             chaseComponentObject.UpdateChaseLocation(detectedTargetTransform);
-    //             MovementController.OnTick();
-    //         }
-    //     }
-    //     else if (currentState == patrol && !bIsAttacking)
-    //     {
-    //         MovementController.OnTick();
-    //     }
+    protected override void FixedUpdate()
+    {
+        
+        if (currentState == death)
+        {
+            
+            return;
+        }
+        if ((currentState == attacking && !AttackController.bAttackFinished) && (stopMovementForAttackAnimation && attackComponentObject.bAttackTwoFinished))
+        {
+            
+            MovementController.StopMovement();
+            return;
+        }
+        if (attackComponentObject.bIsDashing)
+        {
+            return;
+        }
+        
+        if ((!bInRangeToAttack && bHasPerceivedTarget) && !healthComponentObject.GetIsKnockedBack())
+        {
+            if (detectedTargetTransform) // safety guard
+            {
+                if (currentState != chase)
+                {
+                    setNewState(chase);
+                }
+                
+                
+                chaseComponentObject.UpdateChaseLocation(detectedTargetTransform);
+                MovementController.OnTick();
+            }
+        }
+        else if (currentState == patrol && !bIsAttacking)
+        {
+            // myAnimator.SetBool("bMoving", true);
+            MovementController.OnTick();
+        }
+    
+    }
     //
-    // }
-    //
-    // public void setNewState(IAiStates newState)
-    // {
-    //     if (currentState == newState) return;
-    //     if (currentState == death)
-    //     {
-    //         // Destroy(gameObject);
-    //         return;
-    //     }
-    //     if (currentState != null) // if the current state is not valid, exit the state
-    //     {
-    //         currentState.Exit();
-    //     }
-    //     
-    //     currentState = newState; // set the current state to the new state 
-    //     currentState.Enter(); // call the currentstate's enter method to truly enable the state
-    //     // Debug.Log(currentState);
-    // }
+    public override void setNewState(IAiStates newState)
+    {
+        if (currentState == newState) return;
+        if (currentState == death)
+        {
+            // Destroy(gameObject);
+            return;
+        }
+        if (currentState != null) // if the current state is not valid, exit the state
+        {
+            currentState.Exit();
+        }
+        
+        currentState = newState; // set the current state to the new state 
+        currentState.Enter(); // call the currentstate's enter method to truly enable the state
+        // Debug.Log(currentState);
+    }
     //
     // protected void OnDeathListener()
     // {
@@ -212,10 +220,14 @@ public class AIControllerSkeletonChild : AIController
     {
         localAttackCounter++;
         // Debug.Log($"{name} attack count triggered");
-        if (localAttackCounter < maxAttacksBeforeReset)
+        if (localAttackCounter > maxAttacksBeforeReset)
         {
+            stopMovementForAttackAnimation = false;
             attackComponentObject.ToggleAttackTwo();
+            localAttackCounter = 0;
         }
+
+        stopMovementForAttackAnimation = true;
     }
 
     // private IEnumerator ResetColor()

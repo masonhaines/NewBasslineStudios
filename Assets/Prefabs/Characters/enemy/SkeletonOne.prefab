@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98541b056a9d4824bb38fb7310281001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIControllerSkeletonChild
-  attackRange: 3
+  attackRange: 8
   stopMovementForAttackAnimation: 1
   maxAttacksBeforeReset: 1
   temporaryMovementSpeed: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314f8ed3415a36f43bdfc197f953cbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
-  moveSpeed: 2
+  moveSpeed: 3.5
   groundOnly: 1
   movementType: 1
   groundLayer:
@@ -206,7 +206,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 576
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -313,7 +313,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.13203949, y: 0.084355384}
+  m_Offset: {x: -0.34446192, y: 0.12021862}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -323,7 +323,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.735921, y: 0.5420709}
+  m_Size: {x: 1.1607656, y: 0.61379683}
   m_EdgeRadius: 0
 --- !u!1 &5678597850490415521
 GameObject:
@@ -498,7 +498,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -7638371965328572490, guid: 69c0f93cace6c05478685f1746a6cbe9, type: 3}
-  m_Color: {r: 0.99300003, g: 0.99300003, b: 0.99300003, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -544,7 +544,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackComponent
   attackerRigidBody: {fileID: 0}
   hitbox: {fileID: 7516741247492783349}
-  attackWaitTime: 1.5
+  attackWaitTime: 1.2
   bNeedsAttackCounter: 1
-  dashScale: 4
-  dashTimeFrame: 0.5
+  dashScale: 10
+  dashTimeFrame: 0.4
+  attackAnimStateName: 

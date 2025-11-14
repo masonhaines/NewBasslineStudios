@@ -65,6 +65,7 @@ public class AIController : MonoBehaviour
         myAnimator = GetComponentInChildren<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
         
         enemyRigidBody = GetComponent<Rigidbody2D>();
+        attackComponentObject.attackerRigidBody = enemyRigidBody;
         healthComponentObject.OnDeathCaller += OnDeathListener;
         healthComponentObject.OnHitCaller += OnHitListener;
         attackComponentObject.AddToAttackCount += OnAttackCounting;
@@ -128,7 +129,7 @@ public class AIController : MonoBehaviour
         }
     }
 
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (currentState == death)
         {
@@ -161,7 +162,7 @@ public class AIController : MonoBehaviour
 
     }
     
-    public void setNewState(IAiStates newState)
+    public virtual void setNewState(IAiStates newState)
     {
         if (currentState == newState) return;
         if (currentState == death)
@@ -176,7 +177,7 @@ public class AIController : MonoBehaviour
         
         currentState = newState; // set the current state to the new state 
         currentState.Enter(); // call the currentstate's enter method to truly enable the state
-        // Debug.Log(currentState);
+        Debug.Log(currentState);
     }
 
     protected void OnDeathListener()
