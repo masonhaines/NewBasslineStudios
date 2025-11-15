@@ -269,10 +269,16 @@ public class PlayerController2D : MonoBehaviour
     void HandleJumping()
     {
         isGrounded = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, groundLayer);
-        animator.SetBool("isJumping", !isGrounded && rb.linearVelocity.y != 0);
+        // animator.SetBool("isJumping", !isGrounded && rb.linearVelocity.y != 0);
 
+        // if (isGrounded)
+        //     jumpsLeft = extraJumps;
+        
         if (isGrounded)
+        {
             jumpsLeft = extraJumps;
+            animator.SetBool("isJumping", false);
+        }
 
         coyoteTimeCounter = isGrounded ? coyoteTime : coyoteTimeCounter - Time.deltaTime;
         jumpBufferCounter -= Time.deltaTime;
@@ -301,6 +307,8 @@ public class PlayerController2D : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         coyoteTimeCounter = 0f;
+        
+        animator.SetBool("isJumping", true);
     }
 
     // -------------------- Melee Attack --------------------

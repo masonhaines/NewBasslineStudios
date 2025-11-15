@@ -13240,13 +13240,17 @@ PrefabInstance:
       propertyPath: knockBackMultiplier
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2529404637501472725, guid: 137397cfcd7e7314ba05ddb124496fc4, type: 3}
+      propertyPath: bHasReachedTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 137397cfcd7e7314ba05ddb124496fc4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.4
+      value: -6.08
       objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 137397cfcd7e7314ba05ddb124496fc4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.11
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 137397cfcd7e7314ba05ddb124496fc4, type: 3}
       propertyPath: m_LocalPosition.z
