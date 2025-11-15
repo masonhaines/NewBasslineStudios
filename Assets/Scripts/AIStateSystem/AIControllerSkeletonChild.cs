@@ -170,23 +170,23 @@ public class AIControllerSkeletonChild : AIController
     
     }
     //
-    public override void setNewState(IAiStates newState)
-    {
-        if (currentState == newState) return;
-        if (currentState == death)
-        {
-            // Destroy(gameObject);
-            return;
-        }
-        if (currentState != null) // if the current state is not valid, exit the state
-        {
-            currentState.Exit();
-        }
-        
-        currentState = newState; // set the current state to the new state 
-        currentState.Enter(); // call the currentstate's enter method to truly enable the state
-        // Debug.Log(currentState);
-    }
+    // public override void setNewState(IAiStates newState)
+    // {
+    //     if (currentState == newState) return;
+    //     if (currentState == death)
+    //     {
+    //         // Destroy(gameObject);
+    //         return;
+    //     }
+    //     if (currentState != null) // if the current state is not valid, exit the state
+    //     {
+    //         currentState.Exit();
+    //     }
+    //     
+    //     currentState = newState; // set the current state to the new state 
+    //     currentState.Enter(); // call the currentstate's enter method to truly enable the state
+    //     // Debug.Log(currentState);
+    // }
     //
     // protected void OnDeathListener()
     // {
@@ -199,20 +199,6 @@ public class AIControllerSkeletonChild : AIController
     //     myAnimator.SetBool("bIsDead", true);
     // }
     //
-    // protected void OnHitListener(Transform target)
-    // {
-    //     myAnimator.SetTrigger("tOnHit");
-    //     PerceptionTargetFound(target);
-    //
-    //     if (!RecolorOnHit) return;
-    //     if (sprite)
-    //     {
-    //         sprite.color = Color.red;
-    //     }
-    //     
-    //     StartCoroutine(ResetColor());
-    //     
-    // }
     
     
     // called everytime the attack trigger is pulled
@@ -223,7 +209,7 @@ public class AIControllerSkeletonChild : AIController
         if (localAttackCounter > maxAttacksBeforeReset)
         {
             stopMovementForAttackAnimation = false;
-            attackComponentObject.ToggleAttackTwo();
+            attackComponentObject.StartAttackTwo();
             localAttackCounter = 0;
         }
 

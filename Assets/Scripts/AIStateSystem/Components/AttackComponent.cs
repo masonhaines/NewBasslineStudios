@@ -56,14 +56,7 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
             AddToAttackCount.Invoke();
         }
     }
-
-    public void ForceAttack()
-    {
-        if (animator != null && bAttackFinished)
-        {
-            animator.Play(attackAnimStateName,0,0);
-        }
-    }
+    
     private IEnumerator AttackFinished()
     {
         yield return new WaitForSeconds(attackWaitTime);
@@ -71,19 +64,18 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
     }
     
     // this needs to be called after the attack two animtion to switch attack two off or attacks will stop
-    public void ToggleAttackTwo()  
+    public void StartAttackTwo()
     {
-        if (!animator.GetBool("bAttackTypeTwo"))
-        {
-            bAttackTwoFinished = false;
-            animator.SetBool("bAttackTypeTwo", true);
-        }
-        else
-        {
-            bAttackTwoFinished = true;
-            animator.SetBool("bAttackTypeTwo", false);
-        }
+        bAttackTwoFinished = false;
+        animator.SetBool("bAttackTypeTwo", true);
     }
+
+    public void EndAttackTwo()
+    {
+        bAttackTwoFinished = true;
+        animator.SetBool("bAttackTypeTwo", false);
+    }
+
     
     public void StartDash()
     {

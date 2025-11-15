@@ -89,11 +89,11 @@ public class HealthComponent : MonoBehaviour, IDamageable
     [SerializeField] private float knockBackMultiplier = 1; // this is a multiplier for the knockback force applied when taking damage
     [SerializeField] private float TimeTillDestroy = 2.0f;
 
-    [SerializeField] private bool canStunLock = true;
+    [SerializeField] private bool noStunLock = true;
     [SerializeField] private float timeBetweenDamage = 1.0f;
     private int currentHealth;
     private KnockBack knockBack;
-    private bool isInvulnerable = false;
+    public bool isInvulnerable = false;
 
     private void Awake() // Awake is called when an enabled script instance is being loaded.
     {
@@ -103,7 +103,7 @@ public class HealthComponent : MonoBehaviour, IDamageable
 
     public void Damage(int damageAmount, GameObject damageSource, float knockBackAmount, float knockBackLiftAmount)
     {
-        if (canStunLock)
+        if (noStunLock)
         {
             if (isInvulnerable)
             {
