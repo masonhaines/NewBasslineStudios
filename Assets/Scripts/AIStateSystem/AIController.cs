@@ -38,7 +38,7 @@ public class AIController : MonoBehaviour
     public Animator myAnimator;
     
     
-    protected IAiStates currentState;
+    public IAiStates currentState;
     public ICoreAttack AttackController;
     
     public bool bHasPerceivedTarget;
@@ -191,11 +191,11 @@ public class AIController : MonoBehaviour
         myAnimator.SetBool("bIsDead", true);
     }
 
-    protected void OnHitListener(Transform target)
+    protected virtual void OnHitListener(Transform target)
     {
         myAnimator.SetTrigger("tOnHit");
         PerceptionTargetFound(target);
-
+        
         if (!RecolorOnHit) return;
         if (sprite)
         {
@@ -204,6 +204,10 @@ public class AIController : MonoBehaviour
         
         StartCoroutine(ResetColor());
         
+    }
+
+    protected virtual void OnHitAnimChange()
+    {
     }
 
     protected virtual void OnAttackCounting()
