@@ -11,6 +11,7 @@ public class DamageComponent : MonoBehaviour
     [SerializeField] private float knockBackLiftAmount;
     [SerializeField] private bool bIsEnabled = false;
     [SerializeField] private float timeBetweenAttacks = 0.2f;
+    [SerializeField] private bool debugging;
     
 
 
@@ -32,9 +33,12 @@ public class DamageComponent : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        // Debug.Log(other.gameObject.name);
+        if (debugging)
+        {
+            Debug.Log(other.gameObject.name);
+        }
         if (!bIsEnabled) return;
         
         if (other.gameObject == damageSource || (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Enemy")) ) {

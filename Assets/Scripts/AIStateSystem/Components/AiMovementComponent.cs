@@ -21,17 +21,19 @@ public class AiMovementComponent : MonoBehaviour
     private Rigidbody2D moversRigidbody2D;
     private Vector2 targetLocation;
     public LayerMask groundLayer;
-    public PolygonCollider2D groundCollider;
+    public Collider2D groundCollider;
     
     private Vector2 lastKnownPosition;
     public bool bHasReachedTarget;
+    public float facingDirection { get; private set; }
+
 
 
 
     private void Awake()
     {
         aiController = GetComponent<AIController>();
-        groundCollider = GetComponent<PolygonCollider2D>();
+        groundCollider = GetComponent<Collider2D>();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -82,10 +84,12 @@ public class AiMovementComponent : MonoBehaviour
             case > 0.1f:
                 // SpriteRenderer.flipX = true; // only flips sprite
                 transform.localScale = new Vector3(1, 1, 1);  // face left
+                facingDirection = 1;
                 break;
             case < -0.1f:
                 // SpriteRenderer.flipX = false; // only flips sprite
                 transform.localScale = new Vector3(-1, 1, 1);  // face left
+                facingDirection = -1;
                 break;
         }
         
@@ -101,6 +105,7 @@ public class AiMovementComponent : MonoBehaviour
         {
             return;
         }
+        
         if (!bHasReachedTarget && (!groundOnly || groundCollider.IsTouchingLayers(groundLayer)))
         {
             Moving();

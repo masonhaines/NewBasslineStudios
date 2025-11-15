@@ -88,8 +88,12 @@ public class HealthComponent : MonoBehaviour, IDamageable
     [SerializeField] private int maxHealth;
     [SerializeField] private float knockBackMultiplier = 1; // this is a multiplier for the knockback force applied when taking damage
     [SerializeField] private float TimeTillDestroy = 2.0f;
+
+    [SerializeField] private bool noStunLock = true;
+    [SerializeField] private float timeBetweenDamage = 1.0f;
     private int currentHealth;
     private KnockBack knockBack;
+    public bool isInvulnerable = false;
 
     private void Awake() // Awake is called when an enabled script instance is being loaded.
     {
@@ -99,6 +103,18 @@ public class HealthComponent : MonoBehaviour, IDamageable
 
     public void Damage(int damageAmount, GameObject damageSource, float knockBackAmount, float knockBackLiftAmount)
     {
+        if (noStunLock)
+        {
+            if (isInvulnerable)
+            {
+                return;
+            }
+            isInvulnerable = true;
+            StartCoroutine(InvulnerabilityTimer());
+        }
+
+        
+
         currentHealth -= damageAmount;
         OnHit(damageSource.transform);
         knockBack.CreateKnockBack(damageSource.transform, knockBackAmount + knockBackMultiplier, knockBackLiftAmount);
@@ -137,5 +153,11 @@ public class HealthComponent : MonoBehaviour, IDamageable
     private void OnHit(Transform hitTransform)
     {
         OnHitCaller?.Invoke(hitTransform);
+    }
+
+    private IEnumerator InvulnerabilityTimer()
+    {
+        yield return new WaitForSeconds(timeBetweenDamage);
+        isInvulnerable = false;
     }
 }

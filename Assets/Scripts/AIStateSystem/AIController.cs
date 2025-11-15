@@ -12,11 +12,14 @@ public class AIController : MonoBehaviour
     [SerializeField] public bool stopMovementForAttackAnimation = true;
     
     // only used to modify speed and other attributes like damage or health via co routines
-    [SerializeField] private int maxAttacksBeforeReset = 0;
+    [SerializeField] protected int maxAttacksBeforeReset = 0;
     [SerializeField] public float temporaryMovementSpeed = 0f;
-
-    private float savedMoveSpeed;
-    private int attackCounter;
+    [SerializeField] public bool RecolorOnHit = true;
+    
+    private SpriteRenderer sprite;
+    private Color originalColor;
+    protected float savedMoveSpeed;
+    protected int localAttackCounter;
 
 
     public PatrolState patrol;
@@ -30,20 +33,20 @@ public class AIController : MonoBehaviour
     public HealthComponent healthComponentObject;
     public AiMovementComponent MovementController;
     
-    
-
     public Rigidbody2D enemyRigidBody;
     public Transform detectedTargetTransform;
     public Animator myAnimator;
     
     
-    protected IAiStates currentState;
+    public IAiStates currentState;
     public ICoreAttack AttackController;
     
     public bool bHasPerceivedTarget;
     public bool bIsAttacking;
     public bool bInRangeToAttack;
     // public bool bIsDead;
+    
+
 
     
     
@@ -62,16 +65,17 @@ public class AIController : MonoBehaviour
         myAnimator = GetComponentInChildren<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
         
         enemyRigidBody = GetComponent<Rigidbody2D>();
+        attackComponentObject.attackerRigidBody = enemyRigidBody;
         healthComponentObject.OnDeathCaller += OnDeathListener;
         healthComponentObject.OnHitCaller += OnHitListener;
         attackComponentObject.AddToAttackCount += OnAttackCounting;
-        
-        
-        AttackController?.Initialize(myAnimator); // if the ai controller has a ref to, call initialize 
-    }
 
-    private SpriteRenderer sprite;
-    private Color originalColor;
+
+        AttackController?.Initialize(myAnimator); // if the ai controller has a ref to, call initialize 
+        
+        sprite = GetComponentInChildren<SpriteRenderer>();
+        originalColor = sprite.color;
+    }
     protected void Start()
     {
         patrol = new PatrolState(this);
@@ -84,8 +88,7 @@ public class AIController : MonoBehaviour
         savedMoveSpeed = MovementController.GetMoveSpeed();
         setNewState(patrol);
         
-        sprite = GetComponentInChildren<SpriteRenderer>();
-        originalColor = sprite.color;
+
     }
 
     public virtual void PerceptionTargetFound(Transform target)
@@ -126,7 +129,7 @@ public class AIController : MonoBehaviour
         }
     }
 
-    protected void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (currentState == death)
         {
@@ -159,7 +162,7 @@ public class AIController : MonoBehaviour
 
     }
     
-    public void setNewState(IAiStates newState)
+    public virtual void setNewState(IAiStates newState)
     {
         if (currentState == newState) return;
         if (currentState == death)
@@ -174,7 +177,7 @@ public class AIController : MonoBehaviour
         
         currentState = newState; // set the current state to the new state 
         currentState.Enter(); // call the currentstate's enter method to truly enable the state
-        // Debug.Log(currentState);
+        Debug.Log(currentState);
     }
 
     protected void OnDeathListener()
@@ -182,33 +185,46 @@ public class AIController : MonoBehaviour
         // this really should set the enemy location to somewhere else and a system is added in the scene and checks 
         // on tick for objects with enemy tag and if they are dead.
         setNewState(death);
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("enemy"), LayerMask.NameToLayer("Player"), true);
+        // Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("enemy"), LayerMask.NameToLayer("Player"), true);
+        // GetComponent<Collider2D>().enabled = f;        
+        gameObject.layer = LayerMask.NameToLayer("dead");
         myAnimator.SetBool("bIsDead", true);
     }
 
-    protected void OnHitListener(Transform target)
+    protected virtual void OnHitListener(Transform target)
     {
         myAnimator.SetTrigger("tOnHit");
-        sprite.color = Color.red;
-        StartCoroutine(ResetColor());
         PerceptionTargetFound(target);
+        
+        if (!RecolorOnHit) return;
+        if (sprite)
+        {
+            sprite.color = Color.red;
+        }
+        
+        StartCoroutine(ResetColor());
+        
     }
 
-    private void OnAttackCounting()
+    protected virtual void OnHitAnimChange()
+    {
+    }
+
+    protected virtual void OnAttackCounting()
     {
         
         
-        attackCounter++;
+        localAttackCounter++;
         // Debug.Log($"{name} attack count triggered");
         // Only modify speed when below threshold
-        if (attackCounter < maxAttacksBeforeReset)
+        if (localAttackCounter < maxAttacksBeforeReset)
         {
             MovementController.SetMoveSpeed(temporaryMovementSpeed);
         }
         else
         {
             MovementController.SetMoveSpeed(savedMoveSpeed);
-            attackCounter = 0;
+            localAttackCounter = 0;
         }
     }
 

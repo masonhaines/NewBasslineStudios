@@ -83,20 +83,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIController
   attackRange: 9
-  stopMovementForAttackAnimation: 1
+  stopMovementForAttackAnimation: 0
   maxAttacksBeforeReset: 2
-  temporaryMovementSpeed: 6
+  temporaryMovementSpeed: 8
+  RecolorOnHit: 0
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
   healthComponentObject: {fileID: 0}
   MovementController: {fileID: 0}
+  enemyRigidBody: {fileID: 0}
   detectedTargetTransform: {fileID: 0}
   myAnimator: {fileID: 0}
   bHasPerceivedTarget: 0
   bIsAttacking: 0
   bInRangeToAttack: 0
-  bIsDead: 0
 --- !u!114 &2136153642964654598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,8 +111,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   destroyOnDeath: 1
-  maxHealth: 10
-  knockBackMultiplier: 1
+  maxHealth: 15
+  knockBackMultiplier: 2
+  TimeTillDestroy: 2
+  canStunLock: 0
+  timeBetweenDamage: 1.2
 --- !u!114 &2529404637501472725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,9 +294,10 @@ MonoBehaviour:
   damageAmount: 1
   bProjectile: 0
   knockBackAmount: 8.5
-  knockBackLiftAmount: 1.35
+  knockBackLiftAmount: 1.5
   bIsEnabled: 1
   timeBetweenAttacks: 0.2
+  debugging: 0
 --- !u!60 &4188962441292723353
 PolygonCollider2D:
   m_ObjectHideFlags: 0
