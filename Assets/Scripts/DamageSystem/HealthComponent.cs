@@ -160,4 +160,14 @@ public class HealthComponent : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(timeBetweenDamage);
         isInvulnerable = false;
     }
+
+    public void Invulnerable()
+    {
+        isInvulnerable = true;
+    }
+
+    public void NotInvulnerable()
+    {
+        isInvulnerable = false;
+    }
 }

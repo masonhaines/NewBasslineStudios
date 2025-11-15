@@ -21,6 +21,8 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
     public bool bAttackTwoFinished { get; set; } = false;
     private bool bInitialized = false;
     public bool bIsDashing { get; set; } = false;
+    
+    public bool bAttackTwo;
 
     public void Initialize(Animator animatorRef)
     {
@@ -37,6 +39,16 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
         {
             return;
         }
+        else if (bAttackTwo)
+        {
+            StartAttackTwo();
+        }
+        
+        AttackOne();
+    }
+
+    public void AttackOne()
+    {
         bAttackFinished = false;
         animator.SetTrigger("tCanAttackTarget");
     }
@@ -66,12 +78,19 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
     // this needs to be called after the attack two animtion to switch attack two off or attacks will stop
     public void StartAttackTwo()
     {
+        if (!bAttackFinished)
+        {
+            return;
+        }
+        bAttackFinished = false;
+        animator.SetTrigger("tCanAttackTarget");
         bAttackTwoFinished = false;
         animator.SetBool("bAttackTypeTwo", true);
     }
 
     public void EndAttackTwo()
     {
+        bAttackFinished = true;
         bAttackTwoFinished = true;
         animator.SetBool("bAttackTypeTwo", false);
     }

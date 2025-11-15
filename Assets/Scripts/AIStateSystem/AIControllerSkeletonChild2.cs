@@ -6,9 +6,8 @@ using UnityEngine;
 
 // SET UP
 // collider that is keeping the enemy from falling through the map is going to need to have the noFriction material
-public class AIControllerSkeletonChild : AIController
+public class AIControllerSkeletonChild2 : AIController
 {
-    
     protected override void FixedUpdate()
     {
         
@@ -50,19 +49,27 @@ public class AIControllerSkeletonChild : AIController
     
     }
     
-    // called everytime the attack trigger is pulled
-    protected override void OnAttackCounting()
-    {
-        localAttackCounter++;
-        // Debug.Log($"{name} attack count triggered");
-        if (localAttackCounter > maxAttacksBeforeReset)
-        {
-            stopMovementForAttackAnimation = false;
-            attackComponentObject.StartAttackTwo();
-            localAttackCounter = 0;
-        }
-
-        stopMovementForAttackAnimation = true;
-    }
+    // public bool onlyAttackTwo;
+    // protected override void OnAttackCounting()
+    // {
+    //     if (onlyAttackTwo)
+    //     {
+    //         stopMovementForAttackAnimation = false;
+    //         attackComponentObject.StartAttackTwo();
+    //     }
+    //     else
+    //     {
+    //         localAttackCounter++;
+    //         // Debug.Log($"{name} attack count triggered");
+    //         if (localAttackCounter > maxAttacksBeforeReset)
+    //         {
+    //             stopMovementForAttackAnimation = false;
+    //             attackComponentObject.StartAttackTwo();
+    //             localAttackCounter = 0;
+    //         }
+    //
+    //         stopMovementForAttackAnimation = true;
+    //     }
+    // }
     
 }

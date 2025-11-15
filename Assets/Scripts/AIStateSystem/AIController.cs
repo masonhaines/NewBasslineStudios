@@ -15,6 +15,7 @@ public class AIController : MonoBehaviour
     [SerializeField] protected int maxAttacksBeforeReset = 0;
     [SerializeField] public float temporaryMovementSpeed = 0f;
     [SerializeField] public bool RecolorOnHit = true;
+    [SerializeField] public Color newColor;
     
     private SpriteRenderer sprite;
     private Color originalColor;
@@ -199,15 +200,11 @@ public class AIController : MonoBehaviour
         if (!RecolorOnHit) return;
         if (sprite)
         {
-            sprite.color = Color.red;
+            setColor();
         }
         
         StartCoroutine(ResetColor());
         
-    }
-
-    protected virtual void OnHitAnimChange()
-    {
     }
 
     protected virtual void OnAttackCounting()
@@ -228,10 +225,20 @@ public class AIController : MonoBehaviour
         }
     }
 
+    public void setColor()
+    {
+        sprite.color = newColor;
+    }
+
+    public void RevertColor()
+    {
+        sprite.color = originalColor;   
+    }
+
     private IEnumerator ResetColor()
     {
         yield return new WaitForSeconds(0.6f);
-        sprite.color = originalColor;
+        RevertColor();
     }
     
 }
