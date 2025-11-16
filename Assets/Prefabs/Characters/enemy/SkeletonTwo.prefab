@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 2865037897074988624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.57, y: -3.07, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58,10 +58,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIControllerSkeletonChild2
   attackRange: 14
-  stopMovementForAttackAnimation: 1
+  stopMovementForAttackAnimation: 0
   maxAttacksBeforeReset: 0
   temporaryMovementSpeed: 0
   RecolorOnHit: 0
+  newColor: {r: 0.4862745, g: 0.12156863, b: 0.12156863, a: 1}
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
@@ -87,10 +88,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   destroyOnDeath: 1
   maxHealth: 50
-  knockBackMultiplier: 3
+  knockBackMultiplier: 6
   TimeTillDestroy: 2
-  noStunLock: 0
-  timeBetweenDamage: 2.5
+  bCanStunLock: 0
+  timeBetweenDamage: 1.1
   isInvulnerable: 0
 --- !u!114 &5927526571898653656
 MonoBehaviour:
@@ -106,12 +107,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackComponent
   attackerRigidBody: {fileID: 648877593986698397}
   hitbox: {fileID: 8839787587671821122}
-  attackWaitTime: 2
-  bNeedsAttackCounter: 1
-  dashScale: 15
+  attackWaitTime: 3.7
+  bNeedsAttackCounter: 0
+  dashScale: 12
   dashTimeFrame: 0.9
-  attackAnimStateName: SkeletonAttackOne
   bAttackTwo: 1
+  onlySecondaryAttack: 1
 --- !u!114 &5707079512953044099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314f8ed3415a36f43bdfc197f953cbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
-  moveSpeed: 3.5
+  moveSpeed: 2
   groundOnly: 1
   movementType: 1
   groundLayer:
@@ -158,9 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6db763eb878d7b469925d65504ff0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolComponent
-  patrolPointLocations:
-  - {fileID: 0}
-  - {fileID: 0}
+  patrolPointLocations: []
   waitTimeBetweenPatrolPoints: 0
 --- !u!114 &6483009887337193017
 MonoBehaviour:
@@ -320,7 +319,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -7638371965328572490, guid: 69c0f93cace6c05478685f1746a6cbe9, type: 3}
-  m_Color: {r: 0.48787057, g: 0.12295387, b: 0.12295387, a: 1}
+  m_Color: {r: 0.48787057, g: 0.28627452, b: 0.28627452, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -416,7 +415,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.024523228, y: 0.084729075}
+  m_Offset: {x: -0.14895004, y: 0.084729075}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -426,7 +425,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.2766447, y: 0.5428177}
+  m_Size: {x: 1.6235913, y: 0.5428177}
   m_EdgeRadius: 0
 --- !u!1 &9187088121752116074
 GameObject:

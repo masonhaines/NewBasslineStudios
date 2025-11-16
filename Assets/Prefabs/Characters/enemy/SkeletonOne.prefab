@@ -85,10 +85,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIControllerSkeletonChild
   attackRange: 8
-  stopMovementForAttackAnimation: 1
+  stopMovementForAttackAnimation: 0
   maxAttacksBeforeReset: 1
   temporaryMovementSpeed: 0
   RecolorOnHit: 0
+  newColor: {r: 0.53638804, g: 0.50241196, b: 0.50241196, a: 1}
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
@@ -116,8 +117,8 @@ MonoBehaviour:
   maxHealth: 3
   knockBackMultiplier: 1.5
   TimeTillDestroy: 2
-  noStunLock: 0
-  timeBetweenDamage: 2.5
+  bCanStunLock: 1
+  timeBetweenDamage: 0
   isInvulnerable: 0
 --- !u!114 &2529404637501472725
 MonoBehaviour:
@@ -131,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314f8ed3415a36f43bdfc197f953cbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
-  moveSpeed: 3.5
+  moveSpeed: 2
   groundOnly: 1
   movementType: 1
   groundLayer:
@@ -266,11 +267,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackComponent
   attackerRigidBody: {fileID: 6245015259390129584}
   hitbox: {fileID: 7516741247492783349}
-  attackWaitTime: 1.5
+  attackWaitTime: 3.5
   bNeedsAttackCounter: 1
-  dashScale: 12
-  dashTimeFrame: 0.8
-  attackAnimStateName: SkeletonAttackOne
+  dashScale: 6
+  dashTimeFrame: 0.55
+  bAttackTwo: 0
 --- !u!212 &8685656740800268420
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -415,7 +416,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.024523228, y: 0.084729075}
+  m_Offset: {x: -0.29041135, y: 0.11231178}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -425,7 +426,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.2766447, y: 0.5428177}
+  m_Size: {x: 1.9065139, y: 0.4876523}
   m_EdgeRadius: 0
 --- !u!1 &5678597850490415521
 GameObject:

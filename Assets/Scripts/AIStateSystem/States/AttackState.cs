@@ -15,9 +15,13 @@ public class AttackState : IAiStates
     public void Enter()
     {
         
-        aiController.AttackController.StartAttack();
+        if (!aiController.AttackController.bAttacking &&
+            !aiController.AttackController.bPrimaryAttackActive)
+        {
+            aiController.AttackController.StartAttack();
+            // Debug.Log("Attacking");
+        }
         
-        // Debug.Log("Attacking");
     }
 
     public void PollPerception()
@@ -33,14 +37,18 @@ public class AttackState : IAiStates
             return;
         }
         
-        if (aiController.AttackController.bAttackFinished)
+        if (!aiController.AttackController.bAttacking &&
+            !aiController.AttackController.bPrimaryAttackActive)
         {
+            Debug.Log($"[AttackState] Ready to StartAttack at {Time.time}, " +
+                      $"attacking={aiController.AttackController.bAttacking}, " +
+                      $"primaryActive={aiController.AttackController.bPrimaryAttackActive}");
             aiController.AttackController.StartAttack();
         }
     }
 
     public void Exit()
     {
-        aiController.AttackController.bAttackFinished = true;
+        // aiController.AttackController.bAttackFinished = true;
     }
 }

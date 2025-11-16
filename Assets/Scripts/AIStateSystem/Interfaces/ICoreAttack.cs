@@ -9,7 +9,8 @@ public interface ICoreAttack
     void Initialize(Animator animatorRef);
     
     // Read-only property for client to check if a new attack can be started.
-    bool bAttackFinished { get; set; }
+    bool bPrimaryAttackActive { get; set; }
+    bool bAttacking { get; set; }
     
   
 }

@@ -8,19 +8,23 @@ using UnityEngine;
 // collider that is keeping the enemy from falling through the map is going to need to have the noFriction material
 public class AIControllerSkeletonChild : AIController
 {
-    
+    protected override void Awake()
+    {
+
+       
+        base.Awake(); 
+        attackComponentObject = GetComponent<AttackComponent>();
+        AttackController = attackComponentObject;
+        AttackController?.Initialize(myAnimator);
+    }
     protected override void FixedUpdate()
     {
+        
+        Debug.Log(attackComponentObject.bPrimaryAttackActive);
         
         if (currentState == death)
         {
             
-            return;
-        }
-        if ((currentState == attacking && !AttackController.bAttackFinished) && (stopMovementForAttackAnimation && attackComponentObject.bAttackTwoFinished))
-        {
-            
-            MovementController.StopMovement();
             return;
         }
         if (attackComponentObject.bIsDashing)
@@ -55,14 +59,17 @@ public class AIControllerSkeletonChild : AIController
     {
         localAttackCounter++;
         // Debug.Log($"{name} attack count triggered");
-        if (localAttackCounter > maxAttacksBeforeReset)
+        if (localAttackCounter >= maxAttacksBeforeReset )
         {
-            stopMovementForAttackAnimation = false;
-            attackComponentObject.StartAttackTwo();
+            // Debug.Log("running attack counter logic");
+            
+            // attackComponentObject.bAttackFinished = true;
+            // attackComponentObject.StartAttackTwo();
+            attackComponentObject.bAttackTwo = true;
             localAttackCounter = 0;
         }
 
-        stopMovementForAttackAnimation = true;
+       
     }
     
 }

@@ -25,7 +25,6 @@ public class AiMovementComponent : MonoBehaviour
     
     private Vector2 lastKnownPosition;
     public bool bHasReachedTarget;
-    public float facingDirection { get; private set; }
 
 
 
@@ -75,23 +74,23 @@ public class AiMovementComponent : MonoBehaviour
             return;
         }
         
-        // ***** Chat helped with flip lock and delta time toggling
-        Vector2 direction = targetLocation - moversRigidbody2D.position;
-        
-        // Debug.Log(direction.x + "-----------------------------------------Direction" );
-        switch (direction.x)
-        {
-            case > 0.1f:
-                // SpriteRenderer.flipX = true; // only flips sprite
-                transform.localScale = new Vector3(1, 1, 1);  // face left
-                facingDirection = 1;
-                break;
-            case < -0.1f:
-                // SpriteRenderer.flipX = false; // only flips sprite
-                transform.localScale = new Vector3(-1, 1, 1);  // face left
-                facingDirection = -1;
-                break;
-        }
+        aiController.FlipSprite();
+        // Vector2 direction = targetLocation - moversRigidbody2D.position;
+        //
+        // // Debug.Log(direction.x + "-----------------------------------------Direction" );
+        // switch (direction.x)
+        // {
+        //     case > 0.1f:
+        //         // SpriteRenderer.flipX = true; // only flips sprite
+        //         transform.localScale = new Vector3(1, 1, 1);  // face left
+        //         facingDirection = 1;
+        //         break;
+        //     case < -0.1f:
+        //         // SpriteRenderer.flipX = false; // only flips sprite
+        //         transform.localScale = new Vector3(-1, 1, 1);  // face left
+        //         facingDirection = -1;
+        //         break;
+        // }
         
         // where movement is actually happening 
         moversRigidbody2D.MovePosition(moveTowardsPosition);

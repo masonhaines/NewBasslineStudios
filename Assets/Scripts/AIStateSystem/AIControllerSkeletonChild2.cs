@@ -8,6 +8,14 @@ using UnityEngine;
 // collider that is keeping the enemy from falling through the map is going to need to have the noFriction material
 public class AIControllerSkeletonChild2 : AIController
 {
+    
+    protected override void Awake()
+    {
+        base.Awake(); 
+        attackComponentObject = GetComponent<AttackComponent>();
+        AttackController = attackComponentObject;
+        AttackController?.Initialize(myAnimator);
+    }
     protected override void FixedUpdate()
     {
         
@@ -16,12 +24,7 @@ public class AIControllerSkeletonChild2 : AIController
             
             return;
         }
-        if ((currentState == attacking && !AttackController.bAttackFinished) && (stopMovementForAttackAnimation && attackComponentObject.bAttackTwoFinished))
-        {
-            
-            MovementController.StopMovement();
-            return;
-        }
+     
         if (attackComponentObject.bIsDashing)
         {
             return;

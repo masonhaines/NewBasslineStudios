@@ -17,8 +17,8 @@ public class AIController : MonoBehaviour
     [SerializeField] public bool RecolorOnHit = true;
     [SerializeField] public Color newColor;
     
-    private SpriteRenderer sprite;
-    private Color originalColor;
+    protected SpriteRenderer sprite;
+    protected Color originalColor;
     protected float savedMoveSpeed;
     protected int localAttackCounter;
 
@@ -45,6 +45,8 @@ public class AIController : MonoBehaviour
     public bool bHasPerceivedTarget;
     public bool bIsAttacking;
     public bool bInRangeToAttack;
+    public float facingDirection { get; private set; }
+
     // public bool bIsDead;
     
 
@@ -89,13 +91,19 @@ public class AIController : MonoBehaviour
         savedMoveSpeed = MovementController.GetMoveSpeed();
         setNewState(patrol);
         
-
+        // originalColor = sprite.color;
+        
     }
 
     public virtual void PerceptionTargetFound(Transform target)
     {
+        
         bHasPerceivedTarget = true;
-        detectedTargetTransform = target;
+        // if (detectedTargetTransform == null)
+        // {
+            detectedTargetTransform = target;
+        // }
+        FlipSprite();
         // Debug.Log("Target found: " + detectedTargetTransform.name);
     }
 
@@ -111,7 +119,13 @@ public class AIController : MonoBehaviour
     {
         if (currentState == death) return;
         currentState.PollPerception();
-
+        
+        
+        if (detectedTargetTransform != null && !attackComponentObject.bAttacking)
+        {
+            FlipSprite();
+        }
+        
         if (bHasPerceivedTarget && detectedTargetTransform is not null)
         {
             
@@ -137,7 +151,7 @@ public class AIController : MonoBehaviour
             
             return;
         }
-        if ((currentState == attacking && !AttackController.bAttackFinished) && stopMovementForAttackAnimation)
+        if ((currentState == attacking && AttackController.bPrimaryAttackActive) && stopMovementForAttackAnimation)
         {
             MovementController.StopMovement();
             return;
@@ -178,7 +192,7 @@ public class AIController : MonoBehaviour
         
         currentState = newState; // set the current state to the new state 
         currentState.Enter(); // call the currentstate's enter method to truly enable the state
-        Debug.Log(currentState);
+        // Debug.Log(currentState);
     }
 
     protected void OnDeathListener()
@@ -207,6 +221,33 @@ public class AIController : MonoBehaviour
         
     }
 
+    public void FlipSprite()
+    {
+        
+        if (!detectedTargetTransform) return;
+        if (attackComponentObject.bAttacking) return;
+        
+        Vector2 direction = new Vector2(
+                                detectedTargetTransform.position.x, 
+                                detectedTargetTransform.position.y 
+                                ) - enemyRigidBody.position;
+        
+        // Debug.Log(direction.x + "-----------------------------------------Direction" );
+        switch (direction.x)
+        {
+            case > 0.05f:
+                // SpriteRenderer.flipX = true; // only flips sprite
+                transform.localScale = new Vector3(1, 1, 1);  // face left
+                facingDirection = 1;
+                break;
+            case < -0.05f:
+                // SpriteRenderer.flipX = false; // only flips sprite
+                transform.localScale = new Vector3(-1, 1, 1);  // face left
+                facingDirection = -1;
+                break;
+        }
+    }
+
     protected virtual void OnAttackCounting()
     {
         
@@ -232,7 +273,9 @@ public class AIController : MonoBehaviour
 
     public void RevertColor()
     {
-        sprite.color = originalColor;   
+        sprite.color = originalColor;  
+        // StartCoroutine(ResetColor());
+        // Debug.Log("I'm reverting the color ");
     }
 
     private IEnumerator ResetColor()
