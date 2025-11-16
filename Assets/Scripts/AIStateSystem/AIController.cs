@@ -209,6 +209,7 @@ public class AIController : MonoBehaviour
     protected virtual void OnHitListener(Transform target)
     {
         myAnimator.SetTrigger("tOnHit");
+        Debug.Log("I was hit ");
         PerceptionTargetFound(target);
         
         if (!RecolorOnHit) return;

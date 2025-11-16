@@ -92,6 +92,7 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
     {
         hitbox.enabled = false;
         bAttacking = false;
+        bPrimaryAttackActive = false;
     }
     
     

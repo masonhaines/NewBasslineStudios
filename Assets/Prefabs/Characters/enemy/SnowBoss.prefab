@@ -85,8 +85,9 @@ MonoBehaviour:
   attackRange: 9
   stopMovementForAttackAnimation: 0
   maxAttacksBeforeReset: 2
-  temporaryMovementSpeed: 8
+  temporaryMovementSpeed: 6
   RecolorOnHit: 0
+  newColor: {r: 0, g: 0, b: 0, a: 0}
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
@@ -111,11 +112,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   destroyOnDeath: 1
-  maxHealth: 15
+  maxHealth: 10
   knockBackMultiplier: 2
-  TimeTillDestroy: 2
-  canStunLock: 0
-  timeBetweenDamage: 1.2
+  TimeTillDestroy: 5
+  bCanStunLock: 0
+  timeBetweenDamage: 2.5
+  isInvulnerable: 0
 --- !u!114 &2529404637501472725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +194,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 576
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -569,6 +571,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254ee52e2af04cc494068619b9884ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackComponent
+  attackerRigidBody: {fileID: 0}
   hitbox: {fileID: 4188962441292723353}
   attackWaitTime: 1
   bNeedsAttackCounter: 1
+  dashScale: 1
+  dashTimeFrame: 1
+  bAttackTwo: 0
+  onlySecondaryAttack: 0
