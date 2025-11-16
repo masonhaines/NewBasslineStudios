@@ -46,10 +46,10 @@ public class RespawnManager : MonoBehaviour
 
     private IEnumerator RespawnRoutine()
     {
-        // freeze input while “dead”
+        // freeze input while “dead” so we dont move after death
         if (playerMovement) playerMovement.enabled = false;
 
-        // small delay for death animation/sfx
+        // small delay for death animation/sfx this should mathc whatver u have for animation 
         yield return new WaitForSeconds(respawnDelay);
 
         // ensure game not paused
@@ -63,7 +63,7 @@ public class RespawnManager : MonoBehaviour
         if (rb2D) rb2D.linearVelocity = Vector2.zero;
         if (rb3D) rb3D.linearVelocity = Vector3.zero;
 
-        // refill health (helper you added)
+        // refill health so we can respawn with full
         if (playerHealth != null)
             playerHealth.RestoreFullHealth();
 

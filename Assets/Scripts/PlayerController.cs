@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     // [SerializeField] private float accelerationSpeed = 5f;
     [SerializeField] private float jumpForce = 25f;
     [SerializeField] private int maxJumps = 2; // inlcudes 1
-    [SerializeField] private float coyoteTime = 0.1f; // forgiveness window
+    [SerializeField] private float coyoteTime = 0.1f; // forgiveness window THIS IS FROM TEACHER
 
 
     private PlayerControls playerControls;
