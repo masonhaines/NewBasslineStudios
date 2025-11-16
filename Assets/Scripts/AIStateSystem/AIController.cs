@@ -202,7 +202,7 @@ public class AIController : MonoBehaviour
         setNewState(death);
         // Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("enemy"), LayerMask.NameToLayer("Player"), true);
         // GetComponent<Collider2D>().enabled = f;        
-        gameObject.layer = LayerMask.NameToLayer("dead");
+        // gameObject.layer = LayerMask.NameToLayer("dead");
         myAnimator.SetBool("bIsDead", true);
     }
 

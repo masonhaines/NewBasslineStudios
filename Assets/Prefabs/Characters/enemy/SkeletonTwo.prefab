@@ -87,9 +87,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   destroyOnDeath: 1
-  maxHealth: 50
+  maxHealth: 7
   knockBackMultiplier: 6
-  TimeTillDestroy: 2
+  TimeTillDestroy: 6
   bCanStunLock: 0
   timeBetweenDamage: 1.1
   isInvulnerable: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackComponent
   attackerRigidBody: {fileID: 648877593986698397}
   hitbox: {fileID: 8839787587671821122}
-  attackWaitTime: 3.7
+  attackWaitTime: 2.9
   bNeedsAttackCounter: 0
   dashScale: 12
   dashTimeFrame: 0.9

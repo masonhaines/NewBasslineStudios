@@ -116,7 +116,7 @@ MonoBehaviour:
   destroyOnDeath: 1
   maxHealth: 3
   knockBackMultiplier: 1.5
-  TimeTillDestroy: 3
+  TimeTillDestroy: 5
   bCanStunLock: 1
   timeBetweenDamage: 0
   isInvulnerable: 0
