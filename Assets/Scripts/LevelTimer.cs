@@ -4,14 +4,15 @@ using TMPro;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class LevelTimer : MonoBehaviour
 {
-    public bool countDown = false;
-    public float startTimeSeconds = 120f;
+    [SerializeField] private bool countDown = false;
+    [SerializeField] private float startTimeSeconds = 120f;
 
     private float timeValue;
     private TextMeshProUGUI timerText;
 
     private void Awake()
     {
+        // Always grab the text on the same object cuz otherwize i get 293i1299312938 erors per second 
         timerText = GetComponent<TextMeshProUGUI>();
     }
 
@@ -37,7 +38,7 @@ public class LevelTimer : MonoBehaviour
 
     private void UpdateTimerText()
     {
-        if (timerText == null) return;
+        if (timerText == null) return; // extra safety 23u8192793812 eorors on console if this is not here 
 
         int minutes = Mathf.FloorToInt(timeValue / 60f);
         int seconds = Mathf.FloorToInt(timeValue % 60f);
