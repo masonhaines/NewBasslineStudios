@@ -20,7 +20,7 @@ public class AIControllerSkeletonChild : AIController
     protected override void FixedUpdate()
     {
         
-        Debug.Log(attackComponentObject.bPrimaryAttackActive);
+        // Debug.Log(attackComponentObject.bPrimaryAttackActive);
         
         if (currentState == death)
         {
@@ -59,17 +59,16 @@ public class AIControllerSkeletonChild : AIController
     {
         localAttackCounter++;
         // Debug.Log($"{name} attack count triggered");
-        if (localAttackCounter >= maxAttacksBeforeReset )
-        {
-            // Debug.Log("running attack counter logic");
+        Debug.Log(localAttackCounter + "Attack counter");
+        if (localAttackCounter < maxAttacksBeforeReset) return;
+        Debug.Log("running attack counter logic");
             
-            // attackComponentObject.bAttackFinished = true;
-            // attackComponentObject.StartAttackTwo();
-            attackComponentObject.bAttackTwo = true;
-            localAttackCounter = 0;
-        }
+        // attackComponentObject.bAttackFinished = true;
+        // attackComponentObject.StartAttackTwo();
+        attackComponentObject.bAttackTwo = true;
+        localAttackCounter = 0;
 
-       
+
     }
     
 }

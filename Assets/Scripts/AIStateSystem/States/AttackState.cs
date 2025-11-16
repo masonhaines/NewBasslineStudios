@@ -40,9 +40,9 @@ public class AttackState : IAiStates
         if (!aiController.AttackController.bAttacking &&
             !aiController.AttackController.bPrimaryAttackActive)
         {
-            Debug.Log($"[AttackState] Ready to StartAttack at {Time.time}, " +
-                      $"attacking={aiController.AttackController.bAttacking}, " +
-                      $"primaryActive={aiController.AttackController.bPrimaryAttackActive}");
+            // Debug.Log($"[AttackState] Ready to StartAttack at {Time.time}, " +
+            //           $"attacking={aiController.AttackController.bAttacking}, " +
+            //           $"primaryActive={aiController.AttackController.bPrimaryAttackActive}");
             aiController.AttackController.StartAttack();
         }
     }

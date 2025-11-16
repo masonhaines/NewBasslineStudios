@@ -41,7 +41,7 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
         if (bAttacking) return;
         if (bPrimaryAttackActive) return;
         
-        // if (Time.time < attackWaitTime) return;
+        
         // Debug.Log("startattack being called");
         if (!bAttackTwo)
         {
@@ -64,7 +64,7 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
         {
             return;
         }
-        Debug.Log(">>> AttackOne START");   
+        // Debug.Log(">>> AttackOne START");   
         bPrimaryAttackActive = true;
         bAttacking = true;
 
@@ -104,9 +104,9 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
         bPrimaryAttackActive = false;
         // bAttacking = false;
 
-        bAttackTwo = onlySecondaryAttack;
+        // bAttackTwo = onlySecondaryAttack;
         // Debug.Log($"[{name}] AttackFinished END at {Time.time}, primaryActive={bPrimaryAttackActive}");
-        // nextAttackAllowedTime = Time.time + attackWaitTime;
+        
     }
 
     
