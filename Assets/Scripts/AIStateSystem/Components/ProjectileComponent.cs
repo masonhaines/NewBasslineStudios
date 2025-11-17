@@ -22,7 +22,7 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
     private void FixedUpdate()
     {
         if (!bPrimaryAttackActive) return; // if finished attacking leave update early
-
+        if (bAttacking) return;
         // Debug.Log(bAttackFinished);
         timer += Time.deltaTime;
         if (timer >= firingRate)
@@ -39,6 +39,7 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
     {
         if (bPrimaryAttackActive) return;
         bPrimaryAttackActive = true;
+        bAttacking = true;
         FireProjectile();
     }
     

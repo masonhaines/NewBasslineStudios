@@ -68,10 +68,13 @@ public class AIController : MonoBehaviour
         myAnimator = GetComponentInChildren<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
         
         enemyRigidBody = GetComponent<Rigidbody2D>();
-        attackComponentObject.attackerRigidBody = enemyRigidBody;
+        if (attackComponentObject)
+        {
+            attackComponentObject.attackerRigidBody = enemyRigidBody;
+            attackComponentObject.AddToAttackCount += OnAttackCounting;
+        }
         healthComponentObject.OnDeathCaller += OnDeathListener;
         healthComponentObject.OnHitCaller += OnHitListener;
-        attackComponentObject.AddToAttackCount += OnAttackCounting;
 
 
         AttackController?.Initialize(myAnimator); // if the ai controller has a ref to, call initialize 
@@ -79,7 +82,7 @@ public class AIController : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         originalColor = sprite.color;
     }
-    protected void Start()
+    protected virtual void Start()
     {
         patrol = new PatrolState(this);
         chase = new ChaseState(this);
@@ -192,10 +195,10 @@ public class AIController : MonoBehaviour
         
         currentState = newState; // set the current state to the new state 
         currentState.Enter(); // call the currentstate's enter method to truly enable the state
-        // Debug.Log(currentState);
+        Debug.Log(currentState);
     }
 
-    protected void OnDeathListener()
+    protected virtual void OnDeathListener()
     {
         // this really should set the enemy location to somewhere else and a system is added in the scene and checks 
         // on tick for objects with enemy tag and if they are dead.
@@ -226,7 +229,7 @@ public class AIController : MonoBehaviour
     {
         
         if (!detectedTargetTransform) return;
-        if (attackComponentObject.bAttacking) return;
+        if (AttackController.bAttacking) return;
         
         Vector2 direction = new Vector2(
                                 detectedTargetTransform.position.x, 
@@ -279,7 +282,7 @@ public class AIController : MonoBehaviour
         // Debug.Log("I'm reverting the color ");
     }
 
-    private IEnumerator ResetColor()
+    protected IEnumerator ResetColor()
     {
         yield return new WaitForSeconds(0.6f);
         RevertColor();
