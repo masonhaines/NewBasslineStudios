@@ -65,7 +65,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -86,11 +86,14 @@ MonoBehaviour:
   stopMovementForAttackAnimation: 1
   maxAttacksBeforeReset: 0
   temporaryMovementSpeed: 0
+  RecolorOnHit: 1
+  newColor: {r: 0.50967103, g: 0.2633263, b: 0.5902965, a: 1}
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
   healthComponentObject: {fileID: 0}
   MovementController: {fileID: 0}
+  enemyRigidBody: {fileID: 0}
   detectedTargetTransform: {fileID: 0}
   myAnimator: {fileID: 0}
   bHasPerceivedTarget: 0
@@ -109,9 +112,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   destroyOnDeath: 1
-  maxHealth: 6
+  maxHealth: 3
   knockBackMultiplier: 1
-  TimeTillDestroy: 2
+  TimeTillDestroy: 2.5
+  bCanStunLock: 0
+  timeBetweenDamage: 0.5
+  isInvulnerable: 0
 --- !u!114 &2529404637501472725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +196,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -460,9 +466,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254ee52e2af04cc494068619b9884ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackComponent
+  attackerRigidBody: {fileID: 0}
   hitbox: {fileID: 7516741247492783349}
   attackWaitTime: 1.2
   bNeedsAttackCounter: 0
+  dashScale: 1
+  dashTimeFrame: 1
+  bAttackTwo: 0
+  onlySecondaryAttack: 0
 --- !u!1001 &6382600151584646858
 PrefabInstance:
   m_ObjectHideFlags: 0

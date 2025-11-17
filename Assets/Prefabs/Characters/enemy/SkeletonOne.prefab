@@ -85,10 +85,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIControllerSkeletonChild
   attackRange: 8
-  stopMovementForAttackAnimation: 0
-  maxAttacksBeforeReset: 1
+  stopMovementForAttackAnimation: 1
+  maxAttacksBeforeReset: 3
   temporaryMovementSpeed: 0
-  RecolorOnHit: 0
+  RecolorOnHit: 1
   newColor: {r: 0.53638804, g: 0.50241196, b: 0.50241196, a: 1}
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   destroyOnDeath: 1
   maxHealth: 3
   knockBackMultiplier: 1.5
-  TimeTillDestroy: 2
+  TimeTillDestroy: 5
   bCanStunLock: 1
   timeBetweenDamage: 0
   isInvulnerable: 0
@@ -152,9 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6db763eb878d7b469925d65504ff0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolComponent
-  patrolPointLocations:
-  - {fileID: 0}
-  - {fileID: 0}
+  patrolPointLocations: []
   waitTimeBetweenPatrolPoints: 0
 --- !u!114 &4187364116491173755
 MonoBehaviour:
@@ -272,6 +270,7 @@ MonoBehaviour:
   dashScale: 6
   dashTimeFrame: 0.55
   bAttackTwo: 0
+  onlySecondaryAttack: 0
 --- !u!212 &8685656740800268420
 SpriteRenderer:
   m_ObjectHideFlags: 0
