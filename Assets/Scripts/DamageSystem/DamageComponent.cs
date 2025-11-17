@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Combat;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class DamageComponent : MonoBehaviour
     [SerializeField] private bool bIsEnabled = false;
     [SerializeField] private float timeBetweenAttacks = 0.2f;
     [SerializeField] private bool debugging;
+
+    private int originalDamage;
     
 
 
@@ -22,6 +25,11 @@ public class DamageComponent : MonoBehaviour
     void Awake() // Awake is called when an enabled script instance is being loaded.
     {
         damageSource = transform.root.gameObject;
+    }
+
+    private void Start()
+    {
+        originalDamage = damageAmount;
     }
 
     private void Update()
@@ -52,5 +60,17 @@ public class DamageComponent : MonoBehaviour
             canAttack = false;
             timeSinceLastAttack = 0;
         }
+    }
+
+    public void IncreaseDamage(int amount)
+    {
+        damageAmount += amount;
+        StartCoroutine(RevertDamage());
+    }
+
+    private IEnumerator RevertDamage()
+    {
+        yield return new WaitForSeconds(10.0f);
+        damageAmount = originalDamage;
     }
 }

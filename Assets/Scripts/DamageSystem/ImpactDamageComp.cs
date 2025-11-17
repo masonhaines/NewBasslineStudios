@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Combat;
 using UnityEngine;
 
@@ -9,11 +10,12 @@ public class ImpactDamageComp : MonoBehaviour
     [SerializeField] private bool bProjectile;
     [SerializeField] private float knockBackAmount = 3;
     [SerializeField] private float knockBackLiftAmount;
-    [SerializeField] private bool bIsEnabled = false;
+    [SerializeField] public bool bIsEnabled = false;
     [SerializeField] private float timeBetweenAttacks = 0.2f;
     [SerializeField] private bool debugging;
     [SerializeField] private bool bDestroyOnImpact;
     
+    private int originalDamage;
 
 
     private float timeSinceLastAttack;
@@ -54,6 +56,18 @@ public class ImpactDamageComp : MonoBehaviour
             timeSinceLastAttack = 0;
         }
         if (bDestroyOnImpact) Destroy(gameObject, 0.0f);
+    }
+    
+    public void IncreaseDamage(int amount)
+    {
+        damageAmount += amount;
+        StartCoroutine(RevertDamage());
+    }
+
+    private IEnumerator RevertDamage()
+    {
+        yield return new WaitForSeconds(10.0f);
+        damageAmount = originalDamage;
     }
     
     

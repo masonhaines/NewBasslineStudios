@@ -131,6 +131,12 @@ public class HealthComponent : MonoBehaviour, IDamageable
         OnHealthRestored?.Invoke(); // tell UI to refill hearts
     }
 
+    public void AddHealth(int amount)
+    {
+        currentHealth += amount;
+        OnHealthRestored?.Invoke();
+    }
+
     public bool GetIsKnockedBack()
     {
         return knockBack.bKnockedBack;
