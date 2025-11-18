@@ -91,6 +91,10 @@ public class HealthComponent : MonoBehaviour, IDamageable
 
     [SerializeField] private bool bCanStunLock = true;
     [SerializeField] private float timeBetweenDamage = 1.0f;
+    
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip damageSound;
+
     private int currentHealth;
     private KnockBack knockBack;
     public bool isInvulnerable = false;
@@ -114,6 +118,7 @@ public class HealthComponent : MonoBehaviour, IDamageable
         currentHealth -= damageAmount;
         OnHit(damageSource.transform);
         knockBack.CreateKnockBack(damageSource.transform, knockBackAmount + knockBackMultiplier, knockBackLiftAmount);
+        sfxSource.PlayOneShot(damageSound);
         if (currentHealth <= 0)
         {
             Death();

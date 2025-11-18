@@ -8,6 +8,10 @@ public class PowerUp : MonoBehaviour
     
     [SerializeField] private Color friendlyColor;
     [SerializeField] private Color foeColor;
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip soundOne;
+    
+
 
     public bool bHealthUp = false;
     public bool bPowerUp = false;
@@ -23,6 +27,7 @@ public class PowerUp : MonoBehaviour
     {
         damageComponent = GetComponent<ImpactDamageComp>();
         sprite = GetComponent<SpriteRenderer>();
+        sfxSource = GetComponent<AudioSource>(); 
     }
 
     protected void Start()
@@ -41,11 +46,6 @@ public class PowerUp : MonoBehaviour
 
     protected void Update()
     {
-        // if (damageComponent.enabled)
-        // {
-        //     Debug.Log("FOEEEEEEEEE");
-        // }
-
         if (bFriendly)
         {
             // damageComponent.enabled = false; 
@@ -67,18 +67,20 @@ public class PowerUp : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         if (bFriendly && bHealthUp)
         {
-            Debug.Log("Friendly " + other.gameObject.name);
+            // Debug.Log("Friendly " + other.gameObject.name);
+            sfxSource.PlayOneShot(soundOne);
             other.GetComponent<HealthComponent>().AddHealth(adjustHealth);
         }
         else if (bFriendly && bPowerUp)
         {
+            sfxSource.PlayOneShot(soundOne);
             other.GetComponent<ImpactDamageComp>().IncreaseDamage(adjustPower);
         }
         // else if (bPowerDown && !bFriendly)
         // {
         //     other.GetComponent<ImpactDamageComp>().IncreaseDamage(-adjustPower);
         // }
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
 
     private IEnumerator FriendOrFoe()
@@ -90,4 +92,5 @@ public class PowerUp : MonoBehaviour
         }
     }
 
+    
 }
