@@ -87,7 +87,7 @@ MonoBehaviour:
   maxAttacksBeforeReset: 0
   temporaryMovementSpeed: 0
   RecolorOnHit: 1
-  newColor: {r: 0.13317277, g: 0.12354235, b: 0.1913746, a: 1}
+  newColor: {r: 0.22059496, g: 0.16698869, b: 0.6226415, a: 1}
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
@@ -117,6 +117,8 @@ MonoBehaviour:
   TimeTillDestroy: 2.5
   bCanStunLock: 0
   timeBetweenDamage: 0.5
+  sfxSource: {fileID: 0}
+  damageSound: {fileID: 0}
   isInvulnerable: 0
 --- !u!114 &2529404637501472725
 MonoBehaviour:
@@ -196,7 +198,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

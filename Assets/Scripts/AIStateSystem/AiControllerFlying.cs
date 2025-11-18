@@ -28,7 +28,11 @@ public class AiControllerFlying : AIController
 
     protected override void Update()
     {
-        if (currentState == death || bIsDead) return;
+        if (currentState == death || bIsDead)
+        {
+            setNewState(patrol);
+            return;
+        }
         currentState.PollPerception();
         if (currentState == attacking)
         {

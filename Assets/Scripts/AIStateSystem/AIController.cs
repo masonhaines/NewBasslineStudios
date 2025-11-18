@@ -203,16 +203,21 @@ public class AIController : MonoBehaviour
         // this really should set the enemy location to somewhere else and a system is added in the scene and checks 
         // on tick for objects with enemy tag and if they are dead.
         setNewState(death);
-        // Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("enemy"), LayerMask.NameToLayer("Player"), true);
-        // GetComponent<Collider2D>().enabled = f;        
-        // gameObject.layer = LayerMask.NameToLayer("dead");
+        
+        // // All of this just to ignore a collider of death is absolutely insane. 
+        // GameObject player = GameObject.FindGameObjectWithTag("Player");
+        // Collider2D playerCollider2D = player.GetComponent<Collider2D>(); 
+        Collider2D enemyCollider2D = GetComponent<Collider2D>();
+        // Physics2D.IgnoreCollision(playerCollider2D, enemyCollider2D, true);
+        enemyCollider2D.excludeLayers |= LayerMask.GetMask("Player");
         myAnimator.SetBool("bIsDead", true);
     }
 
     protected virtual void OnHitListener(Transform target)
     {
+        if (currentState == death) return;
         myAnimator.SetTrigger("tOnHit");
-        Debug.Log("I was hit ");
+        // Debug.Log("I was hit ");
         PerceptionTargetFound(target);
         
         if (!RecolorOnHit) return;

@@ -10,7 +10,7 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private Color foeColor;
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioClip soundOne;
-    
+    public Collider2D localCollider;
 
 
     public bool bHealthUp = false;
@@ -28,6 +28,7 @@ public class PowerUp : MonoBehaviour
         damageComponent = GetComponent<ImpactDamageComp>();
         sprite = GetComponent<SpriteRenderer>();
         sfxSource = GetComponent<AudioSource>(); 
+        localCollider = GetComponent<Collider2D>();
     }
 
     protected void Start()
@@ -80,7 +81,9 @@ public class PowerUp : MonoBehaviour
         // {
         //     other.GetComponent<ImpactDamageComp>().IncreaseDamage(-adjustPower);
         // }
-        // Destroy(gameObject);
+        localCollider.enabled = false;
+        sprite.enabled = false;
+        Destroy(gameObject, 10.0f);
     }
 
     private IEnumerator FriendOrFoe()

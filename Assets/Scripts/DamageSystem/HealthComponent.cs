@@ -118,7 +118,6 @@ public class HealthComponent : MonoBehaviour, IDamageable
         currentHealth -= damageAmount;
         OnHit(damageSource.transform);
         knockBack.CreateKnockBack(damageSource.transform, knockBackAmount + knockBackMultiplier, knockBackLiftAmount);
-        sfxSource.PlayOneShot(damageSound);
         if (currentHealth <= 0)
         {
             Death();
@@ -128,6 +127,8 @@ public class HealthComponent : MonoBehaviour, IDamageable
             isInvulnerable = true;
             StartCoroutine(InvulnerabilityTimer());
         }
+        sfxSource.PlayOneShot(damageSound);
+
     }
 
     public void RestoreFullHealth()
