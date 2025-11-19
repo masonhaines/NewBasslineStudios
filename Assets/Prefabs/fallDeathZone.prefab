@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8017624220589464057}
   - component: {fileID: 6288332246220763473}
   - component: {fileID: 5897336939331921787}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fallDeathZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}

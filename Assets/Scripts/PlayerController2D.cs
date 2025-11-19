@@ -238,6 +238,7 @@ public class PlayerController2D : MonoBehaviour
 
     void Update()
     {
+        // Debug.Log(healthComponentObject.currentHealth);
         if (!healthComponentObject.GetIsKnockedBack())
         {
             HandleAttack();

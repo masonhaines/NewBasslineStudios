@@ -30,6 +30,8 @@ public class AiControllerFlying : AIController
     {
         if (currentState == death || bIsDead)
         {
+            enemyRigidBody.linearVelocity = Vector2.zero;
+
             setNewState(patrol);
             return;
         }

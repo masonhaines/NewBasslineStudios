@@ -74,7 +74,8 @@ public class AiMovementComponent : MonoBehaviour
             return;
         }
         
-        aiController.FlipSprite();
+        
+        aiController.FlipSprite(targetLocation);
         // Vector2 direction = targetLocation - moversRigidbody2D.position;
         //
         // // Debug.Log(direction.x + "-----------------------------------------Direction" );

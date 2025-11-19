@@ -16,11 +16,11 @@ GameObject:
   - component: {fileID: 4187364116491173755}
   - component: {fileID: 7816246678522490877}
   - component: {fileID: 6245015259390129584}
-  - component: {fileID: 4639176091211223747}
   - component: {fileID: 386126643025651128}
   - component: {fileID: 5488822767075395796}
   - component: {fileID: 1901180311612244404}
   - component: {fileID: 5859333354042260487}
+  - component: {fileID: 8795619257244751712}
   m_Layer: 9
   m_Name: EnemyFlyingBaseVariant
   m_TagString: Enemy
@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 1369442348009616825}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.23, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -62,7 +62,7 @@ MonoBehaviour:
   maxAttacksBeforeReset: 0
   temporaryMovementSpeed: 0
   RecolorOnHit: 1
-  newColor: {r: 0.93530995, g: 0.84796697, b: 0.8054758, a: 1}
+  newColor: {r: 0.6622311, g: 0.95687324, b: 0.6073952, a: 1}
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
@@ -93,6 +93,8 @@ MonoBehaviour:
   TimeTillDestroy: 2
   bCanStunLock: 1
   timeBetweenDamage: 1
+  sfxSource: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: eef73a2b76947e44dbddccd578f5110f, type: 3}
   isInvulnerable: 0
 --- !u!114 &2529404637501472725
 MonoBehaviour:
@@ -129,7 +131,8 @@ MonoBehaviour:
   patrolPointLocations:
   - {fileID: 0}
   - {fileID: 0}
-  waitTimeBetweenPatrolPoints: 0
+  - {fileID: 0}
+  waitTimeBetweenPatrolPoints: 1
 --- !u!114 &4187364116491173755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,63 +186,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!60 &4639176091211223747
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369442348009616825}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 39c73ec56e853ca42805d5f545da94ef, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 2}
-    newSize: {x: 0.3, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1.7786689, y: 0.46350333}
-      - {x: 1.781793, y: 0.45601293}
-      - {x: 1.2108889, y: 0.48954323}
-      - {x: 1.0560002, y: 0.48894286}
-      - {x: 0.69137895, y: 0.060868114}
-      - {x: 0.7273336, y: -0.42263928}
-      - {x: 1.0881882, y: -0.64416194}
-      - {x: 1.802779, y: -0.3946627}
-      - {x: 1.8816376, y: -0.009929195}
-      - {x: 1.8593253, y: 0.33349156}
-  m_UseDelaunayMesh: 0
 --- !u!210 &386126643025651128
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -299,9 +245,9 @@ SpriteRenderer:
   m_SortingLayerID: 180130071
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1751164510912779035, guid: 54cd654736360ec409eac39ad60d0d83, type: 3}
-  m_Color: {r: 0.44474387, g: 0.29950655, b: 0.22956453, a: 1}
-  m_FlipX: 1
+  m_Sprite: {fileID: 3253736088022680715, guid: 985dbb9f4b204014b813af9f54ea2038, type: 3}
+  m_Color: {r: 0.78436655, g: 0.33721414, b: 0.33721414, a: 1}
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.3, y: 0.16}
@@ -348,6 +294,42 @@ MonoBehaviour:
   projectilePosition: {fileID: 971147147492808869}
   firingRate: 2.7
   destructionRate: 3
+--- !u!58 &8795619257244751712
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369442348009616825}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.4375
 --- !u!1 &3325566589297371907
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +355,7 @@ Transform:
   m_GameObject: {fileID: 3325566589297371907}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.574, y: -0.091, z: 0}
+  m_LocalPosition: {x: 0.27, y: -0.27, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -390,7 +372,7 @@ GameObject:
   - component: {fileID: 7867354879392804387}
   - component: {fileID: 5846365152467076997}
   - component: {fileID: 7185604311883981666}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: perception
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -440,7 +422,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
