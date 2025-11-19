@@ -61,7 +61,7 @@ public class AiControllerFlying : AIController
         bInRangeToAttack = false;
     }
 
-    protected override void OnHitListener(Transform target)
+    protected override void OnHitListener(Transform target, int damage)
     {
         projectileComponentObject.enabled = false;
         if (!RecolorOnHit) return;

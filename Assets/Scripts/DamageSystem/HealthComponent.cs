@@ -78,7 +78,7 @@ using Combat; // this is the includable for the IDamageable
 public class HealthComponent : MonoBehaviour, IDamageable
 {
     public event System.Action OnDeathCaller = delegate { };
-    public event System.Action<Transform> OnHitCaller = delegate { };
+    public event System.Action<Transform, int> OnHitCaller = delegate { };
 
     // NEW: fired whenever we restore to full (e.g., on respawn)
     public event System.Action OnHealthRestored = delegate { };
@@ -108,15 +108,13 @@ public class HealthComponent : MonoBehaviour, IDamageable
     public void Damage(int damageAmount, GameObject damageSource, float knockBackAmount, float knockBackLiftAmount)
     {
         
-        if (isInvulnerable)
+        if (isInvulnerable || currentHealth <= 0)
         {
             return;
         }
-
         
-
         currentHealth -= damageAmount;
-        OnHit(damageSource.transform);
+        OnHit(damageSource.transform,damageAmount);
         knockBack.CreateKnockBack(damageSource.transform, knockBackAmount + knockBackMultiplier, knockBackLiftAmount);
         if (currentHealth <= 0)
         {
@@ -127,8 +125,11 @@ public class HealthComponent : MonoBehaviour, IDamageable
             isInvulnerable = true;
             StartCoroutine(InvulnerabilityTimer());
         }
-        sfxSource.PlayOneShot(damageSound);
 
+        if (sfxSource != null)
+        {
+            sfxSource.PlayOneShot(damageSound);
+        }
     }
 
     public void RestoreFullHealth()
@@ -139,6 +140,14 @@ public class HealthComponent : MonoBehaviour, IDamageable
 
     public void AddHealth(int amount)
     {
+        if (currentHealth + amount > maxHealth)
+        {
+            maxHealth = currentHealth + amount;
+            currentHealth = maxHealth;
+            OnHealthRestored?.Invoke();
+
+            return;
+        }
         currentHealth += amount;
         OnHealthRestored?.Invoke();
     }
@@ -168,9 +177,9 @@ public class HealthComponent : MonoBehaviour, IDamageable
         Destroy(gameObject);
     }
 
-    private void OnHit(Transform hitTransform)
+    private void OnHit(Transform hitTransform, int damage)
     {
-        OnHitCaller?.Invoke(hitTransform);
+        OnHitCaller?.Invoke(hitTransform, damage);
     }
 
     private IEnumerator InvulnerabilityTimer()

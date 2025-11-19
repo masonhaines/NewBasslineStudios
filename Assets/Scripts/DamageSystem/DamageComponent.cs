@@ -61,6 +61,8 @@ public class DamageComponent : MonoBehaviour
             timeSinceLastAttack = 0;
         }
     }
+    
+   
 
     public void IncreaseDamage(int amount)
     {

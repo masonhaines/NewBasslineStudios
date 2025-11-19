@@ -15,6 +15,7 @@ public class RespawnManager : MonoBehaviour
     private HealthComponent playerHealth;
     private Rigidbody2D rb2D;
     private Rigidbody rb3D;
+    private float savedGravityScale;
 
     void Awake()
     {
@@ -24,6 +25,7 @@ public class RespawnManager : MonoBehaviour
             rb3D = player.GetComponent<Rigidbody>();
             playerHealth = player.GetComponent<HealthComponent>();
             playerMovement = player.GetComponent<PlayerController2D>();
+            savedGravityScale = player.GetComponent<Rigidbody2D>().gravityScale;
         }
     }
 
@@ -69,5 +71,7 @@ public class RespawnManager : MonoBehaviour
 
         // re-enable input
         if (playerMovement) playerMovement.enabled = true;
+        
+        player.GetComponent<Rigidbody2D>().gravityScale = savedGravityScale;
     }
 }

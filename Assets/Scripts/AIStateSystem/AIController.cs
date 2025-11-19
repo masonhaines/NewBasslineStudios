@@ -213,7 +213,7 @@ public class AIController : MonoBehaviour
         myAnimator.SetBool("bIsDead", true);
     }
 
-    protected virtual void OnHitListener(Transform target)
+    protected virtual void OnHitListener(Transform target, int damage)
     {
         if (currentState == death) return;
         myAnimator.SetTrigger("tOnHit");

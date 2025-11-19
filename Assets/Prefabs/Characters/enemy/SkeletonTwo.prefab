@@ -92,6 +92,8 @@ MonoBehaviour:
   TimeTillDestroy: 6
   bCanStunLock: 0
   timeBetweenDamage: 1.1
+  sfxSource: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: eef73a2b76947e44dbddccd578f5110f, type: 3}
   isInvulnerable: 0
 --- !u!114 &5927526571898653656
 MonoBehaviour:
