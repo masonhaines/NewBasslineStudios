@@ -19,4 +19,8 @@ public class PlayerAnimationRelay : MonoBehaviour
     {
         player.EndAttack();
     }
+    public void Projectile()
+    {
+        player.FireProjectile();
+    }
 }
