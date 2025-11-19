@@ -108,6 +108,7 @@ public class HeartsSimpleUI : MonoBehaviour
         {
             playerHealth.OnHitCaller += OnHitOnce;           // one heart per hit
             playerHealth.OnHealthRestored += OnRefillHearts; // refill on respawn/restore
+            playerHealth.OnHealthAdded += OnHealed;
         }
     }
 
@@ -117,6 +118,7 @@ public class HeartsSimpleUI : MonoBehaviour
         {
             playerHealth.OnHitCaller -= OnHitOnce;
             playerHealth.OnHealthRestored -= OnRefillHearts;
+            playerHealth.OnHealthAdded -= OnHealed;
         }
     }
 
@@ -149,5 +151,11 @@ public class HeartsSimpleUI : MonoBehaviour
     {
         for (int i = 0; i < heartImages.Count; i++)
             heartImages[i].enabled = (i < heartsRemaining); // disappear one by one
+    }
+    
+    private void OnHealed(int amount)
+    {
+        heartsRemaining = Mathf.Min(FullHeartCount(), heartsRemaining + amount);
+        Refresh();
     }
 }

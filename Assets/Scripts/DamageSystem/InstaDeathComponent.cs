@@ -18,6 +18,9 @@ public class InstaDeathComponent : MonoBehaviour
     {
 
         if (!bIsEnabled) return;
+        if (other.gameObject == damageSource || (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Enemy")) ) {
+            return; // dont damage self or friends 
+        }
         
         float tempGravity = other.GetComponent<Rigidbody2D>().gravityScale;
         other.gameObject.GetComponent<Rigidbody2D>().gravityScale = tempGravity * .15f;

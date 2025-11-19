@@ -106,7 +106,7 @@ public class AIController : MonoBehaviour
         // {
             detectedTargetTransform = target;
         // }
-        FlipSprite();
+        FlipSprite(new Vector2(detectedTargetTransform.position.x, detectedTargetTransform.position.y));
         // Debug.Log("Target found: " + detectedTargetTransform.name);
     }
 
@@ -126,7 +126,7 @@ public class AIController : MonoBehaviour
         
         if (detectedTargetTransform != null && !attackComponentObject.bAttacking)
         {
-            FlipSprite();
+            FlipSprite(new Vector2(detectedTargetTransform.position.x, detectedTargetTransform.position.y));
         }
         
         if (bHasPerceivedTarget && detectedTargetTransform is not null)
@@ -230,16 +230,20 @@ public class AIController : MonoBehaviour
         
     }
 
-    public void FlipSprite()
+    public void FlipSprite(Vector2 targetLocation)
     {
+        if (AttackController != null && AttackController.bAttacking) return;
+        Vector2 direction;
+        if (detectedTargetTransform != null)
+        {
+            direction = (Vector2)detectedTargetTransform.position - enemyRigidBody.position;
+        }
+        else
+        {
+             direction = targetLocation - enemyRigidBody.position;
+        }
         
-        if (!detectedTargetTransform) return;
-        if (AttackController.bAttacking) return;
-        
-        Vector2 direction = new Vector2(
-                                detectedTargetTransform.position.x, 
-                                detectedTargetTransform.position.y 
-                                ) - enemyRigidBody.position;
+
         
         // Debug.Log(direction.x + "-----------------------------------------Direction" );
         switch (direction.x)

@@ -79,6 +79,7 @@ public class HealthComponent : MonoBehaviour, IDamageable
 {
     public event System.Action OnDeathCaller = delegate { };
     public event System.Action<Transform, int> OnHitCaller = delegate { };
+    public event System.Action<int> OnHealthAdded = delegate { };
 
     // NEW: fired whenever we restore to full (e.g., on respawn)
     public event System.Action OnHealthRestored = delegate { };
@@ -95,7 +96,7 @@ public class HealthComponent : MonoBehaviour, IDamageable
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioClip damageSound;
 
-    private int currentHealth;
+    public int currentHealth;
     private KnockBack knockBack;
     public bool isInvulnerable = false;
 
@@ -142,14 +143,14 @@ public class HealthComponent : MonoBehaviour, IDamageable
     {
         if (currentHealth + amount > maxHealth)
         {
-            maxHealth = currentHealth + amount;
-            currentHealth = maxHealth;
-            OnHealthRestored?.Invoke();
+            // maxHealth = currentHealth + amount;
+            // currentHealth = maxHealth;
+            // OnHealthRestored?.Invoke();
 
             return;
         }
         currentHealth += amount;
-        OnHealthRestored?.Invoke();
+        OnHealthAdded?.Invoke(amount);
     }
 
     public bool GetIsKnockedBack()
