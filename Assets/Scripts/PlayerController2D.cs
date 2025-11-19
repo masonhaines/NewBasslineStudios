@@ -347,12 +347,12 @@ public class PlayerController2D : MonoBehaviour
     if (Input.GetMouseButtonDown(1) && projectileTimer <= 0f)
     {
         animator.SetTrigger("rangedAttack"); // optional animation
-        FireProjectile();
+        //FireProjectile();
         projectileTimer = projectileCooldown;
     }
 }
 
-void FireProjectile()
+public void FireProjectile()
 {
     if (projectilePrefab == null || firePoint == null)
     {
