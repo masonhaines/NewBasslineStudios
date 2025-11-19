@@ -139,9 +139,9 @@ public class HeartsSimpleUI : MonoBehaviour
         Refresh();
     }
 
-    private void OnHitOnce(Transform _)
+    private void OnHitOnce(Transform _, int damageTaken)
     {
-        heartsRemaining = Mathf.Max(0, heartsRemaining - 1);
+        heartsRemaining = Mathf.Max(0, heartsRemaining - damageTaken);
         Refresh();
     }
 

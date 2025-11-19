@@ -15,9 +15,10 @@ public class AIController : MonoBehaviour
     [SerializeField] protected int maxAttacksBeforeReset = 0;
     [SerializeField] public float temporaryMovementSpeed = 0f;
     [SerializeField] public bool RecolorOnHit = true;
+    [SerializeField] public Color newColor;
     
-    private SpriteRenderer sprite;
-    private Color originalColor;
+    protected SpriteRenderer sprite;
+    protected Color originalColor;
     protected float savedMoveSpeed;
     protected int localAttackCounter;
 
@@ -44,6 +45,8 @@ public class AIController : MonoBehaviour
     public bool bHasPerceivedTarget;
     public bool bIsAttacking;
     public bool bInRangeToAttack;
+    public float facingDirection { get; private set; }
+
     // public bool bIsDead;
     
 
@@ -65,10 +68,13 @@ public class AIController : MonoBehaviour
         myAnimator = GetComponentInChildren<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
         
         enemyRigidBody = GetComponent<Rigidbody2D>();
-        attackComponentObject.attackerRigidBody = enemyRigidBody;
+        if (attackComponentObject)
+        {
+            attackComponentObject.attackerRigidBody = enemyRigidBody;
+            attackComponentObject.AddToAttackCount += OnAttackCounting;
+        }
         healthComponentObject.OnDeathCaller += OnDeathListener;
         healthComponentObject.OnHitCaller += OnHitListener;
-        attackComponentObject.AddToAttackCount += OnAttackCounting;
 
 
         AttackController?.Initialize(myAnimator); // if the ai controller has a ref to, call initialize 
@@ -76,7 +82,7 @@ public class AIController : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         originalColor = sprite.color;
     }
-    protected void Start()
+    protected virtual void Start()
     {
         patrol = new PatrolState(this);
         chase = new ChaseState(this);
@@ -88,13 +94,19 @@ public class AIController : MonoBehaviour
         savedMoveSpeed = MovementController.GetMoveSpeed();
         setNewState(patrol);
         
-
+        // originalColor = sprite.color;
+        
     }
 
     public virtual void PerceptionTargetFound(Transform target)
     {
+        
         bHasPerceivedTarget = true;
-        detectedTargetTransform = target;
+        // if (detectedTargetTransform == null)
+        // {
+            detectedTargetTransform = target;
+        // }
+        FlipSprite();
         // Debug.Log("Target found: " + detectedTargetTransform.name);
     }
 
@@ -110,7 +122,13 @@ public class AIController : MonoBehaviour
     {
         if (currentState == death) return;
         currentState.PollPerception();
-
+        
+        
+        if (detectedTargetTransform != null && !attackComponentObject.bAttacking)
+        {
+            FlipSprite();
+        }
+        
         if (bHasPerceivedTarget && detectedTargetTransform is not null)
         {
             
@@ -136,7 +154,7 @@ public class AIController : MonoBehaviour
             
             return;
         }
-        if ((currentState == attacking && !AttackController.bAttackFinished) && stopMovementForAttackAnimation)
+        if ((currentState == attacking && AttackController.bPrimaryAttackActive) && stopMovementForAttackAnimation)
         {
             MovementController.StopMovement();
             return;
@@ -177,37 +195,66 @@ public class AIController : MonoBehaviour
         
         currentState = newState; // set the current state to the new state 
         currentState.Enter(); // call the currentstate's enter method to truly enable the state
-        Debug.Log(currentState);
+        // Debug.Log(currentState);
     }
 
-    protected void OnDeathListener()
+    protected virtual void OnDeathListener()
     {
         // this really should set the enemy location to somewhere else and a system is added in the scene and checks 
         // on tick for objects with enemy tag and if they are dead.
         setNewState(death);
-        // Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("enemy"), LayerMask.NameToLayer("Player"), true);
-        // GetComponent<Collider2D>().enabled = f;        
-        gameObject.layer = LayerMask.NameToLayer("dead");
+        
+        // // All of this just to ignore a collider of death is absolutely insane. 
+        // GameObject player = GameObject.FindGameObjectWithTag("Player");
+        // Collider2D playerCollider2D = player.GetComponent<Collider2D>(); 
+        Collider2D enemyCollider2D = GetComponent<Collider2D>();
+        // Physics2D.IgnoreCollision(playerCollider2D, enemyCollider2D, true);
+        enemyCollider2D.excludeLayers |= LayerMask.GetMask("Player");
         myAnimator.SetBool("bIsDead", true);
     }
 
-    protected virtual void OnHitListener(Transform target)
+    protected virtual void OnHitListener(Transform target, int damage)
     {
+        if (currentState == death) return;
         myAnimator.SetTrigger("tOnHit");
+        // Debug.Log("I was hit ");
         PerceptionTargetFound(target);
         
         if (!RecolorOnHit) return;
         if (sprite)
         {
-            sprite.color = Color.red;
+            setColor();
         }
         
         StartCoroutine(ResetColor());
         
     }
 
-    protected virtual void OnHitAnimChange()
+    public void FlipSprite()
     {
+        
+        if (!detectedTargetTransform) return;
+        if (AttackController.bAttacking) return;
+        
+        Vector2 direction = new Vector2(
+                                detectedTargetTransform.position.x, 
+                                detectedTargetTransform.position.y 
+                                ) - enemyRigidBody.position;
+        
+        // Debug.Log(direction.x + "-----------------------------------------Direction" );
+        switch (direction.x)
+        {
+            case > 0.05f:
+                // SpriteRenderer.flipX = true; // only flips sprite
+                transform.localScale = new Vector3(1, 1, 1);  // face left
+                facingDirection = 1;
+                break;
+            case < -0.05f:
+                // SpriteRenderer.flipX = false; // only flips sprite
+                transform.localScale = new Vector3(-1, 1, 1);  // face left
+                facingDirection = -1;
+                break;
+        }
     }
 
     protected virtual void OnAttackCounting()
@@ -228,10 +275,22 @@ public class AIController : MonoBehaviour
         }
     }
 
-    private IEnumerator ResetColor()
+    public void setColor()
+    {
+        sprite.color = newColor;
+    }
+
+    public void RevertColor()
+    {
+        sprite.color = originalColor;  
+        // StartCoroutine(ResetColor());
+        // Debug.Log("I'm reverting the color ");
+    }
+
+    protected IEnumerator ResetColor()
     {
         yield return new WaitForSeconds(0.6f);
-        sprite.color = originalColor;
+        RevertColor();
     }
     
 }

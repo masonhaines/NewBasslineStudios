@@ -3,8 +3,8 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform target;   // Drag Player here
-    public Vector3 offset;     //for adjusting position
-    public float smoothSpeed = 0.125f; // Smooth movement
+    public Vector3 offset;     //for adjusting position but we have 2 camera so be careful which overwrites what i would change both
+    public float smoothSpeed = 0.125f; // Smooth movement THIS IS NOT CHANGEABLE do not touch
 
     void LateUpdate()
     {

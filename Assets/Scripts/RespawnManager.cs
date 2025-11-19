@@ -15,6 +15,7 @@ public class RespawnManager : MonoBehaviour
     private HealthComponent playerHealth;
     private Rigidbody2D rb2D;
     private Rigidbody rb3D;
+    private float savedGravityScale;
 
     void Awake()
     {
@@ -24,6 +25,7 @@ public class RespawnManager : MonoBehaviour
             rb3D = player.GetComponent<Rigidbody>();
             playerHealth = player.GetComponent<HealthComponent>();
             playerMovement = player.GetComponent<PlayerController2D>();
+            savedGravityScale = player.GetComponent<Rigidbody2D>().gravityScale;
         }
     }
 
@@ -46,10 +48,10 @@ public class RespawnManager : MonoBehaviour
 
     private IEnumerator RespawnRoutine()
     {
-        // freeze input while “dead”
+        // freeze input while “dead” so we dont move after death
         if (playerMovement) playerMovement.enabled = false;
 
-        // small delay for death animation/sfx
+        // small delay for death animation/sfx this should mathc whatver u have for animation 
         yield return new WaitForSeconds(respawnDelay);
 
         // ensure game not paused
@@ -63,11 +65,13 @@ public class RespawnManager : MonoBehaviour
         if (rb2D) rb2D.linearVelocity = Vector2.zero;
         if (rb3D) rb3D.linearVelocity = Vector3.zero;
 
-        // refill health (helper you added)
+        // refill health so we can respawn with full
         if (playerHealth != null)
             playerHealth.RestoreFullHealth();
 
         // re-enable input
         if (playerMovement) playerMovement.enabled = true;
+        
+        player.GetComponent<Rigidbody2D>().gravityScale = savedGravityScale;
     }
 }

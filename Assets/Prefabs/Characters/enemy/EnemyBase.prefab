@@ -86,6 +86,8 @@ MonoBehaviour:
   stopMovementForAttackAnimation: 1
   maxAttacksBeforeReset: 0
   temporaryMovementSpeed: 0
+  RecolorOnHit: 1
+  newColor: {r: 0.22059496, g: 0.16698869, b: 0.6226415, a: 1}
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
@@ -110,9 +112,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   destroyOnDeath: 1
-  maxHealth: 3
+  maxHealth: 2
   knockBackMultiplier: 1
-  TimeTillDestroy: 2
+  TimeTillDestroy: 2.5
+  bCanStunLock: 0
+  timeBetweenDamage: 0.5
+  sfxSource: {fileID: 0}
+  damageSound: {fileID: 0}
+  isInvulnerable: 0
 --- !u!114 &2529404637501472725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,7 +198,7 @@ PolygonCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -295,6 +302,7 @@ MonoBehaviour:
   knockBackLiftAmount: 2
   bIsEnabled: 1
   timeBetweenAttacks: 0.2
+  debugging: 0
 --- !u!61 &7516741247492783349
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -558,6 +566,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254ee52e2af04cc494068619b9884ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AttackComponent
+  attackerRigidBody: {fileID: 0}
   hitbox: {fileID: 7516741247492783349}
   attackWaitTime: 1.5
   bNeedsAttackCounter: 0
+  dashScale: 1
+  dashTimeFrame: 1
+  bAttackTwo: 0
+  onlySecondaryAttack: 0

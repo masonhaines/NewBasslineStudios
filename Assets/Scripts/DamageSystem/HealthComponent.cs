@@ -78,7 +78,7 @@ using Combat; // this is the includable for the IDamageable
 public class HealthComponent : MonoBehaviour, IDamageable
 {
     public event System.Action OnDeathCaller = delegate { };
-    public event System.Action<Transform> OnHitCaller = delegate { };
+    public event System.Action<Transform, int> OnHitCaller = delegate { };
 
     // NEW: fired whenever we restore to full (e.g., on respawn)
     public event System.Action OnHealthRestored = delegate { };
@@ -89,8 +89,12 @@ public class HealthComponent : MonoBehaviour, IDamageable
     [SerializeField] private float knockBackMultiplier = 1; // this is a multiplier for the knockback force applied when taking damage
     [SerializeField] private float TimeTillDestroy = 2.0f;
 
-    [SerializeField] private bool noStunLock = true;
+    [SerializeField] private bool bCanStunLock = true;
     [SerializeField] private float timeBetweenDamage = 1.0f;
+    
+    [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioClip damageSound;
+
     private int currentHealth;
     private KnockBack knockBack;
     public bool isInvulnerable = false;
@@ -103,24 +107,28 @@ public class HealthComponent : MonoBehaviour, IDamageable
 
     public void Damage(int damageAmount, GameObject damageSource, float knockBackAmount, float knockBackLiftAmount)
     {
-        if (noStunLock)
-        {
-            if (isInvulnerable)
-            {
-                return;
-            }
-            isInvulnerable = true;
-            StartCoroutine(InvulnerabilityTimer());
-        }
-
         
-
+        if (isInvulnerable || currentHealth <= 0)
+        {
+            return;
+        }
+        
         currentHealth -= damageAmount;
-        OnHit(damageSource.transform);
+        OnHit(damageSource.transform,damageAmount);
         knockBack.CreateKnockBack(damageSource.transform, knockBackAmount + knockBackMultiplier, knockBackLiftAmount);
         if (currentHealth <= 0)
         {
             Death();
+        }
+        else if (!bCanStunLock)
+        {
+            isInvulnerable = true;
+            StartCoroutine(InvulnerabilityTimer());
+        }
+
+        if (sfxSource != null)
+        {
+            sfxSource.PlayOneShot(damageSound);
         }
     }
 
@@ -128,6 +136,20 @@ public class HealthComponent : MonoBehaviour, IDamageable
     {
         currentHealth = maxHealth;
         OnHealthRestored?.Invoke(); // tell UI to refill hearts
+    }
+
+    public void AddHealth(int amount)
+    {
+        if (currentHealth + amount > maxHealth)
+        {
+            maxHealth = currentHealth + amount;
+            currentHealth = maxHealth;
+            OnHealthRestored?.Invoke();
+
+            return;
+        }
+        currentHealth += amount;
+        OnHealthRestored?.Invoke();
     }
 
     public bool GetIsKnockedBack()
@@ -144,20 +166,35 @@ public class HealthComponent : MonoBehaviour, IDamageable
 
         if (destroyOnDeath) // for enemies
         {
-            Debug.Log("Death");
+            // Debug.Log("Death");
             Destroy(gameObject, TimeTillDestroy);   // keep for enemies
         }
         // else: do not destroy — player will be teleported & refilled by RespawnManager
     }
 
-    private void OnHit(Transform hitTransform)
+    public void InstantDeath()
     {
-        OnHitCaller?.Invoke(hitTransform);
+        Destroy(gameObject);
+    }
+
+    private void OnHit(Transform hitTransform, int damage)
+    {
+        OnHitCaller?.Invoke(hitTransform, damage);
     }
 
     private IEnumerator InvulnerabilityTimer()
     {
         yield return new WaitForSeconds(timeBetweenDamage);
+        isInvulnerable = false;
+    }
+
+    public void Invulnerable()
+    {
+        isInvulnerable = true;
+    }
+
+    public void NotInvulnerable()
+    {
         isInvulnerable = false;
     }
 }

@@ -130,8 +130,10 @@ MonoBehaviour:
   maxHealth: 3
   knockBackMultiplier: 1
   TimeTillDestroy: 2
-  noStunLock: 1
+  bCanStunLock: 1
   timeBetweenDamage: 1
+  sfxSource: {fileID: 0}
+  damageSound: {fileID: 0}
   isInvulnerable: 0
 --- !u!114 &3486144826186490132
 MonoBehaviour:
@@ -280,8 +282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageComponent
   damageAmount: 1
   bProjectile: 0
-  knockBackAmount: 2
-  knockBackLiftAmount: 0.3
+  knockBackAmount: 3
+  knockBackLiftAmount: 0.5
   bIsEnabled: 1
   timeBetweenAttacks: 0.2
   debugging: 0
@@ -328,6 +330,7 @@ GameObject:
   - component: {fileID: 2241737515734662072}
   - component: {fileID: 4919196025512325728}
   - component: {fileID: 1946552027309296552}
+  - component: {fileID: 3163266279184217864}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -442,6 +445,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 595b8e9391a3c484984ea620f59b2e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimationRelay
+--- !u!114 &3163266279184217864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3535588949963083170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6eceebd6c4478d8f2711b114b151e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlaySFXcomponent
+  sfxSource: {fileID: 0}
+  sound: {fileID: 8300000, guid: aa5358586e7fb57438791561926d6371, type: 3}
 --- !u!1 &5046607493019272217
 GameObject:
   m_ObjectHideFlags: 0

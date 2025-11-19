@@ -15,12 +15,14 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
     // private bool bIsAttacking; 
     public readonly Queue<EnemyProjectile> ActiveProjectiles = new();
     
-    public bool bAttackFinished { get; set; } = true;
+    public bool bPrimaryAttackActive { get; set; } = true;
+    public bool bAttacking { get; set; }
+
 
     private void FixedUpdate()
     {
-        if (bAttackFinished) return; // if finished attacking leave update early
-
+        if (!bPrimaryAttackActive) return; // if finished attacking leave update early
+        if (bAttacking) return;
         // Debug.Log(bAttackFinished);
         timer += Time.deltaTime;
         if (timer >= firingRate)
@@ -35,8 +37,9 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
     
     public void StartAttack()
     {
-        if (!bAttackFinished) return;
-        bAttackFinished = false;
+        if (bPrimaryAttackActive) return;
+        bPrimaryAttackActive = true;
+        bAttacking = true;
         FireProjectile();
     }
     
