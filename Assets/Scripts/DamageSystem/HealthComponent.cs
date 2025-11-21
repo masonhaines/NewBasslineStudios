@@ -165,13 +165,15 @@ public class HealthComponent : MonoBehaviour, IDamageable
         // Notify listeners (RespawnManager will handle player respawn)
         OnDeathCaller?.Invoke();
 
-        
-
         if (destroyOnDeath) // for enemies
         {
             // Debug.Log("Death");
             Destroy(gameObject, TimeTillDestroy);   // keep for enemies
         }
+        // else if (gameObject.CompareTag("Player")) // uncomment when animation for player death is implemented. 
+        // {
+        //     gameObject.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        // }
         // else: do not destroy — player will be teleported & refilled by RespawnManager
     }
 
