@@ -86,8 +86,8 @@ MonoBehaviour:
   stopMovementForAttackAnimation: 0
   maxAttacksBeforeReset: 2
   temporaryMovementSpeed: 6
-  RecolorOnHit: 0
-  newColor: {r: 0, g: 0, b: 0, a: 0}
+  RecolorOnHit: 1
+  newColor: {r: 0.76819396, g: 0.17289531, b: 0.17289531, a: 1}
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
@@ -116,8 +116,12 @@ MonoBehaviour:
   knockBackMultiplier: 2
   TimeTillDestroy: 5
   bCanStunLock: 0
-  timeBetweenDamage: 2.5
+  timeBetweenDamage: 0
+  sfxSource: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: eef73a2b76947e44dbddccd578f5110f, type: 3}
+  currentHealth: 0
   isInvulnerable: 0
+  hitCount: 0
 --- !u!114 &2529404637501472725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,6 +461,7 @@ GameObject:
   - component: {fileID: 8999702495188685530}
   - component: {fileID: 7536498302678590941}
   - component: {fileID: 2044737990258706516}
+  - component: {fileID: 3549333543410568755}
   m_Layer: 9
   m_Name: Sprite
   m_TagString: Enemy
@@ -527,7 +532,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 6514144336136709068, guid: 73ce46d2a3565bd46a413dcdd235e7f3, type: 3}
-  m_Color: {r: 0.31683874, g: 0.754717, b: 0.7073592, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
@@ -579,3 +584,16 @@ MonoBehaviour:
   dashTimeFrame: 1
   bAttackTwo: 0
   onlySecondaryAttack: 0
+--- !u!114 &3549333543410568755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6647232440405953180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6efb3e2459be744bf9438e4258f618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  invulnerableColor: {r: 0.39215687, g: 0.58431375, b: 0.92941177, a: 1}
