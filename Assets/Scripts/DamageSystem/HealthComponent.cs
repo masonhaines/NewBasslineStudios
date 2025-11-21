@@ -99,6 +99,7 @@ public class HealthComponent : MonoBehaviour, IDamageable
     public int currentHealth;
     private KnockBack knockBack;
     public bool isInvulnerable = false;
+    public int hitCount = 0;
 
     private void Awake() // Awake is called when an enabled script instance is being loaded.
     {
@@ -117,6 +118,7 @@ public class HealthComponent : MonoBehaviour, IDamageable
         currentHealth -= damageAmount;
         OnHit(damageSource.transform,damageAmount);
         knockBack.CreateKnockBack(damageSource.transform, knockBackAmount + knockBackMultiplier, knockBackLiftAmount);
+        hitCount++; // this is mainly used for bosses.
         if (currentHealth <= 0)
         {
             Death();
@@ -163,13 +165,15 @@ public class HealthComponent : MonoBehaviour, IDamageable
         // Notify listeners (RespawnManager will handle player respawn)
         OnDeathCaller?.Invoke();
 
-        
-
         if (destroyOnDeath) // for enemies
         {
             // Debug.Log("Death");
             Destroy(gameObject, TimeTillDestroy);   // keep for enemies
         }
+        // else if (gameObject.CompareTag("Player")) // uncomment when animation for player death is implemented. 
+        // {
+        //     gameObject.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+        // }
         // else: do not destroy — player will be teleported & refilled by RespawnManager
     }
 
