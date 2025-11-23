@@ -75,7 +75,7 @@ public class PowerUp : MonoBehaviour
         else if (bFriendly && bPowerUp)
         {
             sfxSource.PlayOneShot(soundOne);
-            other.GetComponent<ImpactDamageComp>().IncreaseDamage(adjustPower);
+            other.GetComponentInChildren<DamageComponent>().IncreaseDamage(adjustPower);
         }
         // else if (bPowerDown && !bFriendly)
         // {

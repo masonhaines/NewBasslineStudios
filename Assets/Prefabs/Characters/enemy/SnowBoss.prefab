@@ -85,7 +85,7 @@ MonoBehaviour:
   attackRange: 9
   stopMovementForAttackAnimation: 0
   maxAttacksBeforeReset: 2
-  temporaryMovementSpeed: 6
+  temporaryMovementSpeed: 10
   RecolorOnHit: 1
   newColor: {r: 0.76819396, g: 0.17289531, b: 0.17289531, a: 1}
   patrolComponentObject: {fileID: 0}
@@ -116,7 +116,7 @@ MonoBehaviour:
   knockBackMultiplier: 2
   TimeTillDestroy: 5
   bCanStunLock: 0
-  timeBetweenDamage: 0
+  timeBetweenDamage: 1.1
   sfxSource: {fileID: 0}
   damageSound: {fileID: 8300000, guid: eef73a2b76947e44dbddccd578f5110f, type: 3}
   currentHealth: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314f8ed3415a36f43bdfc197f953cbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
-  moveSpeed: 2
+  moveSpeed: 6
   groundOnly: 1
   movementType: 1
   groundLayer:
@@ -299,8 +299,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageComponent
   damageAmount: 1
   bProjectile: 0
-  knockBackAmount: 8.5
-  knockBackLiftAmount: 1.5
+  knockBackAmount: 14
+  knockBackLiftAmount: 0.75
   bIsEnabled: 1
   timeBetweenAttacks: 0.2
   debugging: 0

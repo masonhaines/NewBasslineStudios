@@ -25,6 +25,8 @@ public class ImpactDamageComp : MonoBehaviour
     void Awake() // Awake is called when an enabled script instance is being loaded.
     {
         damageSource = transform.root.gameObject;
+        originalDamage = damageAmount;
+
     }
 
     private void Update()
