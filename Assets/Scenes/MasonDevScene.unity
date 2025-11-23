@@ -13165,11 +13165,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 2df661ccac392fa4fa025b42f4ace3a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.43
+      value: -6.41
       objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 2df661ccac392fa4fa025b42f4ace3a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.85
+      value: 1.41
       objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 2df661ccac392fa4fa025b42f4ace3a0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24274,6 +24274,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2716954872901606570, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
+      propertyPath: bFreeze
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716954872901606570, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
+      propertyPath: bFriendly
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716954872901606570, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
+      propertyPath: bHealthUp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716954872901606570, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
+      propertyPath: frozenTimer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716954872901606570, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
+      propertyPath: adjustHealth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716954872901606570, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
+      propertyPath: toggleFriendly
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716954872901606570, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
+      propertyPath: friendOrFoeTimer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4140541521797081293, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
       propertyPath: m_SortingLayer
       value: 3
@@ -24284,11 +24312,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4473236896747306447, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.26
+      value: -32.24
       objectReference: {fileID: 0}
     - target: {fileID: 4473236896747306447, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.56
+      value: -2.76
       objectReference: {fileID: 0}
     - target: {fileID: 4473236896747306447, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
       propertyPath: m_LocalPosition.z

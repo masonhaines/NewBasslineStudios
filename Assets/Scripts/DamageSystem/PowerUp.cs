@@ -12,7 +12,7 @@ public class PowerUp : MonoBehaviour
     [SerializeField] private AudioClip soundOne;
     public Collider2D localCollider;
 
-
+    
     public bool bHealthUp = false;
     public bool bPowerUp = false;
     public bool bPowerDown = false;
@@ -83,7 +83,7 @@ public class PowerUp : MonoBehaviour
         // }
         localCollider.enabled = false;
         sprite.enabled = false;
-        Destroy(gameObject, 10.0f);
+        Destroy(gameObject, 60.0f);
     }
 
     private IEnumerator FriendOrFoe()
@@ -95,5 +95,5 @@ public class PowerUp : MonoBehaviour
         }
     }
 
-    
+
 }

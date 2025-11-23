@@ -90,7 +90,7 @@ public class AIController : MonoBehaviour
         attacking = new AttackState(this);
         
         
-        chaseComponentObject.enabled = false;
+        if (chaseComponentObject) chaseComponentObject.enabled = false;
         savedMoveSpeed = MovementController.GetMoveSpeed();
         setNewState(patrol);
         
