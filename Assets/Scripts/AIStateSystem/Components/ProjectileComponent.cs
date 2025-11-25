@@ -58,7 +58,7 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
             pGameObject.SetActive(false);
             Debug.Log("projectile ref is null");
         }
-
+        Debug.Log("runnign fire!");
     }
 
     private IEnumerator DestroyProjectilesInQueue()
