@@ -17,7 +17,7 @@ public class FreezeUp : MonoBehaviour
 
     protected void Awake()
     {
-        sfxSource = GetComponent<AudioSource>(); 
+        // sfxSource = GetComponent<AudioSource>(); 
         localCollider = GetComponent<Collider2D>();
     }
 
@@ -45,8 +45,8 @@ public class FreezeUp : MonoBehaviour
 
     protected void Freeze(Collider2D other)
     {
-        float currentSpeed = other.gameObject.GetComponent<PlayerController2D>().moveSpeed;
-        other.gameObject.GetComponent<PlayerController2D>().moveSpeed = currentSpeed * .5f; // cut move speed in half
+        
+        other.gameObject.GetComponent<PlayerController2D>().moveSpeed = other.gameObject.GetComponent<PlayerController2D>().InitMoveSpeed * .05f; // cut move speed in half
 
         SpriteRenderer spriteRenderer = other.gameObject.GetComponentInChildren<SpriteRenderer>();
 
@@ -70,7 +70,7 @@ public class FreezeUp : MonoBehaviour
             Color normalColor = new Color(1, 1, 1, 1f); 
             spriteRenderer.color = normalColor;
             float currentSpeed = other.gameObject.GetComponent<PlayerController2D>().moveSpeed;
-            other.gameObject.GetComponent<PlayerController2D>().moveSpeed = currentSpeed * 2f; // return move speed
+            other.gameObject.GetComponent<PlayerController2D>().moveSpeed = other.gameObject.GetComponent<PlayerController2D>().InitMoveSpeed; // return move speed
         }
     }
 }

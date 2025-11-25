@@ -92,10 +92,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634bbe05af042934d94817758cabea09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageComponent
-  damageAmount: 0
+  damageAmount: 1
   bProjectile: 0
   knockBackAmount: 5
   knockBackLiftAmount: 1
+  bIsEnabled: 1
+  timeBetweenAttacks: 0
+  debugging: 0
 --- !u!1 &6568721110514000897
 GameObject:
   m_ObjectHideFlags: 0

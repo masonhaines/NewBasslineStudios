@@ -197,6 +197,8 @@ public class PlayerController2D : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 6f;
 
+    public float InitMoveSpeed;
+
     [Header("Jumping")]
     public float jumpForce = 12f;
     public Transform groundCheck;
@@ -234,6 +236,7 @@ public class PlayerController2D : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         healthComponentObject = GetComponent<HealthComponent>();
         DisableWeaponHitbox();
+        InitMoveSpeed = moveSpeed;
     }
 
     void Update()
