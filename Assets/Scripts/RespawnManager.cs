@@ -73,5 +73,7 @@ public class RespawnManager : MonoBehaviour
         if (playerMovement) playerMovement.enabled = true;
         
         player.GetComponent<Rigidbody2D>().gravityScale = savedGravityScale;
+        playerMovement.moveSpeed = playerMovement.InitMoveSpeed;
+        playerMovement.spriteRenderer.color = playerMovement.InitColor;
     }
 }

@@ -62,7 +62,7 @@ MonoBehaviour:
   maxAttacksBeforeReset: 0
   temporaryMovementSpeed: 0
   RecolorOnHit: 1
-  newColor: {r: 0.7491811, g: 0.59471005, b: 0.9784366, a: 1}
+  newColor: {r: 0.17065834, g: 0.16039185, b: 0.18059295, a: 1}
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}

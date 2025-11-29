@@ -426,18 +426,6 @@ PrefabInstance:
       propertyPath: 'patrolPointLocations.Array.data[1]'
       value: 
       objectReference: {fileID: 200865342}
-    - target: {fileID: 7512328440374342327, guid: 0e54e23bf6835b04eb62348ed1b36344, type: 3}
-      propertyPath: newColor.b
-      value: 0.18059295
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512328440374342327, guid: 0e54e23bf6835b04eb62348ed1b36344, type: 3}
-      propertyPath: newColor.g
-      value: 0.16039185
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512328440374342327, guid: 0e54e23bf6835b04eb62348ed1b36344, type: 3}
-      propertyPath: newColor.r
-      value: 0.17065834
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
