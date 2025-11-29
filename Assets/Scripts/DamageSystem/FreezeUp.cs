@@ -20,17 +20,7 @@ public class FreezeUp : MonoBehaviour
         // sfxSource = GetComponent<AudioSource>(); 
         localCollider = GetComponent<Collider2D>();
     }
-
-    protected void Start()
-    {
-        
-    }
-
-    protected void Update()
-    {
-        
-
-    }
+    
     
     protected void OnTriggerEnter2D(Collider2D other)
     {

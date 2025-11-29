@@ -20,9 +20,9 @@ GameObject:
   - component: {fileID: 5488822767075395796}
   - component: {fileID: 1901180311612244404}
   - component: {fileID: 5859333354042260487}
-  - component: {fileID: 8795619257244751712}
+  - component: {fileID: 9116055880227302294}
   m_Layer: 9
-  m_Name: EnemyFlyingBaseVariant
+  m_Name: Banshee
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 1369442348009616825}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.23, y: -0.35, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -62,7 +62,7 @@ MonoBehaviour:
   maxAttacksBeforeReset: 0
   temporaryMovementSpeed: 0
   RecolorOnHit: 1
-  newColor: {r: 0.6622311, g: 0.95687324, b: 0.6073952, a: 1}
+  newColor: {r: 0.7491811, g: 0.59471005, b: 0.9784366, a: 1}
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
@@ -130,10 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6db763eb878d7b469925d65504ff0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolComponent
-  patrolPointLocations:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  patrolPointLocations: []
   waitTimeBetweenPatrolPoints: 1
 --- !u!114 &4187364116491173755
 MonoBehaviour:
@@ -247,8 +244,8 @@ SpriteRenderer:
   m_SortingLayerID: 180130071
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3253736088022680715, guid: 985dbb9f4b204014b813af9f54ea2038, type: 3}
-  m_Color: {r: 0.78436655, g: 0.33721414, b: 0.33721414, a: 1}
+  m_Sprite: {fileID: -4162954138361008465, guid: 4f603fc00c5eca84494229ab0a64cd76, type: 3}
+  m_Color: {r: 0.8525299, g: 0.78571415, b: 0.99999994, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -268,7 +265,7 @@ Animator:
   m_GameObject: {fileID: 1369442348009616825}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dcff0e34551647440b3953bba1a0c909, type: 2}
+  m_Controller: {fileID: 9100000, guid: 54f146f8c4dfbaf4493c5026b0ff3b1a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -292,12 +289,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3172c3b590f84d78840a52780b9dcd23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileComponent
-  projectilePrefab: {fileID: 8553818057480637897, guid: 14011d579f097fc41b7cc19ded583776, type: 3}
+  projectilePrefab: {fileID: 8553818057480637897, guid: 5952343fd6243494fa12d03f8c51367e, type: 3}
   projectilePosition: {fileID: 971147147492808869}
-  firingRate: 1.5
+  firingRate: 2.7
   destructionRate: 3
---- !u!58 &8795619257244751712
-CircleCollider2D:
+--- !u!60 &9116055880227302294
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -312,7 +309,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 576
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -331,7 +328,26 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.4375
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.6666667, y: 2.5833333}
+    newSize: {x: 0.3, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.41567826, y: 0.9774369}
+      - {x: -0.8198267, y: 0.47447157}
+      - {x: -0.7460464, y: -0.36446047}
+      - {x: -0.19532329, y: -1.2284253}
+      - {x: 0.2585644, y: -1.2073436}
+      - {x: 0.75658643, y: -0.4036553}
+      - {x: 0.86198866, y: 0.50510454}
+      - {x: 0.65217113, y: 0.95635647}
+  m_UseDelaunayMesh: 0
 --- !u!1 &3325566589297371907
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,7 +373,7 @@ Transform:
   m_GameObject: {fileID: 3325566589297371907}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.27, y: -0.27, z: 0}
+  m_LocalPosition: {x: 0.69, y: 0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -442,5 +458,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.060837444, y: 0.03999457}
-  m_Radius: 0.34268615
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5

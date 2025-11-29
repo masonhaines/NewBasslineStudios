@@ -2394,7 +2394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: timeBetweenAttacks
-      value: 0.2
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: knockBackLiftAmount
@@ -2811,7 +2811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: timeBetweenAttacks
-      value: 0.2
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: knockBackLiftAmount
@@ -3812,7 +3812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: timeBetweenAttacks
-      value: 0.2
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: knockBackLiftAmount
@@ -8047,7 +8047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: timeBetweenAttacks
-      value: 0.2
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: knockBackLiftAmount
@@ -9545,7 +9545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: timeBetweenAttacks
-      value: 0.2
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: knockBackLiftAmount
@@ -10554,7 +10554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: timeBetweenAttacks
-      value: 0.2
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: knockBackLiftAmount
@@ -45410,7 +45410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: timeBetweenAttacks
-      value: 0.2
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 1425061600123433670, guid: d0d2a56e8d0a803438cba0c782878a87, type: 3}
       propertyPath: knockBackLiftAmount

@@ -124,7 +124,7 @@ public class AIController : MonoBehaviour
         currentState.PollPerception();
         
         
-        if (detectedTargetTransform != null && !attackComponentObject.bAttacking)
+        if (detectedTargetTransform != null && !AttackController.bAttacking)
         {
             FlipSprite(new Vector2(detectedTargetTransform.position.x, detectedTargetTransform.position.y));
         }
