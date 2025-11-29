@@ -10,16 +10,18 @@ public class AiControllerSimple : MonoBehaviour
 
     [Header("Sprite Pulse")]
     [SerializeField] private Transform spriteRootTransform; // for child sprite obj 
-
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float minimumScale = 0.8f;
     [SerializeField] private float maximumScale = 1.5f;
     [SerializeField] private float pulseSpeed = 2f; 
     private bool executeThisFrame;
+    
 
     protected void Awake()
     {
         projectileComponentObject = GetComponent<ProjectileComponent>();
         // AttackController = GetComponent<ICoreAttack>();
+        
 
     }
 
@@ -33,33 +35,36 @@ public class AiControllerSimple : MonoBehaviour
     {
         if (spriteRootTransform == null)
         {
+            Debug.Log("Sprite on root is null inside of hazard");
             return; 
         }
-
+    
         
         float percentOfMax = spriteRootTransform.localScale.x / maximumScale;
-        if (bInRangeToAttack && percentOfMax >= 0.9f)
+        
+        if (bInRangeToAttack && percentOfMax >= 0.55f)
         {
             projectileComponentObject.enabled = true;
             projectileComponentObject.bPrimaryAttackActive = false;
+            projectileComponentObject.bAttacking = false;
 
-            projectileComponentObject.StartAttack();
+            projectileComponentObject.InitUpdate();
         }
         else
         {
             projectileComponentObject.enabled = false;
         }
 
-        if (executeThisFrame)
-        {
+        // if (executeThisFrame)
+        // {
             float pulseValue = Mathf.PingPong(Time.time * pulseSpeed, 1f);
 
             float currentScale = Mathf.Lerp(minimumScale, maximumScale, pulseValue);
             
             spriteRootTransform.localScale = new Vector3(currentScale, currentScale, 1f);
-        }
+        // }
 
-        executeThisFrame = !executeThisFrame;
+        // executeThisFrame = !executeThisFrame;
     }
 
     public void PerceptionTargetFound(Transform target)

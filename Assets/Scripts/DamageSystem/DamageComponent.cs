@@ -67,6 +67,7 @@ public class DamageComponent : MonoBehaviour
     public void IncreaseDamage(int amount)
     {
         damageAmount += amount;
+        Debug.Log(damageAmount);
         StartCoroutine(RevertDamage());
     }
 

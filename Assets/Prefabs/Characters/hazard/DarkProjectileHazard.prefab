@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1894620812300810884}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.032, y: -0.027, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 3636900024169929489, guid: 3e8bdea2ba887bb4b96da63221292b7d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.09904343, g: 0.030706683, b: 0.21293801, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 7649954426674442166}
   - component: {fileID: 3015271876180352700}
   m_Layer: 0
-  m_Name: FireProjectileHazard
+  m_Name: DarkProjectileHazard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 2352682257777932532}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31.1462, y: 17.6349, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 1.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -163,9 +163,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AiControllerSimple
   projectileComponentObject: {fileID: 0}
   spriteRootTransform: {fileID: 7195176362146604507}
-  minimumScale: 0.8
-  maximumScale: 2
-  pulseSpeed: 1.2
+  spriteRenderer: {fileID: 0}
+  minimumScale: 2.2
+  maximumScale: 2.5
+  pulseSpeed: 2
 --- !u!114 &7696970757212694622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3172c3b590f84d78840a52780b9dcd23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileComponent
-  projectilePrefab: {fileID: 8553818057480637897, guid: 14011d579f097fc41b7cc19ded583776, type: 3}
+  projectilePrefab: {fileID: 8553818057480637897, guid: 2effba88a719bf643978a09a559b2f49, type: 3}
   projectilePosition: {fileID: 7195176362146604507}
   firingRate: 2
   destructionRate: 3
@@ -216,8 +217,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.055862427, y: 0}
-  m_Radius: 6.860718
+  m_Offset: {x: -0.02102232, y: 0}
+  m_Radius: 4.2130265
 --- !u!114 &3015271876180352700
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -33,6 +33,12 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
     }
     
     public void Initialize(Animator animatorRef) { }
+
+    public void InitUpdate()
+    {
+        if (bPrimaryAttackActive) return;
+        bPrimaryAttackActive = true;
+    }
     
     
     public void StartAttack()
@@ -58,7 +64,7 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
             pGameObject.SetActive(false);
             Debug.Log("projectile ref is null");
         }
-        Debug.Log("runnign fire!");
+        // Debug.Log("runnign fire!");
     }
 
     private IEnumerator DestroyProjectilesInQueue()
