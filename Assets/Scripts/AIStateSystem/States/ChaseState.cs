@@ -26,7 +26,7 @@ public class ChaseState : IAiStates
         {
             aiController.setNewState(aiController.patrol);
         }
-        else if (aiController.bInRangeToAttack)
+        else if (aiController.bInRangeToAttack && aiController.bHasPerceivedTarget)
         {
             aiController.setNewState(aiController.attacking);
         }

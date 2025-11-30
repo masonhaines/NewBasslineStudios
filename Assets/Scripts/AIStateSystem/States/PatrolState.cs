@@ -13,6 +13,10 @@ public class PatrolState : IAiStates
     {
         aiController.patrolComponentObject.enabled = true;
         // aiControllerInstance.patrolComponentObject.StopAllCoroutines();
+        if (aiController.MovementController)
+        {
+            aiController.MovementController.StopMovement();
+        }
         aiController.patrolComponentObject.BeginPatrol();
 
         aiController.MovementController.OnTargetReachedCaller +=
