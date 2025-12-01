@@ -197,6 +197,8 @@ public class PlayerController2D : MonoBehaviour
     [Header("Movement")]
     public float moveSpeed = 6f;
 
+    public float InitMoveSpeed;
+
     [Header("Jumping")]
     public float jumpForce = 12f;
     public Transform groundCheck;
@@ -225,15 +227,20 @@ public class PlayerController2D : MonoBehaviour
 
     private Rigidbody2D rb;
     private HealthComponent healthComponentObject;
+    public SpriteRenderer spriteRenderer;
     private Animator animator;
     private bool isGrounded;
+    public Color InitColor;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         healthComponentObject = GetComponent<HealthComponent>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        InitColor = spriteRenderer.color;
         DisableWeaponHitbox();
+        InitMoveSpeed = moveSpeed;
     }
 
     void Update()

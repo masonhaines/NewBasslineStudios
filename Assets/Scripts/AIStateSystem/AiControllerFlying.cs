@@ -9,15 +9,16 @@ using UnityEngine;
 public class AiControllerFlying : AIController
 {
     public ProjectileComponent projectileComponentObject;
-    private bool bIsDead = false;
+    // private bool bIsDead = false;
     protected override void Awake()
     {
         base.Awake();
         
         projectileComponentObject = GetComponent<ProjectileComponent>();
         AttackController = GetComponent<ICoreAttack>();
+        AttackController = projectileComponentObject;
         myAnimator = GetComponent<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
-        
+        AttackController?.Initialize(myAnimator);
     }
 
     protected override void Start()
@@ -28,58 +29,70 @@ public class AiControllerFlying : AIController
 
     protected override void Update()
     {
-        if (currentState == death || bIsDead)
-        {
-            enemyRigidBody.linearVelocity = Vector2.zero;
+        //     if (currentState == death || bIsDead)
+        //     {
+        //         // enemyRigidBody.linearVelocity = Vector2.zero;
+        //         //
+        //         // setNewState(patrol);
+        //         return;
+        //     }
+        //     currentState.PollPerception();
+        //     if (currentState == attacking)
+        //     {
+        //         projectileComponentObject.enabled = true;
+        //     }
+        //     else
+        //     {
+        //         projectileComponentObject.enabled = false;
+        //     }
+        //     
+        //     // make something so that when the attack state is entered create a cooldown period here so the enemy is active and moving
+        //     // id rather it move to jsut infront of the player or maybe just chase or patrol
+        //     
 
-            setNewState(patrol);
-            return;
-        }
-        currentState.PollPerception();
-        if (currentState == attacking)
+        base.Update();
+        if (!bInRangeToAttack)
         {
-            projectileComponentObject.enabled = true;
+            // projectileComponentObject.enabled = false;  
         }
-        else
-        {
-            projectileComponentObject.enabled = false;
-        }
-        
-        // make something so that when the attack state is entered create a cooldown period here so the enemy is active and moving
-        // id rather it move to jsut infront of the player or maybe just chase or patrol
-        
-    }
+}
 
     public override void PerceptionTargetFound(Transform target)
     {
-        if (bIsDead) return;
         base.PerceptionTargetFound(target);
-        bInRangeToAttack = true;
+        projectileComponentObject.enabled = true;
     }
 
     public override void PerceptionTargetLost(Transform target)
     {
         base.PerceptionTargetLost(target);
-        bInRangeToAttack = false;
+        projectileComponentObject.enabled = false;
+        StartCoroutine(ReturnToPatrol());
     }
 
-    protected override void OnHitListener(Transform target, int damage)
+    public IEnumerator ReturnToPatrol()
     {
-        projectileComponentObject.enabled = false;
-        if (!RecolorOnHit) return;
-        if (sprite)
-        {
-            setColor();
-        }
-        
-        // StartCoroutine(ResetColor());
+        yield return new WaitForSeconds(1.5f);
+        setNewState(patrol);
     }
+
+    // protected override void OnHitListener(Transform target, int damage)
+    // {
+    //     projectileComponentObject.enabled = false;
+    //     if (!RecolorOnHit) return;
+    //     if (sprite)
+    //     {
+    //         setColor();
+    //     }
+    //     
+    //     // StartCoroutine(ResetColor());
+    // }
 
     protected override void OnDeathListener()
     {
+        base.OnDeathListener();
         projectileComponentObject.enabled = false;
-        bIsDead = true;
-        setNewState(patrol);
+        // bIsDead = true;
     }
     
     

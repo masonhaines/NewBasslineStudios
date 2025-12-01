@@ -17,6 +17,9 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
     
     public bool bPrimaryAttackActive { get; set; } = true;
     public bool bAttacking { get; set; }
+    private bool bInitialized = false;
+    private Animator animator;
+
 
 
     private void FixedUpdate()
@@ -28,11 +31,29 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
         if (timer >= firingRate)
         {
             timer -= firingRate;
-            FireProjectile();
+            if (bInitialized)
+            {
+                animator.SetTrigger("tFireProjectile");
+            }
+            else
+            {
+                FireProjectile();
+            }
         }
     }
-    
-    public void Initialize(Animator animatorRef) { }
+
+    public void Initialize(Animator animatorRef)
+    {
+        if(animatorRef == null) return;
+        animator = animatorRef;
+        bInitialized = true;
+    }
+
+    public void InitUpdate()
+    {
+        if (bPrimaryAttackActive) return;
+        bPrimaryAttackActive = true;
+    }
     
     
     public void StartAttack()
@@ -46,6 +67,7 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
     void FireProjectile()
     {
         if (!projectilePrefab || !projectilePosition) return;
+        
         var pGameObject = Instantiate(projectilePrefab, projectilePosition.position, Quaternion.identity);
         var projectileRef = pGameObject.GetComponent<EnemyProjectile>();
         if (projectileRef)
@@ -58,7 +80,7 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
             pGameObject.SetActive(false);
             Debug.Log("projectile ref is null");
         }
-
+        // Debug.Log("runnign fire!");
     }
 
     private IEnumerator DestroyProjectilesInQueue()

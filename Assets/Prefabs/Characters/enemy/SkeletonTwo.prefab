@@ -88,13 +88,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   destroyOnDeath: 1
   maxHealth: 7
-  knockBackMultiplier: 6
+  knockBackMultiplier: 3
   TimeTillDestroy: 6
   bCanStunLock: 0
-  timeBetweenDamage: 1.1
+  timeBetweenDamage: 0
   sfxSource: {fileID: 0}
   damageSound: {fileID: 8300000, guid: eef73a2b76947e44dbddccd578f5110f, type: 3}
+  currentHealth: 0
   isInvulnerable: 0
+  hitCount: 0
 --- !u!114 &5927526571898653656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AttackComponent
   attackerRigidBody: {fileID: 648877593986698397}
   hitbox: {fileID: 8839787587671821122}
-  attackWaitTime: 2.9
+  attackWaitTime: 2
   bNeedsAttackCounter: 0
   dashScale: 12
   dashTimeFrame: 0.9
@@ -142,6 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
   moveSpeed: 2
+  initMoveSpeed: 0
   groundOnly: 1
   movementType: 1
   groundLayer:
@@ -161,8 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6db763eb878d7b469925d65504ff0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolComponent
-  patrolPointLocations: []
-  waitTimeBetweenPatrolPoints: 0
+  patrolPointLocations:
+  - {fileID: 0}
+  - {fileID: 0}
+  waitTimeBetweenPatrolPoints: 6
 --- !u!114 &6483009887337193017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,7 +235,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 576
+    m_Bits: 577
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -376,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634bbe05af042934d94817758cabea09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageComponent
-  damageAmount: 1
+  damageAmount: 2
   bProjectile: 0
   knockBackAmount: 22
   knockBackLiftAmount: 0.75
@@ -508,7 +513,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.2167659, y: 0.53755534}
+  m_Offset: {x: 0.3208046, y: -0.0061640143}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -518,5 +523,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 15.706355, y: 3.1508167}
+  m_Size: {x: 5.5193157, y: 2.0633779}
   m_EdgeRadius: 0

@@ -95,7 +95,9 @@ MonoBehaviour:
   timeBetweenDamage: 1
   sfxSource: {fileID: 0}
   damageSound: {fileID: 8300000, guid: eef73a2b76947e44dbddccd578f5110f, type: 3}
+  currentHealth: 0
   isInvulnerable: 0
+  hitCount: 0
 --- !u!114 &2529404637501472725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileComponent
   projectilePrefab: {fileID: 8553818057480637897, guid: 14011d579f097fc41b7cc19ded583776, type: 3}
   projectilePosition: {fileID: 971147147492808869}
-  firingRate: 2.7
+  firingRate: 1.5
   destructionRate: 3
 --- !u!58 &8795619257244751712
 CircleCollider2D:
@@ -440,5 +442,5 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Offset: {x: -0.060837444, y: 0.03999457}
+  m_Radius: 0.34268615

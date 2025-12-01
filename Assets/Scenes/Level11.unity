@@ -691,20 +691,12 @@ PrefabInstance:
       value: SnowBoss
       objectReference: {fileID: 0}
     - target: {fileID: 2136153642964654598, guid: 23c22dc7b575dcc4b887fb4b74392a71, type: 3}
-      propertyPath: maxHealth
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136153642964654598, guid: 23c22dc7b575dcc4b887fb4b74392a71, type: 3}
       propertyPath: sfxSource
       value: 
       objectReference: {fileID: 1385625968}
-    - target: {fileID: 2136153642964654598, guid: 23c22dc7b575dcc4b887fb4b74392a71, type: 3}
-      propertyPath: damageSound
-      value: 
-      objectReference: {fileID: 8300000, guid: eef73a2b76947e44dbddccd578f5110f, type: 3}
-    - target: {fileID: 2136153642964654598, guid: 23c22dc7b575dcc4b887fb4b74392a71, type: 3}
-      propertyPath: isInvulnerable
-      value: 0
+    - target: {fileID: 2529404637501472725, guid: 23c22dc7b575dcc4b887fb4b74392a71, type: 3}
+      propertyPath: moveSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 23c22dc7b575dcc4b887fb4b74392a71, type: 3}
       propertyPath: m_LocalPosition.x
@@ -745,6 +737,10 @@ PrefabInstance:
     - target: {fileID: 2913191249545737219, guid: 23c22dc7b575dcc4b887fb4b74392a71, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179659693347042591, guid: 23c22dc7b575dcc4b887fb4b74392a71, type: 3}
+      propertyPath: knockBackAmount
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4854,16 +4850,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2716954872901606570, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
+      propertyPath: toggleFriendly
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2716954872901606570, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
       propertyPath: friendOrFoeTimer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4473236896747306447, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4473236896747306447, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4473236896747306447, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55098,11 +55098,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4473236896747306447, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4473236896747306447, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4473236896747306447, guid: d8e5734ad4b3805458d593839ab748b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55185,6 +55185,10 @@ PrefabInstance:
       propertyPath: TimeTillDestroy
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2529404637501472725, guid: f5d57b9985c8ffc4eb3d574f2ff7cd20, type: 3}
+      propertyPath: moveSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: f5d57b9985c8ffc4eb3d574f2ff7cd20, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60.57133
@@ -55244,6 +55248,18 @@ PrefabInstance:
     - target: {fileID: 4639176091211223747, guid: f5d57b9985c8ffc4eb3d574f2ff7cd20, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423973114262812903, guid: f5d57b9985c8ffc4eb3d574f2ff7cd20, type: 3}
+      propertyPath: newColor.b
+      value: 0.5921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423973114262812903, guid: f5d57b9985c8ffc4eb3d574f2ff7cd20, type: 3}
+      propertyPath: newColor.g
+      value: 0.2627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423973114262812903, guid: f5d57b9985c8ffc4eb3d574f2ff7cd20, type: 3}
+      propertyPath: newColor.r
+      value: 0.35709643
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

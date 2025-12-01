@@ -133,9 +133,10 @@ MonoBehaviour:
   bCanStunLock: 1
   timeBetweenDamage: 1
   sfxSource: {fileID: 0}
-  damageSound: {fileID: 0}
+  damageSound: {fileID: 8300000, guid: eef73a2b76947e44dbddccd578f5110f, type: 3}
   currentHealth: 0
   isInvulnerable: 0
+  hitCount: 0
 --- !u!114 &3486144826186490132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController2D
   moveSpeed: 6
+  InitMoveSpeed: 0
   jumpForce: 12
   groundCheck: {fileID: 3091892206352146205}
   groundCheckSize: {x: 0.95, y: 1}

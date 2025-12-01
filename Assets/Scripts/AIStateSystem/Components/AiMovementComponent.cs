@@ -14,6 +14,7 @@ public class AiMovementComponent : MonoBehaviour
     };
     
     [SerializeField] public float moveSpeed = 5f;
+    public float initMoveSpeed;
     [SerializeField] private bool groundOnly = true;
     [SerializeField] private MovementType movementType;
 
@@ -33,6 +34,7 @@ public class AiMovementComponent : MonoBehaviour
     {
         aiController = GetComponent<AIController>();
         groundCollider = GetComponent<Collider2D>();
+        initMoveSpeed = moveSpeed;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -133,7 +135,10 @@ public class AiMovementComponent : MonoBehaviour
 
     public void StopMovement()
     {
-        moversRigidbody2D.linearVelocity = Vector2.zero;
+        if (moversRigidbody2D)
+        {
+            moversRigidbody2D.linearVelocity = Vector2.zero;
+        }
     }
 
     public void SetMoveSpeed(float newMoveSpeed)

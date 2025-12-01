@@ -90,7 +90,7 @@ public class AIController : MonoBehaviour
         attacking = new AttackState(this);
         
         
-        chaseComponentObject.enabled = false;
+        if (chaseComponentObject) chaseComponentObject.enabled = false;
         savedMoveSpeed = MovementController.GetMoveSpeed();
         setNewState(patrol);
         
@@ -124,7 +124,7 @@ public class AIController : MonoBehaviour
         currentState.PollPerception();
         
         
-        if (detectedTargetTransform != null && !attackComponentObject.bAttacking)
+        if (detectedTargetTransform != null && !AttackController.bAttacking)
         {
             FlipSprite(new Vector2(detectedTargetTransform.position.x, detectedTargetTransform.position.y));
         }
