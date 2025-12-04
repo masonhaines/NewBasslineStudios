@@ -87,6 +87,9 @@ public class RespawnManager : MonoBehaviour
     [Header("Refs")]
     [SerializeField] private HealthComponent playerHealth;
     [SerializeField] private Transform respawnPoint;
+    [SerializeField] private Transform player;
+    private PlayerController2D playerMovement;
+    private float savedGravityScale;
 
     [Header("Death UI")]
     [SerializeField] private CanvasGroup deathBanner; // CanvasGroup on the YOU HAVE FALLEN scroll
@@ -106,6 +109,9 @@ public class RespawnManager : MonoBehaviour
             deathBanner.alpha = 0f;
             deathBanner.gameObject.SetActive(false);
         }
+        
+        playerMovement = player.GetComponent<PlayerController2D>();
+        savedGravityScale = player.GetComponent<Rigidbody2D>().gravityScale;
     }
 
     private void OnDestroy()
@@ -145,6 +151,9 @@ public class RespawnManager : MonoBehaviour
         {
             playerHealth.transform.position = respawnPoint.position;
             playerHealth.RestoreFullHealth();   // this will also refill your hearts UI
+            player.GetComponent<Rigidbody2D>().gravityScale = savedGravityScale;
+         playerMovement.moveSpeed = playerMovement.InitMoveSpeed;
+         playerMovement.spriteRenderer.color = playerMovement.InitColor;
         }
 
         // --- Fade OUT banner ---
