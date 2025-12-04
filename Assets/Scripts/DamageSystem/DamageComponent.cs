@@ -59,6 +59,7 @@ public class DamageComponent : MonoBehaviour
             damageable.Damage(damageAmount, damageSource, knockBackAmount, knockBackLiftAmount);
             canAttack = false;
             timeSinceLastAttack = 0;
+            // Debug.Log(damageAmount);
         }
     }
     

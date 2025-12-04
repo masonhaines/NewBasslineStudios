@@ -59,9 +59,9 @@ public class AIControllerSkeletonChild : AIController
     {
         localAttackCounter++;
         // Debug.Log($"{name} attack count triggered");
-        Debug.Log(localAttackCounter + "Attack counter");
+        // Debug.Log(localAttackCounter + "Attack counter");
         if (localAttackCounter < maxAttacksBeforeReset) return;
-        Debug.Log("running attack counter logic");
+        // Debug.Log("running attack counter logic");
             
         // attackComponentObject.bAttackFinished = true;
         // attackComponentObject.StartAttackTwo();

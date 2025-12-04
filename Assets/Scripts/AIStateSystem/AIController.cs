@@ -154,7 +154,7 @@ public class AIController : MonoBehaviour
             
             return;
         }
-        if ((currentState == attacking && AttackController.bPrimaryAttackActive) && stopMovementForAttackAnimation)
+        if ((currentState == attacking && AttackController.bAttacking) && stopMovementForAttackAnimation)
         {
             MovementController.StopMovement();
             return;
@@ -173,7 +173,7 @@ public class AIController : MonoBehaviour
                 MovementController.OnTick();
             }
         }
-        else if (currentState == patrol && !bIsAttacking)
+        else if (currentState == patrol && !AttackController.bAttacking)
         {
             MovementController.OnTick();
         }
@@ -195,7 +195,7 @@ public class AIController : MonoBehaviour
         
         currentState = newState; // set the current state to the new state 
         currentState.Enter(); // call the currentstate's enter method to truly enable the state
-        // Debug.Log(currentState);
+        Debug.Log(currentState);
     }
 
     protected virtual void OnDeathListener()
@@ -291,7 +291,7 @@ public class AIController : MonoBehaviour
         // Debug.Log("I'm reverting the color ");
     }
 
-    protected IEnumerator ResetColor()
+    protected virtual IEnumerator ResetColor()
     {
         yield return new WaitForSeconds(0.6f);
         RevertColor();

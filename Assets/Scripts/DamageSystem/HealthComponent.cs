@@ -114,7 +114,7 @@ public class HealthComponent : MonoBehaviour, IDamageable
         {
             return;
         }
-        
+        // Debug.Log("Damage taken  " + damageAmount);
         currentHealth -= damageAmount;
         OnHit(damageSource.transform,damageAmount);
         knockBack.CreateKnockBack(damageSource.transform, knockBackAmount + knockBackMultiplier, knockBackLiftAmount);

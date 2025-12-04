@@ -52,27 +52,5 @@ public class AIControllerSkeletonChild2 : AIController
     
     }
     
-    // public bool onlyAttackTwo;
-    // protected override void OnAttackCounting()
-    // {
-    //     if (onlyAttackTwo)
-    //     {
-    //         stopMovementForAttackAnimation = false;
-    //         attackComponentObject.StartAttackTwo();
-    //     }
-    //     else
-    //     {
-    //         localAttackCounter++;
-    //         // Debug.Log($"{name} attack count triggered");
-    //         if (localAttackCounter > maxAttacksBeforeReset)
-    //         {
-    //             stopMovementForAttackAnimation = false;
-    //             attackComponentObject.StartAttackTwo();
-    //             localAttackCounter = 0;
-    //         }
-    //
-    //         stopMovementForAttackAnimation = true;
-    //     }
-    // }
     
 }

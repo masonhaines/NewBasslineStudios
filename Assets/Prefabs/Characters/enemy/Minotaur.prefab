@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2278925909428471961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5078731703676546231}
+  m_Layer: 9
+  m_Name: ProjectileSpawnLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5078731703676546231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2278925909428471961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.76, y: -0.32, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5375520193948104180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2865037897074988624
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,9 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5375520193948104180}
-  - component: {fileID: 4481997393947015031}
+  - component: {fileID: 3621599663340560103}
   - component: {fileID: 6606438197779291805}
-  - component: {fileID: 5927526571898653656}
+  - component: {fileID: 530501978935649262}
   - component: {fileID: 5707079512953044099}
   - component: {fileID: 6486150613993143591}
   - component: {fileID: 7492123331446354989}
@@ -21,6 +52,8 @@ GameObject:
   - component: {fileID: 7498727155835269307}
   - component: {fileID: 2761834388056987946}
   - component: {fileID: 354345942969072511}
+  - component: {fileID: 1097811584134963857}
+  - component: {fileID: 8794739084072543681}
   m_Layer: 9
   m_Name: Minotaur
   m_TagString: Enemy
@@ -43,9 +76,10 @@ Transform:
   m_Children:
   - {fileID: 3931231206373514205}
   - {fileID: 2476782191651983189}
+  - {fileID: 5078731703676546231}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4481997393947015031
+--- !u!114 &3621599663340560103
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -54,15 +88,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2865037897074988624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9681c21f0f24670b81836b81c77de3c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b1fdcbdc6be41c98360428865d5ee47, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AIControllerSkeletonChild2
-  attackRange: 14
+  m_EditorClassIdentifier: Assembly-CSharp::AIControllerMinotaur
+  attackRange: 8
   stopMovementForAttackAnimation: 0
   maxAttacksBeforeReset: 0
   temporaryMovementSpeed: 0
-  RecolorOnHit: 0
-  newColor: {r: 0.4862745, g: 0.12156863, b: 0.12156863, a: 1}
+  RecolorOnHit: 1
+  newColor: {r: 0.89757407, g: 0.28911072, b: 0.28911072, a: 1}
   patrolComponentObject: {fileID: 0}
   chaseComponentObject: {fileID: 0}
   attackComponentObject: {fileID: 0}
@@ -74,6 +108,7 @@ MonoBehaviour:
   bHasPerceivedTarget: 0
   bIsAttacking: 0
   bInRangeToAttack: 0
+  AttackComponentBetaObj: {fileID: 0}
 --- !u!114 &6606438197779291805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,8 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   destroyOnDeath: 1
-  maxHealth: 7
-  knockBackMultiplier: 3
+  maxHealth: 25
+  knockBackMultiplier: 1
   TimeTillDestroy: 6
   bCanStunLock: 0
   timeBetweenDamage: 0
@@ -97,7 +132,7 @@ MonoBehaviour:
   currentHealth: 0
   isInvulnerable: 0
   hitCount: 0
---- !u!114 &5927526571898653656
+--- !u!114 &530501978935649262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,17 +141,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2865037897074988624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 254ee52e2af04cc494068619b9884ee4, type: 3}
+  m_Script: {fileID: 11500000, guid: b01b2690128b46009b770b61412b3dc3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AttackComponent
+  m_EditorClassIdentifier: Assembly-CSharp::AttackComponentBeta
   attackerRigidBody: {fileID: 648877593986698397}
   hitbox: {fileID: 8839787587671821122}
-  attackWaitTime: 2
-  bNeedsAttackCounter: 0
+  attackWaitTime: 2.5
   dashScale: 12
-  dashTimeFrame: 0.9
-  bAttackTwo: 1
-  onlySecondaryAttack: 1
+  dashTimeFrame: 2.2
 --- !u!114 &5707079512953044099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314f8ed3415a36f43bdfc197f953cbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
-  moveSpeed: 2
+  moveSpeed: 3
   initMoveSpeed: 0
   groundOnly: 1
   movementType: 1
@@ -324,7 +356,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -7769164091089536687, guid: a7981ba3b2cdb4a4d9ef1255006585b4, type: 3}
-  m_Color: {r: 0.6671158, g: 0.8793359, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.8473175, b: 0.83962256, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -334,6 +366,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1097811584134963857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865037897074988624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290cdbbd06d37234494a5996837a6f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileHelper
+  projectileOne: {fileID: 0}
+  projectileTwo: {fileID: 0}
+--- !u!114 &8794739084072543681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865037897074988624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa31a4a791456c4caefdccd887a60a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySimpleJumpComponent
+  enemyRigidBody: {fileID: 648877593986698397}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  jumpForceUp: 5
+  jumpForceForward: 2
+  minTimeBetweenJumps: 0.5
 --- !u!1 &5032537921918271253
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,6 +410,8 @@ GameObject:
   - component: {fileID: 3931231206373514205}
   - component: {fileID: 6750313953767638065}
   - component: {fileID: 8839787587671821122}
+  - component: {fileID: 4333916134478180901}
+  - component: {fileID: 3117501813468771288}
   m_Layer: 8
   m_Name: weapon
   m_TagString: Enemy
@@ -379,10 +446,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634bbe05af042934d94817758cabea09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageComponent
-  damageAmount: 2
+  damageAmount: 1
   bProjectile: 0
-  knockBackAmount: 22
-  knockBackLiftAmount: 0.75
+  knockBackAmount: 30
+  knockBackLiftAmount: 0.85
   bIsEnabled: 1
   timeBetweenAttacks: 0.2
   debugging: 0
@@ -432,6 +499,40 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.3313193, y: 0.3656887}
   m_EdgeRadius: 0
+--- !u!114 &4333916134478180901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5032537921918271253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3172c3b590f84d78840a52780b9dcd23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileComponent
+  projectilePrefab: {fileID: 8553818057480637897, guid: 2e061f5a79c4b6640879b11a6b0be745, type: 3}
+  projectilePosition: {fileID: 5078731703676546231}
+  firingRate: 3
+  destructionRate: 6
+  bNeedsInvokation: 1
+--- !u!114 &3117501813468771288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5032537921918271253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3172c3b590f84d78840a52780b9dcd23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileComponent
+  projectilePrefab: {fileID: 8553818057480637897, guid: 91f39bb6b464b08458a0a547715b6b04, type: 3}
+  projectilePosition: {fileID: 5078731703676546231}
+  firingRate: 3
+  destructionRate: 6
+  bNeedsInvokation: 1
 --- !u!1 &9187088121752116074
 GameObject:
   m_ObjectHideFlags: 0
@@ -511,7 +612,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.3150711, y: -0.35083866}
+  m_Offset: {x: -2.41328, y: -0.35083866}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -521,5 +622,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 37.55912, y: 10.335548}
+  m_Size: {x: 33.3627, y: 10.335548}
   m_EdgeRadius: 0

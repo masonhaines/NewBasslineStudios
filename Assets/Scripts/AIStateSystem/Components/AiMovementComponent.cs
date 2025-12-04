@@ -69,7 +69,7 @@ public class AiMovementComponent : MonoBehaviour
         }
         
         
-        if (bHasReachedTarget)
+        if (bHasReachedTarget) // this is only for the patrol state, and not for the chase state 
         {
             // moveSpeed = startMoveSpeed;
             OnTargetReachedCaller?.Invoke();

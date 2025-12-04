@@ -18,13 +18,14 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
     public bool bPrimaryAttackActive { get; set; } = true;
     public bool bAttacking { get; set; }
     private bool bInitialized = false;
+    public bool bNeedsInvokation = false;
     private Animator animator;
 
 
 
     private void FixedUpdate()
     {
-        if (!bPrimaryAttackActive) return; // if finished attacking leave update early
+        if (!bPrimaryAttackActive || bNeedsInvokation) return; // if finished attacking leave update early
         if (bAttacking) return;
         // Debug.Log(bAttackFinished);
         timer += Time.deltaTime;
@@ -64,7 +65,7 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
         FireProjectile();
     }
     
-    void FireProjectile()
+    public void FireProjectile()
     {
         if (!projectilePrefab || !projectilePosition) return;
         

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 
-public class AttackComponent: MonoBehaviour, ICoreAttack
+public class AttackComponentBeta: MonoBehaviour, ICoreAttack
 {
     public event System.Action AddToAttackCount = delegate { };
     
@@ -12,106 +12,64 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
     private AIController aiController;
     [SerializeField] private Collider2D hitbox;
     [SerializeField] private float attackWaitTime = 3f;
-    [SerializeField] private bool bNeedsAttackCounter = false;
     [SerializeField] private float dashScale = 1.0f;
     [SerializeField] private float dashTimeFrame = 1.0f;
-    // [SerializeField] private string attackAnimStateName;
     
     public bool bPrimaryAttackActive { get; set; } = false;
     public bool bAttacking { get; set; }
-    public bool bSecondaryAttackActive { get; set; } = false;
-    private bool bInitialized = false;
     public bool bIsDashing { get; set; } = false;
-    
-    public bool bAttackTwo;
-    public bool onlySecondaryAttack = false;
-    
-
+    private int attackCount = 0;
+    private bool bTimerFinished = false;
     public void Initialize(Animator animatorRef)
     {
-        // attackerRigidBody = GetComponentInParent<Rigidbody2D>();
         aiController = GetComponentInParent<AIController>();
         animator = animatorRef;
-        DamageDisabled();
-        bInitialized = true;
+        hitbox.enabled = false;
+        bTimerFinished = true;
     }
 
     public void StartAttack()
     {
-        if (bAttacking) return;
-        if (bPrimaryAttackActive) return;
-        
-        
-        // Debug.Log("startattack being called");
-        if (!bAttackTwo)
+        if (!bTimerFinished || bAttacking) return; // if timer not finished return
+        bTimerFinished = false;
+        if (attackCount % 3 == 0)
         {
-            // Debug.Log("inside A1");
-
             AttackOne();
         }
         else
         {
-           
-            // Debug.Log("inside A2");
-
             StartAttackTwo();
         }
     }
 
     public void AttackOne()
     {
-        if (bPrimaryAttackActive)
-        {
-            return;
-        }
-        // Debug.Log(">>> AttackOne START");   
-        bPrimaryAttackActive = true;
         bAttacking = true;
-
-        animator.SetTrigger("tCanAttackTarget");
+        animator.SetBool("bAttackOne", true);
+        attackCount++;
     }
-    
-    // private float nextAttackAllowedTime = 0f;
 
     private IEnumerator AttackFinished()
     {
         yield return new WaitForSeconds(attackWaitTime);
-        bPrimaryAttackActive = false;
-        // bAttacking = false;
-        
+        bTimerFinished = true;
     }
-
     
-    // this needs to be called after the attack two animtion to switch attack two off or attacks will stop
     public void StartAttackTwo()
     {
-        
-
-        if (bAttacking)
-        {
-            // Debug.Log("I am being called but returning");
-            return;
-        }
-        if (bPrimaryAttackActive) return;
-        // Debug.Log("attack two being called ");
-
-        
-        
-        bPrimaryAttackActive = true;
         bAttacking = true;
-        bSecondaryAttackActive = false;
-        animator.SetBool("bAttackTypeTwo", true);
-        animator.SetTrigger("tCanAttackTarget");
+        animator.SetBool("bAttackTwo", true);
+        attackCount++;
     }
 
     public void EndAttackTwo()
     {
-        
-        bSecondaryAttackActive = false;
-        bAttacking = false;
-
-        animator.SetBool("bAttackTypeTwo", false);
-        bAttackTwo = onlySecondaryAttack;
+        animator.SetBool("bAttackTwo", false);
+    }
+    
+    public void EndAttackOne()
+    {
+        animator.SetBool("bAttackOne", false);
     }
     
     public void DamageEnabled()
@@ -124,18 +82,12 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
         hitbox.enabled = false;
         StartCoroutine(AttackFinished());
         bAttacking = false;
-
-        if (bNeedsAttackCounter && bInitialized)
-        {
-            AddToAttackCount?.Invoke();
-        }
     }
     
     public void DamageDisabledOnHit()
     {
         hitbox.enabled = false;
         bAttacking = false;
-        bPrimaryAttackActive = false;
     }
 
     
@@ -143,7 +95,6 @@ public class AttackComponent: MonoBehaviour, ICoreAttack
     {
         // Debug.Log("Dash is activated");
         bIsDashing = true;
-
         StartCoroutine(Dash());
     }
     
