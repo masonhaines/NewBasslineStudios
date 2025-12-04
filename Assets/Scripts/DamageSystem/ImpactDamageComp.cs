@@ -40,6 +40,7 @@ public class ImpactDamageComp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if(other.gameObject.GetComponent<PlayerController2D>().isDashing) return;
         if (debugging)
         {
             Debug.Log(other.gameObject.name);

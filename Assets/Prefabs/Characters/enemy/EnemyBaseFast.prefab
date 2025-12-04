@@ -117,7 +117,11 @@ MonoBehaviour:
   TimeTillDestroy: 2.5
   bCanStunLock: 0
   timeBetweenDamage: 0.5
+  sfxSource: {fileID: 0}
+  damageSound: {fileID: 0}
+  currentHealth: 0
   isInvulnerable: 0
+  hitCount: 0
 --- !u!114 &2529404637501472725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
   moveSpeed: 6
+  initMoveSpeed: 0
   groundOnly: 1
   movementType: 1
   groundLayer:
@@ -482,6 +487,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2913191249545737219}
     m_Modifications:
+    - target: {fileID: 4265132558623003605, guid: 0704e6892cee3eb4f8becb28d5bedadc, type: 3}
+      propertyPath: knockBackAmount
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 4265132558623003605, guid: 0704e6892cee3eb4f8becb28d5bedadc, type: 3}
       propertyPath: timeBetweenAttacks
       value: 1

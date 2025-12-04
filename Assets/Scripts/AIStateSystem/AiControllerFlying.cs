@@ -10,6 +10,7 @@ public class AiControllerFlying : AIController
 {
     public ProjectileComponent projectileComponentObject;
     // private bool bIsDead = false;
+    [SerializeField] public bool bNeedsInit = true;
     protected override void Awake()
     {
         base.Awake();
@@ -18,7 +19,10 @@ public class AiControllerFlying : AIController
         AttackController = GetComponent<ICoreAttack>();
         AttackController = projectileComponentObject;
         myAnimator = GetComponent<Animator>(); // this is because the animator is in the sprite child object of the enemy prefab 
-        AttackController?.Initialize(myAnimator);
+        if (bNeedsInit)
+        {
+            AttackController?.Initialize(myAnimator);
+        }
     }
 
     protected override void Start()
