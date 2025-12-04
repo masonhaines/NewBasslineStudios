@@ -396,6 +396,7 @@ RectTransform:
   - {fileID: 365834261}
   - {fileID: 494356988}
   - {fileID: 1600283675}
+  - {fileID: 1864961202}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -18370,6 +18371,94 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1864961201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1864961202}
+  - component: {fileID: 1864961205}
+  - component: {fileID: 1864961204}
+  - component: {fileID: 1864961203}
+  m_Layer: 5
+  m_Name: Death banner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1864961202
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864961201}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 27271225}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.00012207031, y: -13}
+  m_SizeDelta: {x: 1024, y: 962}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1864961203
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864961201}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1864961204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864961201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -4678940353054916416, guid: 001289e51d2f24aa58701a22d08be392, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1864961205
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864961201}
+  m_CullTransparentMesh: 1
 --- !u!1 &1871688331
 GameObject:
   m_ObjectHideFlags: 0
@@ -30224,6 +30313,18 @@ PrefabInstance:
       objectReference: {fileID: 2061593336}
     - target: {fileID: 5682847124372984823, guid: 3d338e9fd6d0d48fb93584543632fbcb, type: 3}
       propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 353773412}
+    - target: {fileID: 5682847124372984823, guid: 3d338e9fd6d0d48fb93584543632fbcb, type: 3}
+      propertyPath: deathBanner
+      value: 
+      objectReference: {fileID: 1864961203}
+    - target: {fileID: 5682847124372984823, guid: 3d338e9fd6d0d48fb93584543632fbcb, type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 2061593337}
+    - target: {fileID: 5682847124372984823, guid: 3d338e9fd6d0d48fb93584543632fbcb, type: 3}
+      propertyPath: respawnPoint
       value: 
       objectReference: {fileID: 353773412}
     m_RemovedComponents: []
