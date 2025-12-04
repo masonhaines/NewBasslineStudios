@@ -35,6 +35,7 @@ public class FreezeUp : MonoBehaviour
 
     protected void Freeze(Collider2D other)
     {
+        if(other.gameObject.GetComponent<PlayerController2D>().isDashing) return;
         
         other.gameObject.GetComponent<PlayerController2D>().moveSpeed = other.gameObject.GetComponent<PlayerController2D>().InitMoveSpeed * .05f; // cut move speed in half
 
@@ -42,6 +43,7 @@ public class FreezeUp : MonoBehaviour
 
         if (spriteRenderer != null)
         {
+            other.gameObject.GetComponent<PlayerController2D>().bIsFrozen = true;
             Color frozenColor = new Color(0.2f, 0.8f, 1.0f, 0.5f); 
             
             spriteRenderer.color = frozenColor;
@@ -52,7 +54,7 @@ public class FreezeUp : MonoBehaviour
     private IEnumerator UnFreeze(Collider2D other)
     {
         yield return new WaitForSeconds(frozenTimer);
-        
+        other.gameObject.GetComponent<PlayerController2D>().bIsFrozen = false;
         SpriteRenderer spriteRenderer = other.gameObject.GetComponentInChildren<SpriteRenderer>();
 
         if (spriteRenderer != null)

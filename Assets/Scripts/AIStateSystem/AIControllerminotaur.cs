@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -11,6 +11,10 @@ public class AIControllerMinotaur : AIController
     public AttackComponentBeta AttackComponentBetaObj;
     private bool bHurt = false;
     public bool jumping;
+
+    private float g, b = 1.0f;
+    private float colorDecrement = 1.0f;
+    
     
     protected override void Awake()
     {
@@ -18,6 +22,9 @@ public class AIControllerMinotaur : AIController
         AttackComponentBetaObj = GetComponent<AttackComponentBeta>();
         AttackController = AttackComponentBetaObj;
         AttackController?.Initialize(myAnimator);
+        b = 1.0f;
+        g = 1.0f;
+        colorDecrement = healthComponentObject.currentHealth;
     }
 
     public override void PerceptionTargetLost(Transform target)
@@ -79,6 +86,7 @@ public class AIControllerMinotaur : AIController
     {
         base.OnHitListener(target, damage);
         bHurt = true;
+        UpdateColorFromDamageTaken();
         StartCoroutine(DontAnimateHurt());
         StartCoroutine(NotHurtTimer());
     }
@@ -93,6 +101,18 @@ public class AIControllerMinotaur : AIController
     {
         yield return new WaitForSeconds(2.1f);
         bHurt = false;
+    }
+
+    private void UpdateColorFromDamageTaken()
+    {
+        if (b > 0f || g > 0f)
+        {
+            g = Mathf.Max(0f, g - 1 / colorDecrement);
+            b = Mathf.Max(0f, b - 1 / colorDecrement);
+        }
+        
+        originalColor = new Color(1f, g, b, 1f);
+        
     }
     
 }

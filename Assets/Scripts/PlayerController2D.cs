@@ -13,7 +13,8 @@ public class PlayerController2D : MonoBehaviour
     public float dashCooldown = 0.6f;
     private float dashTimer = 0f;
     private float dashCooldownTimer = 0f;
-    private bool isDashing = false;
+    public bool isDashing = false;
+    public bool bIsFrozen = false;
 
     public TrailRenderer trail;
 
@@ -93,6 +94,7 @@ public class PlayerController2D : MonoBehaviour
     {
         
         dashCooldownTimer -= Time.deltaTime;
+        if (bIsFrozen) return; // if status effect active 
 
         // leftshift to dash
         if (!isDashing && Input.GetKeyDown(KeyCode.LeftShift) && dashCooldownTimer <= 0f && !isAttacking)
