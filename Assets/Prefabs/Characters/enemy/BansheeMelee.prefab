@@ -108,8 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d40127dd8de5704caf4c3d9568b890b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
-  destroyOnDeath: 0
-  maxHealth: 3
+  destroyOnDeath: 1
+  maxHealth: 2
   knockBackMultiplier: 1
   TimeTillDestroy: 2
   bCanStunLock: 1

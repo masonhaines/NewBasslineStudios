@@ -10,6 +10,8 @@ public class AIControllerMinotaur : AIController
 {
     public AttackComponentBeta AttackComponentBetaObj;
     private bool bHurt = false;
+    public bool jumping;
+    
     protected override void Awake()
     {
         base.Awake(); 
@@ -25,25 +27,21 @@ public class AIControllerMinotaur : AIController
         detectedTargetTransform = target;
     }
 
-    protected override void OnHitListener(Transform target, int damage)
-    {
-        base.OnHitListener(target, damage);
-        bHurt = true;
-        StartCoroutine(DontAnimateHurt());
-    }
+    
 
     protected override void FixedUpdate()
     {
-        if (currentState == death)
+        if (currentState == death || jumping)
         {
-            
             return;
         }
-        if (AttackComponentBetaObj.bIsDashing)
+        if (AttackComponentBetaObj.bIsDashing || jumping)
         {
             return;
-        }else if (AttackController.bAttacking || bHurt)
+        }
+        else if (AttackController.bAttacking || bHurt)
         {
+            Debug.Log("check?");
             MovementController.StopMovement();
             return;
         }
@@ -57,22 +55,18 @@ public class AIControllerMinotaur : AIController
                     setNewState(chase);
                 }
                 
-                
                 chaseComponentObject.UpdateChaseLocation(detectedTargetTransform);
                 MovementController.OnTick();
             }
         }
         else if (!AttackController.bAttacking)
         {
-            
             MovementController.OnTick();
         }
         else
         {
             myAnimator.SetTrigger("tNotMoving");
-
         }
-    
     }
 
     protected override IEnumerator ResetColor()
@@ -81,10 +75,24 @@ public class AIControllerMinotaur : AIController
         RevertColor();
     }
     
+    protected override void OnHitListener(Transform target, int damage)
+    {
+        base.OnHitListener(target, damage);
+        bHurt = true;
+        StartCoroutine(DontAnimateHurt());
+        StartCoroutine(NotHurtTimer());
+    }
+    
     protected IEnumerator DontAnimateHurt()
     {
         yield return new WaitForSeconds(4.0f);
         RevertColor();
+    }
+    
+    protected IEnumerator NotHurtTimer()
+    {
+        yield return new WaitForSeconds(2.1f);
+        bHurt = false;
     }
     
 }

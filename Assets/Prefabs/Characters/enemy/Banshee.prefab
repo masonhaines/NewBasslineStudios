@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d40127dd8de5704caf4c3d9568b890b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
-  destroyOnDeath: 0
+  destroyOnDeath: 1
   maxHealth: 1
   knockBackMultiplier: 6
   TimeTillDestroy: 2
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
   moveSpeed: 2
+  initMoveSpeed: 0
   groundOnly: 0
   movementType: 2
   groundLayer:
@@ -293,6 +294,7 @@ MonoBehaviour:
   projectilePosition: {fileID: 971147147492808869}
   firingRate: 2.7
   destructionRate: 3
+  bNeedsInvokation: 0
 --- !u!60 &9116055880227302294
 PolygonCollider2D:
   m_ObjectHideFlags: 0

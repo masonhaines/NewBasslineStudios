@@ -21,6 +21,7 @@ public class AIController : MonoBehaviour
     protected Color originalColor;
     protected float savedMoveSpeed;
     protected int localAttackCounter;
+    
 
 
     public PatrolState patrol;
@@ -195,7 +196,7 @@ public class AIController : MonoBehaviour
         
         currentState = newState; // set the current state to the new state 
         currentState.Enter(); // call the currentstate's enter method to truly enable the state
-        Debug.Log(currentState);
+        // Debug.Log(currentState);
     }
 
     protected virtual void OnDeathListener()

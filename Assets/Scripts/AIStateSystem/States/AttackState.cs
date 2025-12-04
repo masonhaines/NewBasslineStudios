@@ -18,7 +18,10 @@ public class AttackState : IAiStates
         if (!aiController.AttackController.bAttacking &&
             !aiController.AttackController.bPrimaryAttackActive)
         {
-            aiController.AttackController.StartAttack();
+            if(aiController.bInRangeToAttack)
+            {
+                aiController.AttackController.StartAttack();
+            }
             // Debug.Log("Attacking");
         }
         

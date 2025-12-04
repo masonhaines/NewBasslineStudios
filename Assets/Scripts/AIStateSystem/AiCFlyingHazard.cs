@@ -36,6 +36,10 @@ public class AiCFlyingHazard : AIController
         }
     }
     
+    protected override void FixedUpdate()
+    {
+        MovementController.OnTick();
+    }
     protected override void OnHitListener(Transform target, int damage)
     {
         

@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
   moveSpeed: 3
+  initMoveSpeed: 0
   groundOnly: 0
   movementType: 2
   groundLayer:

@@ -67,6 +67,7 @@ public class AiControllerFlying : AIController
     {
         base.PerceptionTargetLost(target);
         projectileComponentObject.enabled = false;
+        if (currentState == death) return;
         StartCoroutine(ReturnToPatrol());
     }
 
@@ -91,6 +92,7 @@ public class AiControllerFlying : AIController
     protected override void OnDeathListener()
     {
         base.OnDeathListener();
+        StopAllCoroutines();
         projectileComponentObject.enabled = false;
         // bIsDead = true;
     }

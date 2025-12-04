@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemySimpleJumpComponent : MonoBehaviour
@@ -6,10 +7,8 @@ public class EnemySimpleJumpComponent : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float jumpForceUp = 5f;
     [SerializeField] private float jumpForceForward = 2f;
-    [SerializeField] private float minTimeBetweenJumps = 0.5f;
 
-    private AIController aiController;
-    private float timeSinceLastJump;
+    private AIControllerMinotaur aiController;
 
     private void Awake()
     {
@@ -18,43 +17,33 @@ public class EnemySimpleJumpComponent : MonoBehaviour
             enemyRigidBody = GetComponentInParent<Rigidbody2D>();
         }
 
-        aiController = GetComponentInParent<AIController>();
-    }
-
-    private void Update()
-    {
-        timeSinceLastJump += Time.deltaTime;
+        aiController = GetComponentInParent<AIControllerMinotaur>();
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        // only respond to layers in groundLayer mask
         if (((1 << other.gameObject.layer) & groundLayer) == 0)
         {
             return;
         }
-
-        if (enemyRigidBody == null || aiController == null)
-        {
-            return;
-        }
-
-        if (!aiController.bHasPerceivedTarget)
-        {
-            // only jump when actually chasing the player
-            return;
-        }
-
-        if (timeSinceLastJump < minTimeBetweenJumps)
-        {
-            return;
-        }
-
-        // if you want only vertical jump, set jumpForceForward to 0 in the inspector
+        
+        aiController.jumping = true;
+        
+        if (enemyRigidBody == null || aiController == null) return;
+        if (!aiController.bHasPerceivedTarget) return;
+        Debug.Log("Made it to the jump");
         Vector2 jumpDirection =
             new Vector2(aiController.facingDirection * jumpForceForward, jumpForceUp);
-
+        
+        enemyRigidBody.linearVelocity = Vector2.zero;
         enemyRigidBody.AddForce(jumpDirection, ForceMode2D.Impulse);
-        timeSinceLastJump = 0f;
+        StartCoroutine(JumpTimer());
+
+    }
+    
+    protected IEnumerator JumpTimer()
+    {
+        yield return new WaitForSeconds(.2f);
+        aiController.jumping = false;
     }
 }
