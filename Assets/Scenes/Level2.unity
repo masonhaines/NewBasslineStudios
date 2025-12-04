@@ -29693,7 +29693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelExit
   nextSceneName: Level3
-  screenFade: {fileID: 0}
+  screenFade: {fileID: 1600283676}
 --- !u!61 &2031820334
 BoxCollider2D:
   m_ObjectHideFlags: 0
