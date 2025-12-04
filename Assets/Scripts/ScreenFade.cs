@@ -16,7 +16,7 @@ public class ScreenFade : MonoBehaviour
         if (fadeImage != null)
         {
             Color c = fadeImage.color;
-            c.a = 0f;           // start fully transparent
+            c.a = 0f;           // start fully transparent so its not blocking the level before fade
             fadeImage.color = c;
         }
     }

@@ -1,18 +1,3 @@
-// using UnityEngine;
-// using UnityEngine.SceneManagement;
-
-// public class SceneLoader : MonoBehaviour
-// {
-//     public void LoadFirstLevel() { SceneManager.LoadScene(1); } // assumes Lv1 is build index 1
-//     public void QuitGame() {
-//         Application.Quit();
-//         #if UNITY_EDITOR
-//         UnityEditor.EditorApplication.isPlaying = false;
-//         #endif
-//     }
-// }
-
-
 
 
 using UnityEngine;
@@ -21,8 +6,7 @@ using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
-    // Optional: if you put this component on a Button and fill this field,
-    // it will auto-wire the click and gray out if the scene isn't in Build Settings.
+
     [SerializeField] string sceneToLoad;
 
     void Awake()
@@ -35,8 +19,8 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    // --- Simple no-arg handlers you can call from OnClick ---
-    public void LoadLevel1() => LoadByName("Level11");  // <-- match your actual Level 1 name
+
+    public void LoadLevel1() => LoadByName("Level11");  // cuz my lv 1 is 11 
     public void LoadLevel2() => LoadByName("Level2");
     public void LoadLevel3() => LoadByName("Level3");
 
