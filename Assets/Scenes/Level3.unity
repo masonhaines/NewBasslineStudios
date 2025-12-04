@@ -131,6 +131,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BansheeMelee (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2136153642964654598, guid: 598eee54a2962ff4d9e421942866f408, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 1861752659}
+    - target: {fileID: 2136153642964654598, guid: 598eee54a2962ff4d9e421942866f408, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 72c02754f3220194d878bc832875f8a6, type: 3}
     - target: {fileID: 2913191249545737219, guid: 598eee54a2962ff4d9e421942866f408, type: 3}
       propertyPath: m_LocalPosition.x
       value: 610.99475
@@ -302,6 +310,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BansheeMelee (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2136153642964654598, guid: 598eee54a2962ff4d9e421942866f408, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 1861752659}
+    - target: {fileID: 2136153642964654598, guid: 598eee54a2962ff4d9e421942866f408, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 72c02754f3220194d878bc832875f8a6, type: 3}
     - target: {fileID: 2913191249545737219, guid: 598eee54a2962ff4d9e421942866f408, type: 3}
       propertyPath: m_LocalPosition.x
       value: 571.37036
@@ -2285,6 +2301,10 @@ PrefabInstance:
       propertyPath: movementType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6606438197779291805, guid: 05cc80c04b719d34ca93b816bb6c0386, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 1861752659}
     - target: {fileID: 7289298338119837730, guid: 05cc80c04b719d34ca93b816bb6c0386, type: 3}
       propertyPath: jumpForceUp
       value: 20
@@ -3774,6 +3794,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BansheeMelee (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2136153642964654598, guid: 598eee54a2962ff4d9e421942866f408, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 1861752659}
+    - target: {fileID: 2136153642964654598, guid: 598eee54a2962ff4d9e421942866f408, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 72c02754f3220194d878bc832875f8a6, type: 3}
     - target: {fileID: 2913191249545737219, guid: 598eee54a2962ff4d9e421942866f408, type: 3}
       propertyPath: m_LocalPosition.x
       value: 597.39386
@@ -3849,6 +3877,14 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2136153642964654598, guid: 0e54e23bf6835b04eb62348ed1b36344, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 1861752659}
+    - target: {fileID: 2136153642964654598, guid: 0e54e23bf6835b04eb62348ed1b36344, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 72c02754f3220194d878bc832875f8a6, type: 3}
     - target: {fileID: 2913191249545737219, guid: 0e54e23bf6835b04eb62348ed1b36344, type: 3}
       propertyPath: m_LocalPosition.x
       value: 581.41016
@@ -5442,6 +5478,10 @@ PrefabInstance:
       propertyPath: sfxSource
       value: 
       objectReference: {fileID: 1861752659}
+    - target: {fileID: 2136153642964654598, guid: 598eee54a2962ff4d9e421942866f408, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 72c02754f3220194d878bc832875f8a6, type: 3}
     - target: {fileID: 2913191249545737219, guid: 598eee54a2962ff4d9e421942866f408, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -10059,6 +10099,10 @@ PrefabInstance:
       propertyPath: sfxSource
       value: 
       objectReference: {fileID: 1861752659}
+    - target: {fileID: 2136153642964654598, guid: 0e54e23bf6835b04eb62348ed1b36344, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 72c02754f3220194d878bc832875f8a6, type: 3}
     - target: {fileID: 2913191249545737219, guid: 0e54e23bf6835b04eb62348ed1b36344, type: 3}
       propertyPath: m_LocalPosition.x
       value: 541.24475
@@ -12108,6 +12152,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Banshee (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2136153642964654598, guid: 0e54e23bf6835b04eb62348ed1b36344, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 1861752659}
+    - target: {fileID: 2136153642964654598, guid: 0e54e23bf6835b04eb62348ed1b36344, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 72c02754f3220194d878bc832875f8a6, type: 3}
     - target: {fileID: 2913191249545737219, guid: 0e54e23bf6835b04eb62348ed1b36344, type: 3}
       propertyPath: m_LocalPosition.x
       value: 610.554
