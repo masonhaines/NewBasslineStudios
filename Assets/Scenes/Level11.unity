@@ -5749,8 +5749,16 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 605917044498638539, guid: 4f87c78b43ff75944939282ee4eee437, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1845437885}
   m_SourcePrefab: {fileID: 100100000, guid: 4f87c78b43ff75944939282ee4eee437, type: 3}
+--- !u!1 &465176647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 605917044498638539, guid: 4f87c78b43ff75944939282ee4eee437, type: 3}
+  m_PrefabInstance: {fileID: 465176646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &466098822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59669,6 +59677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RespawnManager
   playerHealth: {fileID: 1845437884}
   respawnPoint: {fileID: 1908543739}
+  player: {fileID: 1845437892}
   deathBanner: {fileID: 660516241}
   fadeTime: 0.5
   holdTime: 1
@@ -60898,12 +60907,31 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5510355581538835243, guid: 4f87c78b43ff75944939282ee4eee437, type: 3}
   m_PrefabInstance: {fileID: 465176646}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 465176647}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d40127dd8de5704caf4c3d9568b890b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
+--- !u!114 &1845437885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465176647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191ebcdbc085c483a96c35720e48de33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneFadeIn
+  fadeImage: {fileID: 0}
+  fadeDuration: 2
+--- !u!4 &1845437892 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8944766469584986022, guid: 4f87c78b43ff75944939282ee4eee437, type: 3}
+  m_PrefabInstance: {fileID: 465176646}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1847014254
 PrefabInstance:
   m_ObjectHideFlags: 0
