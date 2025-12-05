@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthComponent
   destroyOnDeath: 1
-  maxHealth: 10
+  maxHealth: 8
   knockBackMultiplier: 2
   TimeTillDestroy: 5
   bCanStunLock: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
   moveSpeed: 6
+  initMoveSpeed: 0
   groundOnly: 1
   movementType: 1
   groundLayer:

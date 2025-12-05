@@ -72,7 +72,7 @@ public class AiControllerFlying : AIController
         base.PerceptionTargetLost(target);
         projectileComponentObject.enabled = false;
         if (currentState == death) return;
-        StartCoroutine(ReturnToPatrol());
+        if (isActiveAndEnabled){}
     }
 
     public IEnumerator ReturnToPatrol()

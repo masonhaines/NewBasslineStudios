@@ -935,13 +935,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyFlyingBaseVariant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2136153642964654598, guid: 2df661ccac392fa4fa025b42f4ace3a0, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 429274750}
     - target: {fileID: 2913191249545737219, guid: 2df661ccac392fa4fa025b42f4ace3a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 51.07
+      value: 50.95
       objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 2df661ccac392fa4fa025b42f4ace3a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.41
+      value: 1.89
       objectReference: {fileID: 0}
     - target: {fileID: 2913191249545737219, guid: 2df661ccac392fa4fa025b42f4ace3a0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -975,6 +979,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3041723330231478945, guid: 2df661ccac392fa4fa025b42f4ace3a0, type: 3}
+      propertyPath: 'patrolPointLocations.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1379197967}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1766,19 +1774,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 491435792087879929, guid: 325ee18a55c3c3446894de64e31db766, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.33
+      value: 67.2
       objectReference: {fileID: 0}
     - target: {fileID: 491435792087879929, guid: 325ee18a55c3c3446894de64e31db766, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.45
+      value: -3.77
       objectReference: {fileID: 0}
     - target: {fileID: 1584690564161823248, guid: 325ee18a55c3c3446894de64e31db766, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.73
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 1584690564161823248, guid: 325ee18a55c3c3446894de64e31db766, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.91
+      value: -5.3
       objectReference: {fileID: 0}
     - target: {fileID: 5285368269055068285, guid: 325ee18a55c3c3446894de64e31db766, type: 3}
       propertyPath: m_Name
@@ -16237,6 +16245,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325842946}
   m_CullTransparentMesh: 1
+--- !u!4 &1379197967 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 491435792087879929, guid: 325ee18a55c3c3446894de64e31db766, type: 3}
+  m_PrefabInstance: {fileID: 319368737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1430082077
 GameObject:
   m_ObjectHideFlags: 0
@@ -17452,6 +17465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyFlyingBaseVariant
       objectReference: {fileID: 0}
+    - target: {fileID: 2136153642964654598, guid: 2df661ccac392fa4fa025b42f4ace3a0, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 429274750}
     - target: {fileID: 2913191249545737219, guid: 2df661ccac392fa4fa025b42f4ace3a0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.820332
@@ -17492,6 +17509,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3041723330231478945, guid: 2df661ccac392fa4fa025b42f4ace3a0, type: 3}
+      propertyPath: 'patrolPointLocations.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2086911352}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30294,6 +30315,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081382608}
   m_CullTransparentMesh: 1
+--- !u!4 &2086911352 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1584690564161823248, guid: 325ee18a55c3c3446894de64e31db766, type: 3}
+  m_PrefabInstance: {fileID: 319368737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2135145088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1584690564161823248, guid: 325ee18a55c3c3446894de64e31db766, type: 3}

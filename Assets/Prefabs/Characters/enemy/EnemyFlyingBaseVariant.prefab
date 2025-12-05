@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314f8ed3415a36f43bdfc197f953cbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
-  moveSpeed: 5
+  moveSpeed: 4
   initMoveSpeed: 0
   groundOnly: 0
   movementType: 2
@@ -133,7 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6db763eb878d7b469925d65504ff0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PatrolComponent
-  patrolPointLocations: []
+  patrolPointLocations:
+  - {fileID: 0}
   waitTimeBetweenPatrolPoints: 1
 --- !u!114 &4187364116491173755
 MonoBehaviour:

@@ -27,7 +27,7 @@ public class ProjectileComponent: MonoBehaviour, ICoreAttack
     {
         if (!bPrimaryAttackActive || bNeedsInvokation) return; // if finished attacking leave update early
         if (bAttacking) return;
-        Debug.Log("firing");
+        // Debug.Log("firing");
         timer += Time.deltaTime;
         if (timer >= firingRate)
         {

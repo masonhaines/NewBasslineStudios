@@ -31,7 +31,7 @@ public class EnemySimpleJumpComponent : MonoBehaviour
         
         if (enemyRigidBody == null || aiController == null) return;
         if (!aiController.bHasPerceivedTarget) return;
-        Debug.Log("Made it to the jump");
+        // Debug.Log("Made it to the jump");
         Vector2 jumpDirection =
             new Vector2(aiController.facingDirection * jumpForceForward, jumpForceUp);
         

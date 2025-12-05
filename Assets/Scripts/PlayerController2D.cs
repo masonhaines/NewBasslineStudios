@@ -190,6 +190,18 @@ public class PlayerController2D : MonoBehaviour
 
         if (animator != null)
             animator.SetBool("isJumping", true);
+        
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (healthComponentObject.isInvulnerable)
+            {
+                healthComponentObject.isInvulnerable = false;
+            }
+            else
+            {
+                healthComponentObject.isInvulnerable = true;
+            }
+        }
     }
 
     void HandleAttack()

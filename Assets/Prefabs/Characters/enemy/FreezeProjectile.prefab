@@ -74,7 +74,7 @@ MonoBehaviour:
   soundOne: {fileID: 8300000, guid: eef73a2b76947e44dbddccd578f5110f, type: 3}
   localCollider: {fileID: 0}
   bFreeze: 1
-  frozenTimer: 4
+  frozenTimer: 2.2
 --- !u!114 &3599151660685700126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ CircleCollider2D:
     m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1983
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

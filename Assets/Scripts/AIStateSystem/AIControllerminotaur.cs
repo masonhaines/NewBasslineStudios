@@ -24,6 +24,12 @@ public class AIControllerMinotaur : AIController
         AttackController?.Initialize(myAnimator);
         b = 1.0f;
         g = 1.0f;
+        
+    }
+
+    public override void PerceptionTargetFound(Transform target)
+    {
+        base.PerceptionTargetFound(target);
         colorDecrement = healthComponentObject.currentHealth;
     }
 
@@ -48,7 +54,7 @@ public class AIControllerMinotaur : AIController
         }
         else if (AttackController.bAttacking || bHurt)
         {
-            Debug.Log("check?");
+            // Debug.Log("check?");
             MovementController.StopMovement();
             return;
         }

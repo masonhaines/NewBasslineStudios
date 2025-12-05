@@ -49,8 +49,8 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  jumpForceUp: 5
-  jumpForceForward: 2
+  jumpForceUp: 20
+  jumpForceForward: 10
 --- !u!61 &7898175655344286510
 BoxCollider2D:
   m_ObjectHideFlags: 0
