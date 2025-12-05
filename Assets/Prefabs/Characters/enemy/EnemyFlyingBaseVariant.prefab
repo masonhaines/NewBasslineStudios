@@ -92,7 +92,7 @@ MonoBehaviour:
   destroyOnDeath: 1
   maxHealth: 2
   knockBackMultiplier: 2
-  TimeTillDestroy: 2
+  TimeTillDestroy: 10
   bCanStunLock: 1
   timeBetweenDamage: 1
   sfxSource: {fileID: 0}
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314f8ed3415a36f43bdfc197f953cbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AiMovementComponent
-  moveSpeed: 4
+  moveSpeed: 3
   initMoveSpeed: 0
   groundOnly: 0
   movementType: 2

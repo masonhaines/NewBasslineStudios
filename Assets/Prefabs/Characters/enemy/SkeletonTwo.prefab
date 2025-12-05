@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634bbe05af042934d94817758cabea09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DamageComponent
-  damageAmount: 2
+  damageAmount: 1
   bProjectile: 0
   knockBackAmount: 22
   knockBackLiftAmount: 0.75
