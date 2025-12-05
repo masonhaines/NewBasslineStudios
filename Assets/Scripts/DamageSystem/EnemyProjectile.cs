@@ -21,6 +21,7 @@ public class EnemyProjectile: MonoBehaviour
         
         float rotationAngle = Mathf.Atan2(-projectileDirection.y, -projectileDirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rotationAngle + angleOffset);
+        Destroy(gameObject, 10f);
     }
     
 }
