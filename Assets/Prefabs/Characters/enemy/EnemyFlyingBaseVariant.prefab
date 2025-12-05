@@ -422,7 +422,7 @@ MonoBehaviour:
   knockBackAmount: 24
   knockBackLiftAmount: 0.7
   bIsEnabled: 1
-  timeBetweenAttacks: 0.2
+  timeBetweenAttacks: 0.5
   debugging: 0
 --- !u!212 &4769695601001106302
 SpriteRenderer:
